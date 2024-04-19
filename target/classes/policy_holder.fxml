@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="all.controllers.PolicyHolderController">
+    <children>
+        <VBox alignment="CENTER" spacing="10" prefWidth="400">
+            <TextField fx:id="idField" promptText="ID" />
+            <TextField fx:id="fullNameField" promptText="Full Name" />
+            <TextField fx:id="phoneField" promptText="Phone" />
+            <TextField fx:id="addressField" promptText="Address" />
+            <TextField fx:id="emailField" promptText="Email" />
+            <TextField fx:id="passwordField" promptText="Password" />
+            <Button text="Create" onAction="#createPolicyHolder" />
+            <Button text="Update" onAction="#updatePolicyHolder" />
+
+            <Button text="Retrieve" onAction="#retrievePolicyHolder" />
+            <Button text="Delete" onAction="#deletePolicyHolder" />
+        </VBox>
+    </children>
+</AnchorPane>
