@@ -9,6 +9,7 @@ module rmit.fp.g32_asm2 {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens rmit.fp.g32_asm2 to javafx.fxml;
     exports rmit.fp.g32_asm2;

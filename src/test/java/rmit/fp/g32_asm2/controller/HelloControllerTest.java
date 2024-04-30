@@ -3,7 +3,7 @@ package rmit.fp.g32_asm2.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class HelloControllerTest {
     @FXML
     private Label welcomeText;
 
