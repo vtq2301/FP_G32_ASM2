@@ -18,6 +18,8 @@
     <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <Button text="Register" onAction="#handleRegister"/>
+        <Button text="Go To Sign In" onAction="#handleShowLogin"/>
     </HBox>
     <Label fx:id="statusText" GridPane.columnIndex="1" GridPane.rowIndex="3" textFill="red"/>
+
 </GridPane>
