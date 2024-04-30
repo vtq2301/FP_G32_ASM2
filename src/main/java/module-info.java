@@ -1,9 +1,16 @@
 module all {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
+    requires javafx.base;
+    requires java.sql;
 
-    opens all.controllers to javafx.fxml;
-    opens all.models to javafx.fxml;
+    // Open to javafx.fxml for reflection by FXMLLoader
+    opens all.controller to javafx.fxml;
 
-    exports all; // Export the root package of your all module
+    // Export packages if necessary for other uses
+    exports all.controller;
+    exports all;
+    exports all.model;
+    opens all.model to javafx.fxml;
 }
