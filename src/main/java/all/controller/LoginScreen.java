@@ -1,6 +1,8 @@
 package all.controller;
 
 import all.auth.AuthService;
+import all.controller.customer.PolicyHolder;
+import all.model.customer.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,16 +12,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import all.controller.customer.PolicyOwner;
+import all.controller.customer.Dependent;
 
 import java.io.IOException;
 
 public class LoginScreen {
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Label statusText; // Correct variable name used here
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private Label statusText;
 
     private AuthService authService = new AuthService();
 
@@ -31,10 +32,10 @@ public class LoginScreen {
             statusText.setText("Username and password cannot be empty.");
             return;
         }
-        boolean success = authService.authenticateUser(username, password);
-        if (success) {
+        User user = authService.authenticateUser(username, password);
+        if (user != null) {
             statusText.setText("Login successful!");
-            loadClaimsScreen();  // Load the next screen upon successful login
+            loadClaimsScreen(user);
         } else {
             statusText.setText("Login failed. Please check your username and password.");
         }
@@ -54,25 +55,31 @@ public class LoginScreen {
         }
     }
 
-    private void loadClaimsScreen() {
+    private void loadClaimsScreen(User user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClaimScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            String fxmlFile = "/" + user.getRole() + "Screen.fxml"; // Ensure this matches the actual location of your FXML files
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
+
+            Object controller = loader.getController();
+            switch (user.getRole()) {
+                case "PolicyOwner":
+                    ((PolicyOwner) controller).loadData(user);
+                    break;
+                case "Dependent":
+                    ((Dependent) controller).loadData(user);
+                    break;
+                case "PolicyHolder":
+                    ((PolicyHolder) controller).loadData(user);
+                    break;
+            }
+
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Claims Management");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            statusText.setText("Failed to load the claims screen: " + e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            statusText.setText("An error occurred: " + e.getMessage());
+            statusText.setText("Failed to load the screen: " + e.getMessage());
         }
     }
-
-
 }
