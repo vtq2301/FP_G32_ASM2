@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="349.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.LoginController">
+    <children>
+        <Label fx:id="userName" layoutX="24.0" layoutY="126.0" text="Username" />
+        <Label fx:id="passWord" layoutX="26.0" layoutY="177.0" text="Password" />
+        <Label fx:id="login" layoutX="150.0" layoutY="14.0" text="Login">
+            <font>
+                <Font name="System Bold" size="38.0" />
+            </font>
+        </Label>
+        <TextField fx:id="usernameField" layoutX="126.0" layoutY="122.0" prefHeight="25.0" prefWidth="176.0" promptText="Username" />
+        <Button layoutX="107.0" layoutY="241.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="187.0" text="Login" />
+      <Label fx:id="username1" layoutX="24.0" layoutY="87.0" text="User Role" />
+      <RadioButton fx:id="customerRadio" layoutX="126.0" layoutY="87.0" mnemonicParsing="false" onAction="#radioButtonChanged" selected="true" text="Customer">
+         <toggleGroup>
+            <ToggleGroup fx:id="role" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="providerRadio" layoutX="217.0" layoutY="87.0" mnemonicParsing="false" onAction="#radioButtonChanged" text="Provider" toggleGroup="$role" />
+      <RadioButton fx:id="adminRadio" layoutX="302.0" layoutY="87.0" mnemonicParsing="false" onAction="#radioButtonChanged" text="Admin" toggleGroup="$role" />
+      <PasswordField fx:id="passwordField" layoutX="126.0" layoutY="173.0" prefHeight="25.0" prefWidth="176.0" promptText="Password" />
+      <Label fx:id="userNameEmpty" layoutX="112.0" layoutY="150.0" />
+      <Label fx:id="passwordEmpty" layoutX="112.0" layoutY="200.0" />
+      <Label fx:id="invalidLogin" layoutX="112.0" layoutY="217.0" />
+    </children>
+</AnchorPane>
