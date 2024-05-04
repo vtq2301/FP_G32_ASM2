@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+    <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.ClaimManagement">
+        <top>
+            <VBox>
+                <Button text="Add New Claim" onAction="#handleAddNewClaim" />
+                <Button text="Delete Selected Claim" onAction="#handleDeleteClaim" />
+                <Button text="Update Claim" onAction="#handleUpdateClaim" />
+            </VBox>
+        </top>
+        <center>
+            <TableView fx:id="claimsTable">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Customer ID" fx:id="customerIdColumn">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="customerId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Description" fx:id="descriptionColumn">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="description" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Status" fx:id="statusColumn">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="status" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </center>
+    </BorderPane>
