@@ -10,17 +10,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="477.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.CustomerScreenController">
+<AnchorPane prefHeight="477.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.PolicyHolderScreenController">
    <children>
       <TableView fx:id="tvCustomer" layoutY="7.0" prefHeight="254.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="31.0" text="ID" />
           <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
-            <TableColumn fx:id="colPhone" prefWidth="97.5" text="Phone" />
-            <TableColumn fx:id="colAddress" prefWidth="147.0" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="148.0" text="Email" />
-            <TableColumn fx:id="colRole" prefWidth="56.5" text="Role" />
+            <TableColumn fx:id="colPhone" prefWidth="123.5" text="Phone" />
+            <TableColumn fx:id="colAddress" prefWidth="164.5" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="161.0" text="Email" />
         </columns>
       </TableView>
       <GridPane layoutX="14.0" layoutY="279.0" prefHeight="184.0" prefWidth="529.0">
@@ -38,23 +36,21 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnDelete" mnemonicParsing="false" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="btnAdd" mnemonicParsing="false" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="btnUpdate" mnemonicParsing="false" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="btnDelete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="btnAdd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add" GridPane.columnIndex="2" />
+            <Button fx:id="btnUpdate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label text="ID" />
             <Label text="Name" GridPane.rowIndex="1" />
             <Label text="Phone" GridPane.rowIndex="2" />
             <Label text="Address" GridPane.rowIndex="3" />
             <Label text="Email" GridPane.rowIndex="4" />
-            <Label text="Role" GridPane.rowIndex="5" />
             <TextField fx:id="tfID" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" />
             <TextField fx:id="tfName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfPhone" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="tfEmail" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="tfRole" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button fx:id="btnBack" layoutX="552.0" layoutY="438.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="btnBack" layoutX="552.0" layoutY="438.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>
