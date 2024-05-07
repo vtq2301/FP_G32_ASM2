@@ -12,35 +12,38 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
 public class PolicyHolder {
     @FXML private TextField fullNameField;
     @FXML private TextField emailField;
     @FXML private TextField contactNumberField;
     @FXML private TextField policyNumberField;
     @FXML private Button manageClaimButton;
+    private int policyHolderId;
 
+    // This method should receive the `User` object and initialize `policyHolderId`
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
-        emailField.setText(user.getAddress());  // Assuming address stores email or update accordingly
+        emailField.setText(user.getAddress());
         contactNumberField.setText(user.getPhoneNumber());
-        policyNumberField.setText("POLICY123456"); // Load actual policy data if available
+        policyNumberField.setText("POLICY123456");
+        // Assuming `User` object contains an ID
+        this.policyHolderId = Integer.parseInt(user.getUsername().replaceAll("[^0-9]", ""));
     }
+
     @FXML
     private void handleManageClaim(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClaimManagement.fxml")); // Make sure path is correct
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClaimManagement.fxml"));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Claim Management");
+
+            ClaimManagementController controller = loader.getController();
+            controller.initializeData(policyHolderId);
+
+            Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-            // Optionally, close the current window
-            ((Stage) manageClaimButton.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception (maybe show a dialog with the error)
         }
     }
-
 }
