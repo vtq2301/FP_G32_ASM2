@@ -1,28 +1,48 @@
 package all.model.customer;
 
 public class ClaimManagement {
-    private Integer id;
-    private Integer customerId;
+    private String id;
+    private String customerId;  // Remains updated from Integer to String
     private String description;
     private String status;
 
-    public ClaimManagement(Integer id, Integer customerId, String description, String status) {
+    public ClaimManagement(String id, String customerId, String description, String status) {
         this.id = id;
         this.customerId = customerId;
         this.description = description;
         this.status = status;
     }
 
+    public String getId() {
+        return id;
+    }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    // Updated to accept String as the parameter type
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public Integer getCustomerId() { return customerId; }
-    public void setCustomerId(Integer customerId) { this.customerId = customerId; }
+    public String getCustomerId() {
+        return customerId;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
