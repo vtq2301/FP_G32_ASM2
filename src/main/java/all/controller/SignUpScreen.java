@@ -20,7 +20,7 @@ public class SignUpScreen {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private ComboBox<String> roleComboBox; // ComboBox for selecting role
+    private ComboBox<String> roleComboBox;
     @FXML
     private Label statusText;
     @FXML
@@ -35,7 +35,7 @@ public class SignUpScreen {
     @FXML
     protected void handleRegister(ActionEvent event) {
         String username = usernameField.getText();
-        String password = passwordField.getText();  // Consider hashing this password before storing
+        String password = passwordField.getText();
         String fullName = fullNameField.getText();
         String address = addressField.getText();
         String phoneNumber = phoneNumberField.getText();

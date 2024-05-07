@@ -57,7 +57,7 @@ public class LoginScreen {
 
     private void loadClaimsScreen(User user) {
         try {
-            String fxmlFile = "/" + user.getRole() + "Screen.fxml"; // Ensure this matches the actual location of your FXML files
+            String fxmlFile = "/" + user.getRole() + "Screen.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
 
