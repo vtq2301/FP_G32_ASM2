@@ -12,8 +12,8 @@ public class PolicyOwner {
 
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
-        emailField.setText(user.getAddress());  // Assuming address stores email or update accordingly
+        emailField.setText(user.getAddress());
         contactNumberField.setText(user.getPhoneNumber());
-        policyNumberField.setText("POLICY123456"); // Load actual policy data if available
+        policyNumberField.setText("POLICY123456");
     }
 }

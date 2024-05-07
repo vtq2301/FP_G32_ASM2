@@ -18,7 +18,7 @@ public class PolicyHolder {
     @FXML private TextField contactNumberField;
     @FXML private TextField policyNumberField;
     @FXML private Button manageClaimButton;
-    private int policyHolderId;
+    private String policyHolderId;  // Change type from int to String
 
     // This method should receive the `User` object and initialize `policyHolderId`
     public void loadData(User user) {
@@ -26,8 +26,12 @@ public class PolicyHolder {
         emailField.setText(user.getAddress());
         contactNumberField.setText(user.getPhoneNumber());
         policyNumberField.setText("POLICY123456");
-        // Assuming `User` object contains an ID
-        this.policyHolderId = Integer.parseInt(user.getUsername().replaceAll("[^0-9]", ""));
+        this.policyHolderId = user.getUsername();  // Use the username as is if it's formatted properly
+
+        // Assuming the username is already in the correct format and does not require extraction of numbers
+        if (this.policyHolderId == null || this.policyHolderId.isEmpty()) {
+            System.err.println("Error: PolicyHolder ID is invalid or not set.");
+        }
     }
 
     @FXML
@@ -37,7 +41,7 @@ public class PolicyHolder {
             Parent root = loader.load();
 
             ClaimManagementController controller = loader.getController();
-            controller.initializeData(policyHolderId);
+            controller.initializeData(policyHolderId);  // Updated to pass String ID
 
             Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setScene(new Scene(root));

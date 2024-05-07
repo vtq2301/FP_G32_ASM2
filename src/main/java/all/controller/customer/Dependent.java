@@ -14,7 +14,7 @@ public class Dependent {
     public void loadData(User user) {
         nameField.setText(user.getFullName());
         emailField.setText(user.getAddress());
-        addressField.setText(user.getAddress()); // Assuming address contains email or update as needed.
+        addressField.setText(user.getAddress());
         phoneField.setText(user.getPhoneNumber());
     }
 }
