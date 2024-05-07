@@ -21,6 +21,7 @@
     </GridPane>
     <HBox spacing="10">
         <Button text="Update Information" onAction="#handleUpdate"/>
+        <Button text="Navigate to Claims" onAction="#handleNavigateToClaims"/>
         <Button text="Cancel" onAction="#handleCancel"/>
     </HBox>
 </VBox>
