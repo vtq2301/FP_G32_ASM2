@@ -29,8 +29,6 @@
       <RadioButton fx:id="providerRadio" layoutX="217.0" layoutY="87.0" mnemonicParsing="false" onAction="#radioButtonChanged" text="Provider" toggleGroup="$role" />
       <RadioButton fx:id="adminRadio" layoutX="302.0" layoutY="87.0" mnemonicParsing="false" onAction="#radioButtonChanged" text="Admin" toggleGroup="$role" />
       <PasswordField fx:id="passwordField" layoutX="126.0" layoutY="173.0" prefHeight="25.0" prefWidth="176.0" promptText="Password" />
-      <Label fx:id="userNameEmpty" layoutX="112.0" layoutY="150.0" />
-      <Label fx:id="passwordEmpty" layoutX="112.0" layoutY="200.0" />
-      <Label fx:id="invalidLogin" layoutX="112.0" layoutY="217.0" />
+      <Label fx:id="statusText" layoutX="112.0" layoutY="217.0" />
     </children>
 </AnchorPane>

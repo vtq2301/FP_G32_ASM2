@@ -5,4 +5,7 @@ public class PolicyHolder extends Customer{
 
         super();
     }
+
+    public PolicyHolder() {
+    }
 }

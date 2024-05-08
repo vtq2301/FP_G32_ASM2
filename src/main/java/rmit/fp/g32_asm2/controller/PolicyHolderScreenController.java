@@ -4,13 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import rmit.fp.g32_asm2.model.User;
 import rmit.fp.g32_asm2.model.customer.PolicyHolder;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class PolicyHolderScreenController {
@@ -46,12 +52,18 @@ public class PolicyHolderScreenController {
     private Button btnBack;
     @FXML
     private void handleButtonAction(ActionEvent e){
-
+        if(e.getSource() == btnAdd){
+            addPolicyHolders();
+        } else if (e.getSource() == btnUpdate) {
+            updatePolicyHolders();
+        } else if (e.getSource() == btnDelete) {
+            deletePolicyHolders();
+        }
     }
     public Connection getConnection(){
         Connection conn;
         try {
-            conn = DriverManager.getConnection();
+            conn = DriverManager.getConnection("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
             return conn;
         }
         catch (Exception e){
@@ -86,6 +98,48 @@ public class PolicyHolderScreenController {
         colPhone.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("phone"));
         colEmail.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("email"));
         colAddress.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("address"));
+    }
+    public void addPolicyHolders(){
+        String query = "INSERT INTO policyholders VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
+                + tfPhone.getText() + "'," + tfAddress.getText() + "," + tfEmail.getText() +")";
+        executeQuery(query);
+        showPolicyHolders();
+    }
+    public void updatePolicyHolders(){
+        String query = "UPDATE policyholders SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
+                + "', address = '" + tfAddress.getText() + ", email = " + tfEmail.getText() + "WHERE id = " + tfID.getText() + "";
+        executeQuery(query);
+        showPolicyHolders();
+    }
+    private void deletePolicyHolders(){
+        String query = "DELETE FROM policyholders WHERE id = " + tfID.getText()+ "";
+        executeQuery(query);
+        showPolicyHolders();
+    }
+    private void executeQuery(String query){
+        Connection conn = getConnection();
+        Statement st;
+        try {
+            st = conn.createStatement();
+            st.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void loadAdminScreen(User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminScreen.fxml"));
+            if (loader.getLocation() == null) {
+                throw new IllegalStateException("FXML file not found in the specified path.");
+            }
+            Parent root = loader.load();
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Admin System");
+            stage.show();
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
