@@ -133,10 +133,10 @@ public class PolicyHolderScreenController {
                 throw new IllegalStateException("FXML file not found in the specified path.");
             }
             Parent root = loader.load();
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Admin System");
-            stage.show();
+            Stage currentstage = (Stage) btnBack.getScene().getWindow();
+            currentstage.setScene(new Scene(root));
+            currentstage.setTitle("Admin System");
+            currentstage.show();
         }  catch (Exception e) {
             e.printStackTrace();
         }
