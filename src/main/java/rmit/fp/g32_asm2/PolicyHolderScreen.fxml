@@ -36,9 +36,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnDelete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="btnAdd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add" GridPane.columnIndex="2" />
-            <Button fx:id="btnUpdate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="btnDelete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deletePolicyHolders" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="btnAdd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addPolicyHolders" text="Add" GridPane.columnIndex="2" />
+            <Button fx:id="btnUpdate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updatePolicyHolders" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label text="ID" />
             <Label text="Name" GridPane.rowIndex="1" />
             <Label text="Phone" GridPane.rowIndex="2" />
@@ -51,6 +51,6 @@
             <TextField fx:id="tfEmail" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="btnBack" layoutX="557.0" layoutY="435.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Back" />
+      <Button fx:id="btnBack" layoutX="557.0" layoutY="435.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadAdminScreen" text="Back" />
    </children>
 </AnchorPane>

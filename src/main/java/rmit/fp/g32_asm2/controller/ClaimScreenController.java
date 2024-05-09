@@ -1,4 +1,4 @@
 package rmit.fp.g32_asm2.controller;
 
-public class ProviderScreenController {
+public class ClaimScreenController {
 }

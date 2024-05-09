@@ -111,6 +111,7 @@ public class PolicyHolderScreenController {
         executeQuery(query);
         showPolicyHolders();
     }
+    @FXML
     private void deletePolicyHolders(){
         String query = "DELETE FROM policyholders WHERE id = " + tfID.getText()+ "";
         executeQuery(query);
@@ -126,7 +127,8 @@ public class PolicyHolderScreenController {
             throw new RuntimeException(e);
         }
     }
-    private void loadAdminScreen(User user) {
+    @FXML
+    private void loadAdminScreen() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminScreen.fxml"));
             if (loader.getLocation() == null) {
@@ -139,6 +141,7 @@ public class PolicyHolderScreenController {
             currentstage.show();
         }  catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Failed to load the screen: " + e.getMessage());
         }
     }
 
