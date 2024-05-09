@@ -34,6 +34,7 @@ public class ClaimDatabase {
         return claims;
     }
 
+
     // Add a new claim for a specific policyholder and return the new claim ID
     public String addClaim(ClaimManagement claim) {
         String sql = "INSERT INTO claims (id, customer_id, description, status) VALUES (?, ?, ?, ?)";

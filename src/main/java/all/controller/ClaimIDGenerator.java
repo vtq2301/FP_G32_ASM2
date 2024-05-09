@@ -13,7 +13,7 @@ public class ClaimIDGenerator {
         Random random = new Random();
         do {
             long randomNumber = Math.abs(random.nextLong()) % 1_000_000_0000L; // Generate random 10-digit number
-            generatedID = "c-" + String.format("%010d", randomNumber); // Formatted string-based ID
+            generatedID = "f-" + String.format("%010d", randomNumber); // Formatted string-based ID
         } while (isClaimIDExists(generatedID, connection));
         return generatedID;
     }

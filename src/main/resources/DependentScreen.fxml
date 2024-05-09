@@ -18,10 +18,8 @@
         <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim" />
     </GridPane>
     <HBox spacing="10">
-        <Button text="Update Information" onAction="#handleUpdate"/>
-        <Button text="Navigate to Claims" onAction="#handleNavigateToClaims"/>
-        <Button text="Cancel" onAction="#handleCancel"/>
     </HBox>
 </VBox>

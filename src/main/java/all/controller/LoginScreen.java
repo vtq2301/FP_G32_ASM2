@@ -34,12 +34,14 @@ public class LoginScreen {
         }
         User user = authService.authenticateUser(username, password);
         if (user != null) {
+            UserSession.login(user);  // Make sure this line is here
             statusText.setText("Login successful!");
             loadClaimsScreen(user);
         } else {
             statusText.setText("Login failed. Please check your username and password.");
         }
     }
+
 
     @FXML
     protected void handleShowSignUp(ActionEvent event) {

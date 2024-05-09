@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.PolicyHolder">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.PolicyHolder" spacing="10">
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
@@ -21,5 +21,6 @@
         <TextField fx:id="policyNumberField" GridPane.columnIndex="1" GridPane.rowIndex="3" text="POLICY123456" editable="false"/>
 
         <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim" />
+        <Button text="View Dependents" GridPane.columnIndex="1" GridPane.rowIndex="5" onAction="#handleViewDependents"/>
     </GridPane>
 </VBox>
