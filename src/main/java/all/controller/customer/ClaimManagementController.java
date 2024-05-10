@@ -40,9 +40,15 @@ public class ClaimManagementController {
     }
 
     private void loadData() {
-        claimData.setAll(dbService.getClaimsForPolicyHolder(policyHolderId));
+        if ("dependent".equalsIgnoreCase(userRole)) {
+            claimData.setAll(dbService.getClaimsForDependent(policyHolderId));
+        } else {
+            claimData.setAll(dbService.getClaimsForPolicyHolder(policyHolderId));
+        }
         claimsTable.setItems(claimData);
     }
+
+
 
     private void setupColumnFactories() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

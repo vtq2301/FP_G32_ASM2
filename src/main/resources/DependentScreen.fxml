@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.Dependent">
+
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>

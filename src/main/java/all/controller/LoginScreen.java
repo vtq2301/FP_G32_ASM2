@@ -1,5 +1,5 @@
 package all.controller;
-
+import all.auth.ActionLogger;
 import all.auth.AuthService;
 import all.controller.customer.PolicyHolder;
 import all.model.customer.User;
@@ -36,6 +36,8 @@ public class LoginScreen {
         if (user != null) {
             UserSession.login(user);  // Make sure this line is here
             statusText.setText("Login successful!");
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(user.getId(), "Login", "User logged in", null);
             loadClaimsScreen(user);
         } else {
             statusText.setText("Login failed. Please check your username and password.");
