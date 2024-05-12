@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="managerPane" spacing="10">
+
+    <Label fx:id="titleLabel" text="Manager UI" />
+
+    <HBox>
+        <Label text="Claim ID:" />
+        <TextField fx:id="claimIdField" />
+        <Button fx:id="approveButton" text="Approve" />
+        <Button fx:id="rejectButton" text="Reject" />
+    </HBox>
+
+    <Label text="Filter Claims" />
+    <ComboBox fx:id="filterComboBox" />
+    <DatePicker fx:id="filterDatePicker" />
+    <Button fx:id="filterButton" text="Filter" />
+
+    <TextArea fx:id="displayArea" prefWidth="400" prefHeight="200" wrapText="true" />
+
+    <Button fx:id="surveyorInfoButton" text="View Surveyor Info" />
+
+</VBox>
+
+

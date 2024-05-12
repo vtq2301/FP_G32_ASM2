@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="surveyorPane" spacing="10">
+
+<Label fx:id="titleLabel" text="Surveyor UI" />
+
+<HBox>
+    <TextField fx:id="claimIdField" promptText="Claim ID" />
+    <Button fx:id="requestInfoButton" text="Request More Info" />
+    <Button fx:id="proposeClaimButton" text="Propose Claim" />
+</HBox>
+
+<Label text="Filter Claims" />
+<ComboBox fx:id="filterComboBox" />
+<DatePicker fx:id="filterDatePicker" />
+<Button fx:id="filterButton" text="Filter" />
+
+<TextArea fx:id="displayArea" prefWidth="400" prefHeight="200" wrapText="true" />
+
+</VBox>
