@@ -13,10 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import rmit.fp.g32_asm2.model.User;
 import rmit.fp.g32_asm2.model.customer.PolicyHolder;
 
-import java.io.IOException;
 import java.sql.*;
 
 public class PolicyHolderScreenController {
@@ -31,7 +29,7 @@ public class PolicyHolderScreenController {
     @FXML
     private TextField tfEmail;
     @FXML
-    private TableView<PolicyHolder> tvCustomer;
+    private TableView<PolicyHolder> tvPolicyHolder;
     @FXML
     private TableColumn<PolicyHolder,String> colId;
     @FXML
@@ -51,14 +49,20 @@ public class PolicyHolderScreenController {
     @FXML
     private Button btnBack;
     @FXML
-    private void handleButtonAction(ActionEvent e){
-        if(e.getSource() == btnAdd){
-            addPolicyHolders();
-        } else if (e.getSource() == btnUpdate) {
-            updatePolicyHolders();
-        } else if (e.getSource() == btnDelete) {
-            deletePolicyHolders();
-        }
+    private void handleAddButtonAction(ActionEvent e){
+        addPolicyHolders();
+    }
+    @FXML
+    private void handleUpdateButtonAction(ActionEvent e){
+        updatePolicyHolders();
+    }
+    @FXML
+    private void handleDeleteButtonAction(ActionEvent e){
+        deletePolicyHolders();
+    }
+    @FXML
+    private void handleBackButtonAction(ActionEvent e){
+        loadAdminScreen();
     }
     public Connection getConnection(){
         Connection conn;
@@ -111,7 +115,7 @@ public class PolicyHolderScreenController {
         executeQuery(query);
         showPolicyHolders();
     }
-    @FXML
+
     private void deletePolicyHolders(){
         String query = "DELETE FROM policyholders WHERE id = " + tfID.getText()+ "";
         executeQuery(query);
@@ -130,7 +134,7 @@ public class PolicyHolderScreenController {
     @FXML
     private void loadAdminScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/AdminScreen.fxml"));
             if (loader.getLocation() == null) {
                 throw new IllegalStateException("FXML file not found in the specified path.");
             }

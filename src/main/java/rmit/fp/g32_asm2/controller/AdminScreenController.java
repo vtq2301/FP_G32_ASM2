@@ -3,139 +3,116 @@ package rmit.fp.g32_asm2.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class AdminScreenController implements Initializable {
+public class AdminScreenController{
     @FXML
     private Label labelAdmin;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    private AnchorPane anchorPane;
+
+
+    @FXML
+    protected void handlePolicyHolderButton(ActionEvent event){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/rmit/fp/g32_asm2/PolicyHolderScreen.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) anchorPane.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException | IllegalStateException e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
 
     }
-    private void handlePolicyHolderButton(){
+    @FXML
+    private void handleDependentButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
-            Parent root = loader.load();
-            Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
-            currentstage.setScene(new Scene(root));
-            currentstage.setTitle("Policy Holders");
-            currentstage.show();
-        }  catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
-        }
-    }
-    private void handleDependentButton(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DependentScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/DependentScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Dependent");
             currentstage.show();
-        }  catch (Exception e) {
+        }  catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
-    private void handleInsuranceManagerButton(){
+    @FXML
+    private void handleInsuranceManagerButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InsuranceManagerScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/InsuranceManagerScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Insurance Manager");
             currentstage.show();
-        }  catch (Exception e) {
+        }  catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
-    private void handleInsuranceSurveyorsButton(){
+    @FXML
+    private void handleInsuranceSurveyorsButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InsuranceSurveyorScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/InsuranceSurveyorScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Insurance Surveyors");
             currentstage.show();
-        }  catch (Exception e) {
+        }  catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
-    private void handleClaimButton(){
+    @FXML
+    private void handleClaimButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClaimScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/ClaimScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Claim Management");
             currentstage.show();
-        }  catch (Exception e) {
+        }  catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
-    private void handleAdminButton(){
+    @FXML
+    private void handleAdminButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminInfoScreen.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/AdminInfoScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Admin Information");
             currentstage.show();
-        }  catch (Exception e) {
+        } catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
-    private void handleLogoutButton(){
+    @FXML
+    private void handleLogoutButton(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IllegalStateException("FXML file not found in the specified path.");
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/LoginScreen.fxml"));
             Parent root = loader.load();
             Stage currentstage = (Stage) labelAdmin.getScene().getWindow();
             currentstage.setScene(new Scene(root));
             currentstage.setTitle("Login Screen");
             currentstage.show();
-        }  catch (Exception e) {
+        } catch (IOException | IllegalStateException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the screen: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }
