@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,11 +14,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import rmit.fp.g32_asm2.database.dbConnection;
 import rmit.fp.g32_asm2.model.customer.PolicyHolder;
 
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
-public class PolicyHolderScreenController {
+public class PolicyHolderScreenController implements Initializable {
     @FXML
     private TextField tfID;
     @FXML
@@ -48,6 +52,7 @@ public class PolicyHolderScreenController {
     private Button btnDelete;
     @FXML
     private Button btnBack;
+    private static final dbConnection dbConn = new dbConnection();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
         addPolicyHolders();
@@ -75,10 +80,10 @@ public class PolicyHolderScreenController {
             return null;
         }
     }
-    public ObservableList<PolicyHolder> getPolicyHolderList(){
+    public static ObservableList<PolicyHolder> getPolicyHolderList(){
         ObservableList<PolicyHolder> policyHoldersList = FXCollections.observableArrayList();
-        Connection conn = getConnection();
-        String query = "SELECT * FROM policyholders";
+        Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+        String query = "SELECT * FROM policy_holders";
         Statement st;
         ResultSet rs;
         try{
@@ -95,34 +100,35 @@ public class PolicyHolderScreenController {
         return policyHoldersList;
     }
     public void showPolicyHolders(){
-        ObservableList<PolicyHolder> list = getPolicyHolderList();
 
         colId.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("name"));
         colPhone.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("phone"));
         colEmail.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("email"));
         colAddress.setCellValueFactory(new PropertyValueFactory<PolicyHolder, String>("address"));
+        ObservableList<PolicyHolder> list = getPolicyHolderList();
+        tvPolicyHolder.setItems(list);
     }
     public void addPolicyHolders(){
-        String query = "INSERT INTO policyholders VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
-                + tfPhone.getText() + "'," + tfAddress.getText() + "," + tfEmail.getText() +")";
+        String query = "INSERT INTO policy_holders VALUES (" + tfID.getText() + "," +tfName.getText() + ","
+                + tfPhone.getText() + "," + tfAddress.getText() + "," + tfEmail.getText() +")";
         executeQuery(query);
         showPolicyHolders();
     }
     public void updatePolicyHolders(){
-        String query = "UPDATE policyholders SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
-                + "', address = '" + tfAddress.getText() + ", email = " + tfEmail.getText() + "WHERE id = " + tfID.getText() + "";
+        String query = "UPDATE policy_holders SET name = " + tfName.getText() + ", phone = " + tfPhone.getText()
+                + ", address = " + tfAddress.getText() + ", email = " + tfEmail.getText() + "WHERE id = " + tfID.getText() + "";
         executeQuery(query);
         showPolicyHolders();
     }
 
     private void deletePolicyHolders(){
-        String query = "DELETE FROM policyholders WHERE id = " + tfID.getText()+ "";
+        String query = "DELETE FROM policy_holders WHERE id = " + tfID.getText()+ "";
         executeQuery(query);
         showPolicyHolders();
     }
     private void executeQuery(String query){
-        Connection conn = getConnection();
+        Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
         Statement st;
         try {
             st = conn.createStatement();
@@ -148,5 +154,22 @@ public class PolicyHolderScreenController {
             System.out.println("Failed to load the screen: " + e.getMessage());
         }
     }
+    int index = -1;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        showPolicyHolders();
+    }
+    @FXML
+    public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
+        index = tvPolicyHolder.getSelectionModel().getSelectedIndex();
+        if(index <= -1){
+            return;
+        }
+        tfID.setText(colId.getCellData(index).toString());
+        tfName.setText(colName.getCellData(index));
+        tfPhone.setText(colPhone.getCellData(index).toString());
+        tfEmail.setText(colEmail.getCellData(index).toString());
+        tfAddress.setText(colAddress.getCellData(index).toString());
+    }
 }

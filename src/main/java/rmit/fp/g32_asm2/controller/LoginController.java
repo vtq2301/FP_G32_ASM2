@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import rmit.fp.g32_asm2.auth.ActionLogger;
 import rmit.fp.g32_asm2.auth.AuthService;
 import rmit.fp.g32_asm2.model.User;
 
@@ -19,27 +20,26 @@ import java.util.ResourceBundle;
 
 
 public class LoginController implements Initializable {
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private Label statusText;
+
+    private AuthService authService = new AuthService();
+
     @FXML
-    private Label invalidLogin;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Label statusText;
-    private final AuthService authService = new AuthService();
-//    private AuthService;
-    public void loginButtonAction(ActionEvent e){
+    protected void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        System.out.println("You clicked me!");
         if (username.isEmpty() || password.isEmpty()) {
             statusText.setText("Username and password cannot be empty.");
             return;
         }
-        User user = AuthService.authenticateUser(username, password);
+        User user = authService.authenticateUser(username, password);
         if (user != null) {
+            UserSession.login(user);  // Make sure this line is here
             statusText.setText("Login successful!");
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(user.getId(), "Login", "User logged in", null);
             loadAdminScreen(user);
         } else {
             statusText.setText("Login failed. Please check your username and password.");
@@ -47,7 +47,7 @@ public class LoginController implements Initializable {
     }
     private void loadAdminScreen(User user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/AdminScreen.fxml"));
             if (loader.getLocation() == null) {
                 throw new IllegalStateException("FXML file not found in the specified path.");
             }

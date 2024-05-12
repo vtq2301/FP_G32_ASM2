@@ -80,7 +80,7 @@ public class AdminInfoScreenController {
         public ObservableList<SystemAdmin> getSystemAdminsList(){
             ObservableList<SystemAdmin> systemAdminsList = FXCollections.observableArrayList();
             Connection conn = getConnection();
-            String query = "SELECT * FROM systemadmins";
+            String query = "SELECT * FROM system_admins";
             Statement st;
             ResultSet rs;
             try{
@@ -116,7 +116,7 @@ public class AdminInfoScreenController {
             }
         }
         public void addSystemAdmins(){
-            String query = "INSERT INTO systemadmins VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
+            String query = "INSERT INTO system_admins VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
                     + tfPhone.getText() + "'," + tfAddress.getText() + "," + tfEmail.getText() +")";
             executeQuery(query);
             showSystemAdmins();
@@ -125,13 +125,13 @@ public class AdminInfoScreenController {
 
 
         private void updateSystemAdmins() {
-            String query = "UPDATE systemadmins SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
+            String query = "UPDATE system_admins SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
                     + "', address = '" + tfAddress.getText() + ", email = " + tfEmail.getText() + "WHERE id = " + tfID.getText() + "";
             executeQuery(query);
             showSystemAdmins();
         }
         private void deleteSystemAdmins() {
-            String query = "DELETE FROM systemadmins WHERE id = " + tfID.getText()+ "";
+            String query = "DELETE FROM system_admins WHERE id = " + tfID.getText()+ "";
             executeQuery(query);
             showSystemAdmins();
         }

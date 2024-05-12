@@ -12,13 +12,13 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.PolicyHolderScreenController">
    <children>
-      <TableView fx:id="tvPolicyHolder" layoutY="14.0" prefHeight="254.0" prefWidth="600.0">
+      <TableView fx:id="tvPolicyHolder" blendMode="DARKEN" layoutY="14.0" onMouseClicked="#getSelected" prefHeight="254.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="31.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
-            <TableColumn fx:id="colPhone" prefWidth="123.5" text="Phone" />
-            <TableColumn fx:id="colAddress" prefWidth="164.5" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="172.0" text="Email" />
+          <TableColumn fx:id="colId" prefWidth="31.0" style="-fx-background-color: beige;" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="119.0" style="-fx-background-color: beige;" text="Name" />
+            <TableColumn fx:id="colPhone" prefWidth="123.5" style="-fx-background-color: beige;" text="Phone" />
+            <TableColumn fx:id="colAddress" prefWidth="164.5" style="-fx-background-color: beige;" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="172.0" style="-fx-background-color: beige;" text="Email" />
         </columns>
       </TableView>
       <GridPane layoutX="14.0" layoutY="279.0" prefHeight="184.0" prefWidth="529.0">
@@ -44,11 +44,11 @@
             <Label text="Phone" GridPane.rowIndex="2" />
             <Label text="Address" GridPane.rowIndex="3" />
             <Label text="Email" GridPane.rowIndex="4" />
-            <TextField fx:id="tfID" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" />
-            <TextField fx:id="tfName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="tfPhone" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="tfEmail" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="tfID" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="ID" GridPane.columnIndex="1" />
+            <TextField fx:id="tfName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfPhone" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Phone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfEmail" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="529.0" layoutY="441.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="65.0" text="Back" />

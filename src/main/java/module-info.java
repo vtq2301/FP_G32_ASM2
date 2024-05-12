@@ -12,15 +12,15 @@ module rmit.fp.g32_asm2 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens rmit.fp.g32_asm2 to javafx.fxml;
-    opens rmit.fp.g32_asm2.controller to javafx.fxml;
-    opens rmit.fp.g32_asm2.view to javafx.fxml;
-    opens rmit.fp.g32_asm2.auth to javafx.fxml;
-    opens rmit.fp.g32_asm2.model.customer to javafx.fxml;
-    opens rmit.fp.g32_asm2.model.admin to javafx.fxml;
-    opens rmit.fp.g32_asm2.model.provider to javafx.fxml;
-    opens rmit.fp.g32_asm2.database to javafx.fxml;
-    opens rmit.fp.g32_asm2.log to javafx.fxml;
+    opens rmit.fp.g32_asm2 to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.controller to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.view to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.auth to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.model.customer to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.model.admin to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.model.provider to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.database to javafx.fxml, javafx.base;
+    opens rmit.fp.g32_asm2.log to javafx.fxml, javafx.base;
 
 
     exports rmit.fp.g32_asm2;

@@ -52,15 +52,15 @@ public class InsuranceManagerScreenController {
 
     @FXML
     private void handleAddButtonAction(ActionEvent e){
-        addDependents();
+        addInsuranceManagers();
     }
     @FXML
     private void handleUpdateButtonAction(ActionEvent e){
-        updateDependents();
+        updateInsuranceManagers();
     }
     @FXML
     private void handleDeleteButtonAction(ActionEvent e){
-        deleteDependents();
+        deleteInsuranceManagers();
     }
     @FXML
     private void handleBackButtonAction(ActionEvent e){
@@ -80,7 +80,7 @@ public class InsuranceManagerScreenController {
     public ObservableList<InsuranceManager> getInsuranceManagersList(){
         ObservableList<InsuranceManager> insuranceManagersList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT * FROM dependents";
+        String query = "SELECT * FROM insurance_managers";
         Statement st;
         ResultSet rs;
         try{
@@ -115,8 +115,8 @@ public class InsuranceManagerScreenController {
             throw new RuntimeException(e);
         }
     }
-    public void addDependents(){
-        String query = "INSERT INTO insurancemanagers VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
+    public void addInsuranceManagers(){
+        String query = "INSERT INTO insurance_managers VALUES (" + tfID.getText() + ",'" +tfName.getText() + "','"
                 + tfPhone.getText() + "'," + tfAddress.getText() + "," + tfEmail.getText() +")";
         executeQuery(query);
         showInsuranceManager();
@@ -124,14 +124,14 @@ public class InsuranceManagerScreenController {
 
 
 
-    private void updateDependents() {
-        String query = "UPDATE insurancemanagers SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
+    private void updateInsuranceManagers() {
+        String query = "UPDATE insurance_managers SET name = '" + tfName.getText() + "', phone = '" + tfPhone.getText()
                 + "', address = '" + tfAddress.getText() + ", email = " + tfEmail.getText() + "WHERE id = " + tfID.getText() + "";
         executeQuery(query);
         showInsuranceManager();
     }
-    private void deleteDependents() {
-        String query = "DELETE FROM insurancemanagers WHERE id = " + tfID.getText()+ "";
+    private void deleteInsuranceManagers() {
+        String query = "DELETE FROM insurance_managers WHERE id = " + tfID.getText()+ "";
         executeQuery(query);
         showInsuranceManager();
     }

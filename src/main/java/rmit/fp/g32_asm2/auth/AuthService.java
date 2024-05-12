@@ -1,35 +1,62 @@
-package rmit.fp.g32_asm2.auth;
+    package rmit.fp.g32_asm2.auth;
 
 
-import rmit.fp.g32_asm2.database.dbConnection;
-import rmit.fp.g32_asm2.model.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+    import rmit.fp.g32_asm2.controller.UniqueIDGenerator;
+    import rmit.fp.g32_asm2.database.dbConnection;
+    import rmit.fp.g32_asm2.model.User;
 
-public class AuthService {
-    private static dbConnection dbConn = new dbConnection();
+    import java.sql.Connection;
+    import java.sql.PreparedStatement;
+    import java.sql.ResultSet;
+    import java.sql.SQLException;
 
-    public static User authenticateUser(String username, String password) {
-        String sql = "SELECT username, role, full_name, address, phone_number FROM users WHERE username = ?;";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS")) {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, username);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return new User(
-                        rs.getString("username"),
-                        rs.getString("role"),
-                        rs.getString("full_name"),
-                        rs.getString("address"),
-                        rs.getString("phone_number")
-                );
+    public class AuthService {
+        private dbConnection dbConn = new dbConnection();
+
+        public boolean registerUser(String username, String password, String role, String fullName, String address, String phoneNumber) {
+            String sql = "INSERT INTO users (id, username, password_hash, role, full_name, address, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+            try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS")) {
+                String id = UniqueIDGenerator.generateUniqueID(conn);
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, id);
+                pstmt.setString(2, username);
+                pstmt.setString(3, password);
+                pstmt.setString(4, role);
+                pstmt.setString(5, fullName);
+                pstmt.setString(6, address);
+                pstmt.setString(7, phoneNumber);
+                pstmt.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return null;
+
+        public User authenticateUser(String username, String password) {
+            String sql = "SELECT username, role, full_name, address, phone_number FROM users WHERE username = ?;";
+            try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS")) {
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, username);
+
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    return new User(
+                            rs.getString("username"),
+
+                            rs.getString("role"),
+                            rs.getString("full_name"),
+                            rs.getString("address"),
+                            rs.getString("phone_number")
+                    );
+                }
+            } catch (SQLException e) {
+                System.err.println("Authentication error: " + e.getMessage());
+                e.printStackTrace();
+            }
+            return null;
+        }
+
     }
-}
