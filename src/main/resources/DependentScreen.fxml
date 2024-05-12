@@ -5,8 +5,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.Dependent">
-
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.Dependent">
+    <HBox spacing="10" alignment="TOP_RIGHT">
+        <Button text="Logout" onAction="#handleLogout"/>
+    </HBox>
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -19,8 +21,6 @@
         <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-        <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim" />
+        <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim"/>
     </GridPane>
-    <HBox spacing="10">
-    </HBox>
 </VBox>

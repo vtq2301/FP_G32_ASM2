@@ -82,7 +82,7 @@ public class ViewDependentInfo {
         boolean success = dbService.saveAndRemoveDependents(dependentsToSave, dependentsToRemoveList, policyHolderId);
 
         if (success) {
-            // Log actions if the save operation was successful
+
             ActionLogger actionLogger = new ActionLogger();
 
             for (User user : dependentsToAdd) {

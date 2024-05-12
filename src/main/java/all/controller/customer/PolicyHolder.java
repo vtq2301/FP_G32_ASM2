@@ -74,14 +74,16 @@ public class PolicyHolder {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewDependentInfo.fxml"));
             Parent root = loader.load();
-            Stage stage = new Stage();
+
+          
+            Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setTitle("View Dependents");
             stage.setScene(new Scene(root));
-            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private void showAlert(String title, String content, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -89,5 +91,22 @@ public class PolicyHolder {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        UserSession.logout();
+        loadLoginScreen();
+    }
+
+    private void loadLoginScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginScreen.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) fullNameField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package all.controller.customer;
 
+import all.controller.UserSession;
 import all.model.customer.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,22 @@ public class Dependent {
             Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        UserSession.logout();
+        loadLoginScreen();
+    }
+
+    private void loadLoginScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginScreen.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) nameField.getScene().getWindow();
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }

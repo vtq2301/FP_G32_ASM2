@@ -21,7 +21,17 @@
         public String getFullName() { return fullName; }
         public String getAddress() { return address; }
         public String getPhoneNumber() { return phoneNumber; }
+        public void setFullName(String fullName) {
+            this.fullName = fullName;
+        }
 
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
         @Override
         public String toString() {
             return fullName + " (" + id + ")"; // Display the full name and id

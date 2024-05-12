@@ -111,6 +111,19 @@ public class DependencyService {
             return false;
         }
     }
+    public void updateDependent(User user) {
+        String sql = "UPDATE users SET full_name = ?, address = ?, phone_number = ? WHERE id = ?";
+        try (Connection connection = dbConnectionManager.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, user.getFullName());
+            pstmt.setString(2, user.getAddress());
+            pstmt.setString(3, user.getPhoneNumber());
+            pstmt.setString(4, user.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
