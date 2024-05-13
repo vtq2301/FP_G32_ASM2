@@ -7,11 +7,19 @@ public abstract class Provider {
     private String address;
     private String email;
 
+    public Provider(String id, String name, String phone, String address, String email) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
+
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public static void setId(String id) {
         this.id = id;
     }
 

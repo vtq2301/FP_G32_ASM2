@@ -6,6 +6,6 @@ public class Dependent extends Customer{
     }
 
     public Dependent(String id, String name, String phone, String address, String email) {
-        super();
+        super(id, name, phone, address, email);
     }
 }

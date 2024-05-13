@@ -10,16 +10,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.DependentScreenController">
    <children>
       <TableView fx:id="tvDependent" prefHeight="254.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="31.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
-            <TableColumn fx:id="colPhone" prefWidth="124.0" text="Phone" />
-            <TableColumn fx:id="colAddress" prefWidth="165.0" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="171.0" text="Email" />
+          <TableColumn fx:id="colId" prefWidth="79.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="109.0" text="Name" />
+            <TableColumn fx:id="colPhone" prefWidth="134.0" text="Phone" />
+            <TableColumn fx:id="colAddress" prefWidth="139.5" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="148.5" text="Email" />
         </columns>
       </TableView>
       <GridPane layoutX="14.0" layoutY="269.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="185.0" prefWidth="530.0">
@@ -45,7 +44,7 @@
             <Label text="Phone" GridPane.rowIndex="2" />
             <Label text="Address " GridPane.rowIndex="3" />
             <Label text="Email" GridPane.rowIndex="4" />
-            <TextField fx:id="tfID" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" />
+            <TextField fx:id="tfID" disable="true" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" />
             <TextField fx:id="tfName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfPhone" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />

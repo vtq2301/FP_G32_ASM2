@@ -14,7 +14,6 @@ module rmit.fp.g32_asm2 {
 
     opens rmit.fp.g32_asm2 to javafx.fxml, javafx.base;
     opens rmit.fp.g32_asm2.controller to javafx.fxml, javafx.base;
-    opens rmit.fp.g32_asm2.view to javafx.fxml, javafx.base;
     opens rmit.fp.g32_asm2.auth to javafx.fxml, javafx.base;
     opens rmit.fp.g32_asm2.model.customer to javafx.fxml, javafx.base;
     opens rmit.fp.g32_asm2.model.admin to javafx.fxml, javafx.base;
@@ -24,7 +23,6 @@ module rmit.fp.g32_asm2 {
 
 
     exports rmit.fp.g32_asm2;
-    exports rmit.fp.g32_asm2.view;
     exports rmit.fp.g32_asm2.controller;
     exports rmit.fp.g32_asm2.auth;
     exports rmit.fp.g32_asm2.model;

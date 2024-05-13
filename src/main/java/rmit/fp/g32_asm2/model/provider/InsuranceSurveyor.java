@@ -5,7 +5,7 @@ public class InsuranceSurveyor extends Provider{
         super();
     }
     public InsuranceSurveyor(String id, String name, String phone, String address, String email) {
-        super();
+        super(id, name, phone, address, email);
     }
 
 }
