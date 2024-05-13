@@ -2,6 +2,8 @@ package all.controller;
 import all.auth.ActionLogger;
 import all.auth.AuthService;
 import all.controller.customer.PolicyHolder;
+import all.controller.insurance.InsuranceManager;
+import all.controller.insurance.InsuranceSurveyor;
 import all.model.customer.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,6 +77,12 @@ public class LoginScreen {
                     break;
                 case "PolicyHolder":
                     ((PolicyHolder) controller).loadData(user);
+                    break;
+                case "InsuranceSurveyor":
+                    ((InsuranceSurveyor) controller).loadData(user);
+                    break;
+                case "InsuranceManager":
+                    ((InsuranceManager) controller).loadData(user);
                     break;
             }
 

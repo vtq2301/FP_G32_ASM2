@@ -84,14 +84,14 @@ public class DependencyService {
             connection.setAutoCommit(false);
             try (PreparedStatement updateStmt = connection.prepareStatement(updateSql);
                  PreparedStatement removeStmt = connection.prepareStatement(removeSql)) {
-                // Add dependents to the policyholder
+
                 for (User dependent : dependentsToSave) {
                     updateStmt.setString(1, policyHolderId);
                     updateStmt.setString(2, dependent.getId());
                     updateStmt.addBatch();
                 }
 
-                // Remove dependents from the policyholder by setting policy_holder_id to NULL
+
                 for (User dependent : dependentsToRemove) {
                     removeStmt.setString(1, dependent.getId());
                     removeStmt.addBatch();

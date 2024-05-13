@@ -131,7 +131,7 @@ public class ClaimManagementController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Claim Selected");
             alert.setHeaderText("Update Error");
-            alert.setContentText("Please select a claim to update.");
+            alert.setContentText("Pleas e select a claim to update.");
             alert.showAndWait();
             return;
         }

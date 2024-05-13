@@ -63,6 +63,6 @@ public class SignUpScreen {
     }
     @FXML
     public void initialize() {
-        roleComboBox.setItems(FXCollections.observableArrayList("PolicyHolder", "PolicyOwner", "Dependent"));
+        roleComboBox.setItems(FXCollections.observableArrayList("PolicyHolder", "PolicyOwner", "Dependent", "InsuranceSurveyor", "InsuranceManager"));
     }
 }

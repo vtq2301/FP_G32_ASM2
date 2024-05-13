@@ -75,7 +75,7 @@ public class PolicyHolder {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewDependentInfo.fxml"));
             Parent root = loader.load();
 
-          
+
             Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setTitle("View Dependents");
             stage.setScene(new Scene(root));
@@ -107,6 +107,4 @@ public class PolicyHolder {
             e.printStackTrace();
         }
     }
-
-
 }

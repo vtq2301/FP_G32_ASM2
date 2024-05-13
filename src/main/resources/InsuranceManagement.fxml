@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.insurance.InsuranceManagement">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <ComboBox fx:id="filterOptions"/>
+    <ListView fx:id="claimsListView"/>
+    <Button fx:id="approveButton" text="Approve Claim" onAction="#approveClaim"/>
+    <Button fx:id="rejectButton" text="Reject Claim" onAction="#rejectClaim"/>
+    <Label fx:id="notificationLabel" text="Notifications" onMouseClicked="#showNotifications"/>
+    <Button fx:id="backButton" text="Back" onAction="#handleBackButton"/>
+</VBox>

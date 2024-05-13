@@ -2,7 +2,7 @@ package all.model.customer;
 
 public class ClaimManagement {
     private String id;
-    private String customerId;  // Remains updated from Integer to String
+    private String customerId;
     private String description;
     private String status;
 
@@ -17,7 +17,6 @@ public class ClaimManagement {
         return id;
     }
 
-    // Updated to accept String as the parameter type
     public void setId(String id) {
         this.id = id;
     }
@@ -44,5 +43,10 @@ public class ClaimManagement {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Claim ID: " + id + ", Customer ID: " + customerId + ", Status: " + status + ", Description: " + description;
     }
 }

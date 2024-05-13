@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClaimDatabase {
-    private final dbConnection dbConn = new dbConnection();
+    private static final dbConnection dbConn = new dbConnection();
 
 
     public List<ClaimManagement> getClaimsForPolicyHolder(String policyHolderId) {
@@ -62,6 +62,39 @@ public class ClaimDatabase {
                         }
                     }
                 }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return claims;
+    }
+    public static List<ClaimManagement> getAllClaims() {
+        List<ClaimManagement> claims = new ArrayList<>();
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = conn.prepareStatement("SELECT id, customer_id, description, status FROM claims");
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                claims.add(new ClaimManagement(rs.getString("id"), rs.getString("customer_id"), rs.getString("description"), rs.getString("status")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return claims;
+    }
+    public List<ClaimManagement> getClaimsByStatus(String status) {
+        List<ClaimManagement> claims = new ArrayList<>();
+        String sql = "SELECT id, customer_id, description, status FROM claims WHERE status = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, status);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                claims.add(new ClaimManagement(
+                        rs.getString("id"),
+                        rs.getString("customer_id"),
+                        rs.getString("description"),
+                        rs.getString("status")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,4 +154,5 @@ public class ClaimDatabase {
             e.printStackTrace();
         }
     }
+
 }
