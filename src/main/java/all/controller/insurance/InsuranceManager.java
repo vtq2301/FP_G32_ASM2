@@ -32,10 +32,10 @@ public class InsuranceManager {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/InsuranceManagement.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-            // Get the current stage
+
             Stage stage = (Stage) manageInsuranceButton.getScene().getWindow();
 
-            // Set the new scene
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

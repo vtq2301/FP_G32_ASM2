@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ActionLogger {
     private final dbConnection dbConn = new dbConnection();
 
-    // Check if the user ID exists (now String)
+
     private boolean isUserIdValid(String policyHolderId) {
         String sql = "SELECT username FROM users WHERE username = ?";  // Assuming username is the unique identifier
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
@@ -40,7 +40,7 @@ public class ActionLogger {
             pstmt.setString(1, policyHolderId);
             pstmt.setString(2, actionType);
             pstmt.setString(3, description);
-            pstmt.setString(4, claimId);  // Include the claim ID in the INSERT statement; it can be null
+            pstmt.setString(4, claimId);
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
                 System.err.println("Insertion failed, no rows affected.");

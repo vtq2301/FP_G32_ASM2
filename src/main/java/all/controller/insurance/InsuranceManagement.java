@@ -1,7 +1,9 @@
     package all.controller.insurance;
 
     import all.auth.ClaimDatabase;
+    import all.controller.UserSession;
     import all.model.customer.ClaimManagement;
+    import all.model.customer.User;
     import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.fxml.FXML;
@@ -13,7 +15,7 @@
     import javafx.scene.control.Label;
     import javafx.scene.control.ListView;
     import javafx.stage.Stage;
-    import javafx.event.ActionEvent; // Import the ActionEvent class
+    import javafx.event.ActionEvent;
 
     import java.io.IOException;
     import java.util.ArrayList;
@@ -85,25 +87,28 @@
 
         @FXML
         private void showNotifications() {
-            // Implementation to show notifications
+
         }
 
         @FXML
         private void handleBackButton(ActionEvent event) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/InsuranceManagerScreen.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
+                Parent parent = fxmlLoader.load();
+                InsuranceManager controller = fxmlLoader.getController();
 
-                // Get the current stage
+
+                User currentUser = UserSession.getCurrentUser();
+                controller.loadData(currentUser);
+
+                Scene scene = new Scene(parent);
                 Stage stage = (Stage) backButton.getScene().getWindow();
-
-
-                // Set the new scene
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
 
     }

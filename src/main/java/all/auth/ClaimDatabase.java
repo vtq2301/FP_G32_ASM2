@@ -115,7 +115,7 @@ public class ClaimDatabase {
             pstmt.setString(4, claim.getStatus());
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
-                claim.setId(claimId); // Set the claim ID back on the object
+                claim.setId(claimId);
                 return claimId;
             } else {
                 throw new SQLException("Creating claim failed, no rows affected.");

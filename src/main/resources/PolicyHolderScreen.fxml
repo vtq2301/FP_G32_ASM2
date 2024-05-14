@@ -28,6 +28,8 @@
                 <TextField fx:id="policyNumberField" GridPane.columnIndex="1" GridPane.rowIndex="3" text="POLICY123456" editable="false"/>
                 <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim" />
                 <Button text="View Dependents" GridPane.columnIndex="1" GridPane.rowIndex="5" onAction="#handleViewDependents"/>
+                <Button fx:id="changeDependentInfoButton" text="Change Dependent Info" onAction="#handleChangeDependentInfo" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
             </GridPane>
         </VBox>
     </center>

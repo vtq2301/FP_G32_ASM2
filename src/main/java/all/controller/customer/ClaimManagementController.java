@@ -147,7 +147,7 @@ public class ClaimManagementController {
             dbService.updateClaim(selectedClaim);
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(policyHolderId, "Update Claim", "Updated claim with new description: " + description, selectedClaim.getId());
-            loadData(); // Load the data for the current policyHolderId
+            loadData();
         });
     }
 

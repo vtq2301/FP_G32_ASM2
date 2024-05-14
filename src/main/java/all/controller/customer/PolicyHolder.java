@@ -21,7 +21,10 @@ public class PolicyHolder {
     @FXML private TextField policyNumberField;
     @FXML private Button manageClaimButton;
     private String policyHolderId;
-    private String userRole; // Store user role
+    private String userRole;
+    @FXML private Button changeDependentInfoButton;
+
+
 
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
@@ -40,9 +43,8 @@ public class PolicyHolder {
         private void initialize() {
             if (!UserSession.isLoggedIn()) {
                 System.out.println("No user is logged in.");
-                // Redirect to login screen or show error
+
             } else {
-                // Load user-specific data
             }
         }
 
@@ -55,7 +57,7 @@ public class PolicyHolder {
             Parent root = loader.load();
 
             ClaimManagementController controller = loader.getController();
-            controller.initializeData(policyHolderId, userRole); // Pass both ID and role
+            controller.initializeData(policyHolderId, userRole);
 
             Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -107,4 +109,23 @@ public class PolicyHolder {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleChangeDependentInfo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DependentInfo.fxml"));
+            Parent root = loader.load();
+
+            DependentInfoController controller = loader.getController();
+            controller.initializeData(policyHolderId);
+
+            Stage stage = (Stage) changeDependentInfoButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load dependent information screen.", Alert.AlertType.ERROR);
+        }
+    }
+
+
 }
