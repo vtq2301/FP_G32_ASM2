@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.insurance.InsuranceSurveyor">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="fullNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="emailField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="contactNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Surveyor ID:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="surveyorIdField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Filter Claims:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <ComboBox fx:id="filterOptions" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Button text="Request More Information" fx:id="requestMoreInfoButton" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Button text="Propose Claim to Manager" fx:id="proposeClaimButton" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <ListView fx:id="claimsListView" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2"/>
+    </GridPane>
+</VBox>

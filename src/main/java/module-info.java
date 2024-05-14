@@ -1,19 +1,25 @@
-module rmit.fp.g32_asm2 {
+module all {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.web;
+    requires javafx.graphics;
+    requires javafx.base;
+    requires java.sql;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires net.synedra.validatorfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
 
-    opens rmit.fp.g32_asm2 to javafx.fxml;
-    exports rmit.fp.g32_asm2;
-    exports rmit.fp.g32_asm2.view;
-    opens rmit.fp.g32_asm2.view to javafx.fxml;
-    exports rmit.fp.g32_asm2.controller;
-    opens rmit.fp.g32_asm2.controller to javafx.fxml;
+    opens all.controller to javafx.fxml;
+    opens all.controller.customer to javafx.fxml;
+    opens all.model.customer to javafx.fxml;
+    opens all.controller.insurance to javafx.fxml;
+
+
+    exports all.controller;
+    exports all.controller.customer;
+    exports all.model.customer;
+    exports all.controller.insurance to javafx.fxml;
+
+
+
+    exports all;
+    exports all.auth;
+    opens all.auth to javafx.fxml;
 }
