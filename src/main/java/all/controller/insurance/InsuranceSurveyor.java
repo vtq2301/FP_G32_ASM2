@@ -1,6 +1,8 @@
 package all.controller.insurance;
 
 import all.auth.ClaimDatabase;
+import all.auth.ActionLogger;
+import all.controller.UserSession;
 import all.model.customer.ClaimManagement;
 import all.model.customer.User;
 import javafx.collections.FXCollections;
@@ -60,6 +62,10 @@ public class InsuranceSurveyor {
         if (selectedClaim != null) {
             selectedClaim.setStatus("More Information Required");
             claimDatabase.updateClaim(selectedClaim);
+
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(UserSession.getCurrentUser().getId(), "Request More Info", "Requested more info for claim: " + selectedClaim.getId(), selectedClaim.getId());
+
             notifyManagers(selectedClaim.getId(), "More Information Required");
             loadClaims();
         }
@@ -70,14 +76,16 @@ public class InsuranceSurveyor {
         if (selectedClaim != null) {
             selectedClaim.setStatus("Processing");
             claimDatabase.updateClaim(selectedClaim);
+
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(UserSession.getCurrentUser().getId(), "Propose Claim", "Proposed claim: " + selectedClaim.getId(), selectedClaim.getId());
+
             notifyManagers(selectedClaim.getId(), "Processing");
             loadClaims();
         }
     }
 
     private void notifyManagers(String claimId, String action) {
-
         System.out.println("Notification to Managers: Claim ID " + claimId + " requires " + action);
     }
-
 }

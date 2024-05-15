@@ -54,4 +54,5 @@
 
     <Button text="Save" onAction="#handleSave" style="-fx-background-color: darkgreen; -fx-text-fill: white;"/>
     <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: grey; -fx-text-fill: white;"/>
+    <Button fx:id="backButton" text="Back" onAction="#handleBackButton" style="-fx-background-color: lightblue; -fx-text-fill: black;"/>
 </VBox>

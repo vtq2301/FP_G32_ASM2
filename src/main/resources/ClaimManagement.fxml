@@ -9,7 +9,7 @@
             <Button fx:id="addButton" text="Add New Claim" onAction="#handleAddNewClaim" />
             <Button fx:id="deleteButton" text="Delete Selected Claim" onAction="#handleDeleteClaim" />
             <Button fx:id="updateButton" text="Update Claim" onAction="#handleUpdateClaim" />
-
+            <Button fx:id="backButton" text="Back" onAction="#handleBackButton" />
         </VBox>
     </top>
     <center>

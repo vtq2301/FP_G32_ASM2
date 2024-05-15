@@ -7,11 +7,11 @@ public class User {
     private String address;
     private String phoneNumber;
 
-    // No-argument constructor
+
     public User() {
     }
 
-    // Constructor with parameters
+
     public User(String id, String role, String fullName, String address, String phoneNumber) {
         this.id = id;
         this.role = role;
@@ -20,7 +20,6 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters and setters as before
     public String getId() { return id; }
     public String getRole() { return role; }
     public String getFullName() { return fullName; }
@@ -41,6 +40,6 @@ public class User {
 
     @Override
     public String toString() {
-        return fullName + " (" + id + ")"; // Display the full name and id
+        return fullName + " (" + id + ")";
     }
 }

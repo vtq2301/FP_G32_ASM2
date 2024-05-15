@@ -4,13 +4,20 @@ import all.auth.ActionLogger;
 import all.auth.ClaimDatabase;
 import all.model.customer.ClaimManagement;
 import all.model.customer.User;
+import all.controller.UserSession;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class ClaimManagementController {
@@ -20,8 +27,9 @@ public class ClaimManagementController {
     @FXML private TableColumn<ClaimManagement, String> descriptionColumn;
     @FXML private TableColumn<ClaimManagement, String> statusColumn;
     @FXML private Button addButton, deleteButton, updateButton;
+    @FXML private Button backButton;
 
-    private final ClaimDatabase dbService = new     ClaimDatabase();
+    private final ClaimDatabase dbService = new ClaimDatabase();
     private final ObservableList<ClaimManagement> claimData = FXCollections.observableArrayList();
     private String policyHolderId;
     private String userRole;
@@ -30,7 +38,6 @@ public class ClaimManagementController {
     public void initialize() {
         setupColumnFactories();
     }
-
 
     public void initializeData(String policyHolderId, String userRole) {
         this.policyHolderId = policyHolderId;
@@ -47,8 +54,6 @@ public class ClaimManagementController {
         }
         claimsTable.setItems(claimData);
     }
-
-
 
     private void setupColumnFactories() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -86,15 +91,12 @@ public class ClaimManagementController {
             ClaimManagement newClaim = new ClaimManagement(null, this.policyHolderId, description, "New");
             dbService.addClaim(newClaim);
 
-
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(policyHolderId, "Add Claim", "Added a new claim with description: " + description, newClaim.getId());
-
 
             loadData();
         });
     }
-
 
     @FXML
     private void handleDeleteClaim() {
@@ -107,6 +109,9 @@ public class ClaimManagementController {
         if (selectedClaim != null) {
             dbService.deleteClaim(selectedClaim.getId());
             loadData();
+
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(policyHolderId, "Delete Claim", "Deleted claim with ID: " + selectedClaim.getId(), selectedClaim.getId());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -114,10 +119,7 @@ public class ClaimManagementController {
             alert.setContentText("Please select a claim in the table.");
             alert.showAndWait();
         }
-        ActionLogger actionLogger = new ActionLogger();
-        actionLogger.logAction(policyHolderId, "Delete Claim", "Deleted claim with ID: " + selectedClaim.getId(), selectedClaim.getId());
     }
-
 
     @FXML
     private void handleUpdateClaim() {
@@ -131,7 +133,7 @@ public class ClaimManagementController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Claim Selected");
             alert.setHeaderText("Update Error");
-            alert.setContentText("Pleas e select a claim to update.");
+            alert.setContentText("Please select a claim to update.");
             alert.showAndWait();
             return;
         }
@@ -145,12 +147,42 @@ public class ClaimManagementController {
         result.ifPresent(description -> {
             selectedClaim.setDescription(description);
             dbService.updateClaim(selectedClaim);
+
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(policyHolderId, "Update Claim", "Updated claim with new description: " + description, selectedClaim.getId());
+
             loadData();
         });
     }
 
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader;
+            if ("dependent".equalsIgnoreCase(userRole)) {
+                fxmlLoader = new FXMLLoader(getClass().getResource("/DependentScreen.fxml"));
+            } else {
+                fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
+            }
+            Parent parent = fxmlLoader.load();
+            User currentUser = UserSession.getCurrentUser();
+
+            if ("dependent".equalsIgnoreCase(userRole)) {
+                Dependent controller = fxmlLoader.getController();
+                controller.loadData(currentUser);
+            } else {
+                PolicyHolder controller = fxmlLoader.getController();
+                controller.loadData(currentUser);
+            }
+
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

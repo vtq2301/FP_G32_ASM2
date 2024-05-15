@@ -14,6 +14,7 @@ public class DependencyService {
 
     /**
      * Fetch available dependents who are not currently associated with the policy holder.
+     *
      * @param policyHolderId The unique ID of the policyholder.
      * @return List of available dependents.
      */
@@ -43,6 +44,7 @@ public class DependencyService {
 
     /**
      * Fetch the dependents currently associated with the policyholder.
+     *
      * @param policyHolderId The unique ID of the policyholder.
      * @return List of selected dependents.
      */
@@ -72,9 +74,10 @@ public class DependencyService {
 
     /**
      * Save the dependents for the policyholder and remove those who should no longer be associated.
-     * @param dependentsToSave The list of dependents to save under this policyholder.
+     *
+     * @param dependentsToSave   The list of dependents to save under this policyholder.
      * @param dependentsToRemove The list of dependents to remove from this policyholder.
-     * @param policyHolderId The unique ID of the policyholder.
+     * @param policyHolderId     The unique ID of the policyholder.
      * @return True if the operation is successful, otherwise False.
      */
     public boolean saveAndRemoveDependents(List<User> dependentsToSave, List<User> dependentsToRemove, String policyHolderId) {
@@ -111,6 +114,7 @@ public class DependencyService {
             return false;
         }
     }
+
     public void updateDependent(User user) {
         String sql = "UPDATE users SET full_name = ?, address = ?, phone_number = ? WHERE id = ?";
         try (Connection connection = dbConnectionManager.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
@@ -124,6 +128,60 @@ public class DependencyService {
             e.printStackTrace();
         }
     }
+    public void updatePolicyHolder(User user) {
+        String sql = "UPDATE users SET full_name = ?, address = ?, phone_number = ? WHERE username = ?";
+        try (Connection connection = dbConnectionManager.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+
+
+            pstmt.setString(1, user.getFullName());
+            pstmt.setString(2, user.getAddress());
+            pstmt.setString(3, user.getPhoneNumber());
+            pstmt.setString(4, user.getId());
+
+            int affectedRows = pstmt.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean verifyOldPassword(String userId, String oldPassword) {
+        String sql = "SELECT password_hash FROM users WHERE username = ? AND password_hash = ?";
+        try (Connection connection = dbConnectionManager.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, userId);
+            pstmt.setString(2, oldPassword);
+
+            try (ResultSet resultSet = pstmt.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void updatePassword(String userId, String newPassword) {
+        String sql = "UPDATE users SET password_hash = ? WHERE username = ?";
+        try (Connection connection = dbConnectionManager.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, newPassword);
+            pstmt.setString(2, userId);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
+
+
 
 

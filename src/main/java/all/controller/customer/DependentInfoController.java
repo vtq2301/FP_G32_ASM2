@@ -24,7 +24,6 @@ public class DependentInfoController {
     private ObservableList<User> dependents = FXCollections.observableArrayList();
     private DependencyService dbService = new DependencyService();
 
-
     public void initializeData(String policyHolderId) {
         dependents.setAll(dbService.fetchSelectedDependents(policyHolderId));
         dependentsTable.setItems(dependents);

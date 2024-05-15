@@ -7,12 +7,18 @@ import all.model.customer.User;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,12 +28,12 @@ public class ViewDependentInfo {
     @FXML private TableView<User> availableDependentsTable;
     @FXML private TableView<User> selectedDependentsTable;
     @FXML private TextField policyHolderTextField;
+    @FXML private Button backButton;
 
     private ObservableList<User> availableDependents = FXCollections.observableArrayList();
     private ObservableList<User> selectedDependents = FXCollections.observableArrayList();
     private DependencyService dbService = new DependencyService();
 
-    // Use sets to track changes before saving
     private Set<User> dependentsToAdd = new HashSet<>();
     private Set<User> dependentsToRemove = new HashSet<>();
 
@@ -57,8 +63,11 @@ public class ViewDependentInfo {
         if (selected != null) {
             selectedDependents.add(selected);
             availableDependents.remove(selected);
-            dependentsToAdd.add(selected);  // Track added dependents
-            dependentsToRemove.remove(selected);  // Remove if it was previously marked for removal
+            dependentsToAdd.add(selected);
+            dependentsToRemove.remove(selected);
+
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(UserSession.getCurrentUser().getId(), "Add Dependent", "Added dependent: " + selected.getFullName(), null);
         }
     }
 
@@ -68,8 +77,11 @@ public class ViewDependentInfo {
         if (selected != null) {
             availableDependents.add(selected);
             selectedDependents.remove(selected);
-            dependentsToRemove.add(selected);  // Track removed dependents
-            dependentsToAdd.remove(selected);  // Remove if it was previously marked for addition
+            dependentsToRemove.add(selected);
+            dependentsToAdd.remove(selected);
+
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(UserSession.getCurrentUser().getId(), "Remove Dependent", "Removed dependent: " + selected.getFullName(), null);
         }
     }
 
@@ -78,11 +90,10 @@ public class ViewDependentInfo {
         List<User> dependentsToSave = new ArrayList<>(selectedDependents);
         List<User> dependentsToRemoveList = new ArrayList<>(dependentsToRemove);
 
-        String policyHolderId = UserSession.getCurrentUser().getId(); // Fetch from the session
+        String policyHolderId = UserSession.getCurrentUser().getId();
         boolean success = dbService.saveAndRemoveDependents(dependentsToSave, dependentsToRemoveList, policyHolderId);
 
         if (success) {
-
             ActionLogger actionLogger = new ActionLogger();
 
             for (User user : dependentsToAdd) {
@@ -93,7 +104,6 @@ public class ViewDependentInfo {
                 actionLogger.logAction(policyHolderId, "Remove Dependent", "Removed dependent: " + user.getFullName(), null);
             }
 
-            // Clear the tracking sets after successful save and logging
             dependentsToAdd.clear();
             dependentsToRemove.clear();
 
@@ -102,7 +112,6 @@ public class ViewDependentInfo {
             showAlert("Failure", "Failed to save dependents.", Alert.AlertType.ERROR);
         }
     }
-
 
     private void showAlert(String title, String content, Alert.AlertType type) {
         Alert alert = new Alert(type);
@@ -128,4 +137,22 @@ public class ViewDependentInfo {
         }
     }
 
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
+            Parent parent = fxmlLoader.load();
+            PolicyHolder controller = fxmlLoader.getController();
+
+            User currentUser = UserSession.getCurrentUser();
+            controller.loadData(currentUser);
+
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
