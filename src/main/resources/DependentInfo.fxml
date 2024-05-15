@@ -4,40 +4,41 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.DependentInfoController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.DependentInfoController"
+            style="-fx-background-color: #F7F9FB;">
     <top>
-        <!-- Correct the padding format here -->
-        <HBox alignment="CENTER" spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Button text="Update Selected Dependent" onAction="#handleUpdateDependent" fx:id="updateButton"/>
+        <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10; -fx-background-color: #2C3E50;">
+            <Button text="Update Selected Dependent" onAction="#handleUpdateDependent" fx:id="updateButton" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Back" onAction="#handleBackButton" fx:id="backButton" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-weight: bold;"/>
         </HBox>
     </top>
     <center>
-        <TableView fx:id="dependentsTable" editable="true">
-            <columns>
-                <TableColumn text="ID" fx:id="idColumn">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="id" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn text="Full Name" fx:id="fullNameColumn">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="fullName" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn text="Address" fx:id="addressColumn">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="address" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn text="Phone Number" fx:id="phoneNumberColumn">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="phoneNumber" />
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="Dependent Information" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;"/>
+            <TableView fx:id="dependentsTable" editable="true" style="-fx-background-color: white; -fx-border-color: #D5D8DC; -fx-border-width: 1;">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Full Name" fx:id="fullNameColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fullName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Address" fx:id="addressColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="address" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Phone Number" fx:id="phoneNumberColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="phoneNumber" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
     </center>
 </BorderPane>

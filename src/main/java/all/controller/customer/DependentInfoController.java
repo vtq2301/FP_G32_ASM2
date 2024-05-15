@@ -6,7 +6,11 @@ import all.model.customer.User;
 import all.controller.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -15,11 +19,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.Optional;
 
 public class DependentInfoController {
     @FXML private TableView<User> dependentsTable;
     @FXML private Button updateButton;
+    @FXML private Button backButton;
 
     private ObservableList<User> dependents = FXCollections.observableArrayList();
     private DependencyService dbService = new DependencyService();
@@ -93,5 +101,23 @@ public class DependentInfoController {
         String policyHolderId = UserSession.getCurrentUser().getId();
         dependents.setAll(dbService.fetchSelectedDependents(policyHolderId));
         dependentsTable.setItems(dependents);
+    }
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
+            Parent parent = fxmlLoader.load();
+            PolicyHolder controller = fxmlLoader.getController();
+
+            User currentUser = UserSession.getCurrentUser();
+            controller.loadData(currentUser);
+
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

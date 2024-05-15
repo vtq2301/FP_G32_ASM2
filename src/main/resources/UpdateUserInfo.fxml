@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.UpdateUserInfoController" spacing="10">
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.UpdateUserInfoController"
+      style="-fx-background-color: #F7F9FB; -fx-padding: 20;">
     <GridPane hgap="10" vgap="10">
-        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-        <Button text="Save" onAction="#handleSaveUserInfo" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-        <Button fx:id="backButton" text="Back" onAction="#handleBackButton" GridPane.columnIndex="1" GridPane.rowIndex="4"/> <!-- New back button -->
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+
+        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+
+        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+
+        <Button text="Save" onAction="#handleSaveUserInfo" style="-fx-background-color: #2ECC71; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Button fx:id="backButton" text="Back" onAction="#handleBackButton" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
     </GridPane>
 </VBox>
