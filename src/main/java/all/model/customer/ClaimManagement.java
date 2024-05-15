@@ -1,17 +1,31 @@
 package all.model.customer;
 
+import java.util.Date;
+
 public class ClaimManagement {
     private String id;
     private String customerId;
-    private String description;
+    private Date claimDate;
+    private String insuredPerson;
+    private Date examDate;
+    private String[] documents;
+    private double claimAmount;
+    private String receiverBankingInfo;
     private String status;
 
-    public ClaimManagement(String id, String customerId, String description, String status) {
+    public ClaimManagement(String id, String customerId, Date claimDate, String insuredPerson, Date examDate, String[] documents, double claimAmount, String receiverBankingInfo, String status) {
         this.id = id;
         this.customerId = customerId;
-        this.description = description;
+        this.claimDate = claimDate;
+        this.insuredPerson = insuredPerson;
+        this.examDate = examDate;
+        this.documents = documents;
+        this.claimAmount = claimAmount;
+        this.receiverBankingInfo = receiverBankingInfo;
         this.status = status;
     }
+
+    // Getters and setters...
 
     public String getId() {
         return id;
@@ -29,12 +43,52 @@ public class ClaimManagement {
         this.customerId = customerId;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getClaimDate() {
+        return claimDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setClaimDate(Date claimDate) {
+        this.claimDate = claimDate;
+    }
+
+    public String getInsuredPerson() {
+        return insuredPerson;
+    }
+
+    public void setInsuredPerson(String insuredPerson) {
+        this.insuredPerson = insuredPerson;
+    }
+
+    public Date getExamDate() {
+        return examDate;
+    }
+
+    public void setExamDate(Date examDate) {
+        this.examDate = examDate;
+    }
+
+    public String[] getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(String[] documents) {
+        this.documents = documents;
+    }
+
+    public double getClaimAmount() {
+        return claimAmount;
+    }
+
+    public void setClaimAmount(double claimAmount) {
+        this.claimAmount = claimAmount;
+    }
+
+    public String getReceiverBankingInfo() {
+        return receiverBankingInfo;
+    }
+
+    public void setReceiverBankingInfo(String receiverBankingInfo) {
+        this.receiverBankingInfo = receiverBankingInfo;
     }
 
     public String getStatus() {
@@ -47,6 +101,16 @@ public class ClaimManagement {
 
     @Override
     public String toString() {
-        return "Claim ID: " + id + ", Customer ID: " + customerId + ", Status: " + status + ", Description: " + description;
+        return "ClaimManagement{" +
+                "id='" + id + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", claimDate=" + claimDate +
+                ", insuredPerson='" + insuredPerson + '\'' +
+                ", examDate=" + examDate +
+                ", documents=" + String.join(", ", documents) +
+                ", claimAmount=" + claimAmount +
+                ", receiverBankingInfo='" + receiverBankingInfo + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

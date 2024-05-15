@@ -31,15 +31,13 @@ public class InsuranceSurveyor {
     public void initialize() {
         filterOptions.setItems(FXCollections.observableArrayList("All", "Pending", "Approved", "Rejected"));
         filterOptions.setOnAction(event -> loadClaims());
-        requestMoreInfoButton.setOnAction(event -> requestMoreInfo());
-        proposeClaimButton.setOnAction(event -> proposeClaim());
     }
 
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
         emailField.setText(user.getAddress());
         contactNumberField.setText(user.getPhoneNumber());
-        surveyorIdField.setText("SURV123456");
+        surveyorIdField.setText("SURV123456"); // Example Surveyor ID
 
         loadClaims();
     }
@@ -57,6 +55,7 @@ public class InsuranceSurveyor {
         claimsListView.setItems(observableClaims);
     }
 
+    @FXML
     private void requestMoreInfo() {
         ClaimManagement selectedClaim = claimsListView.getSelectionModel().getSelectedItem();
         if (selectedClaim != null) {
@@ -71,6 +70,7 @@ public class InsuranceSurveyor {
         }
     }
 
+    @FXML
     private void proposeClaim() {
         ClaimManagement selectedClaim = claimsListView.getSelectionModel().getSelectedItem();
         if (selectedClaim != null) {

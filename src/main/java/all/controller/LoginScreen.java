@@ -36,7 +36,7 @@ public class LoginScreen {
         }
         User user = authService.authenticateUser(username, password);
         if (user != null) {
-            UserSession.login(user);  // Make sure this line is here
+            UserSession.login(user);
             statusText.setText("Login successful!");
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(user.getId(), "Login", "User logged in", null);
@@ -45,7 +45,6 @@ public class LoginScreen {
             statusText.setText("Login failed. Please check your username and password.");
         }
     }
-
 
     @FXML
     protected void handleShowSignUp(ActionEvent event) {

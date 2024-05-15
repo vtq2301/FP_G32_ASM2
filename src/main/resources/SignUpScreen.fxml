@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
 <?import javafx.scene.layout.HBox?>
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.SignUpScreen"
+      style="-fx-background-color: #F7F9FB; -fx-padding: 20;">
+    <GridPane hgap="10" vgap="10">
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.SignUpScreen"
-          hgap="10" vgap="10" alignment="CENTER" style="-fx-background-color: #ECF0F1; -fx-padding: 20;">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
-    <Label text="Register" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
-    <Label text="Username:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
 
-    <Label text="Password:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
 
-    <Label text="Full Name:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-    <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-font-size: 14px;"/>
+        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-font-size: 14px;"/>
 
-    <Label text="Address:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-font-size: 14px;"/>
+        <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-font-size: 14px;"/>
 
-    <Label text="Phone Number:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="5" style="-fx-font-size: 14px;"/>
+        <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-size: 14px;"/>
+        <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5" style="-fx-font-size: 14px;"/>
 
-    <Label text="Role:" style="-fx-font-size: 14px; -fx-text-fill: #34495E;" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-    <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="6" style="-fx-font-size: 14px;"/>
-
-    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-        <Button text="Register" onAction="#handleRegister" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
-        <Button text="Go To Sign In" onAction="#handleShowLogin" style="-fx-background-color: #2ECC71; -fx-text-fill: white; -fx-font-weight: bold;"/>
-    </HBox>
-    <Label fx:id="statusText" GridPane.columnIndex="1" GridPane.rowIndex="8" textFill="red" style="-fx-font-size: 12px;"/>
-</GridPane>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Button text="Register" onAction="#handleRegister" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Button text="Go To Sign In" onAction="#handleShowLogin" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-size: 14px;"/>
+        </HBox>
+        <Label fx:id="statusText" GridPane.columnIndex="1" GridPane.rowIndex="7" textFill="red" style="-fx-font-size: 14px;"/>
+    </GridPane>
+</VBox>
