@@ -1,15 +1,15 @@
 package all.controller.customer;
 
-import all.controller.UserSession;
 import all.model.customer.User;
+import all.controller.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,8 +23,8 @@ public class PolicyHolder {
     private String policyHolderId;
     private String userRole;
     @FXML private Button changeDependentInfoButton;
-
-
+    @FXML private Button updateUserInfoButton;
+    @FXML private Button changePasswordButton;
 
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
@@ -32,23 +32,19 @@ public class PolicyHolder {
         contactNumberField.setText(user.getPhoneNumber());
         policyNumberField.setText("POLICY123456");
         this.policyHolderId = user.getId();
-        this.userRole = user.getRole(); // Store user role
+        this.userRole = user.getRole();
 
         if (this.policyHolderId == null || this.policyHolderId.isEmpty()) {
             System.err.println("Error: PolicyHolder ID is invalid or not set.");
         }
     }
 
-        @FXML
-        private void initialize() {
-            if (!UserSession.isLoggedIn()) {
-                System.out.println("No user is logged in.");
-
-            } else {
-            }
+    @FXML
+    private void initialize() {
+        if (!UserSession.isLoggedIn()) {
+            System.out.println("No user is logged in.");
         }
-
-
+    }
 
     @FXML
     private void handleManageClaim(ActionEvent event) {
@@ -77,7 +73,6 @@ public class PolicyHolder {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewDependentInfo.fxml"));
             Parent root = loader.load();
 
-
             Stage stage = (Stage) manageClaimButton.getScene().getWindow();
             stage.setTitle("View Dependents");
             stage.setScene(new Scene(root));
@@ -93,6 +88,7 @@ public class PolicyHolder {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     @FXML
     private void handleLogout(ActionEvent event) {
         UserSession.logout();
@@ -109,6 +105,7 @@ public class PolicyHolder {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void handleChangeDependentInfo(ActionEvent event) {
         try {
@@ -127,5 +124,35 @@ public class PolicyHolder {
         }
     }
 
+    @FXML
+    private void handleUpdateUserInfo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUserInfo.fxml"));
+            Parent root = loader.load();
 
+            UpdateUserInfoController controller = loader.getController();
+            controller.loadUserData(UserSession.getCurrentUser());
+
+            Stage stage = (Stage) updateUserInfoButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load update user information screen.", Alert.AlertType.ERROR);
+        }
+    }
+    @FXML
+    private void handleChangePassword(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangePassword.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) changePasswordButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load change password screen.", Alert.AlertType.ERROR);
+        }
+    }
 }

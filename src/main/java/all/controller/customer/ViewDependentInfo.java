@@ -27,7 +27,6 @@ public class ViewDependentInfo {
     private ObservableList<User> selectedDependents = FXCollections.observableArrayList();
     private DependencyService dbService = new DependencyService();
 
-    // Use sets to track changes before saving
     private Set<User> dependentsToAdd = new HashSet<>();
     private Set<User> dependentsToRemove = new HashSet<>();
 
@@ -57,8 +56,8 @@ public class ViewDependentInfo {
         if (selected != null) {
             selectedDependents.add(selected);
             availableDependents.remove(selected);
-            dependentsToAdd.add(selected);  // Track added dependents
-            dependentsToRemove.remove(selected);  // Remove if it was previously marked for removal
+            dependentsToAdd.add(selected);
+            dependentsToRemove.remove(selected);
         }
     }
 
@@ -68,8 +67,8 @@ public class ViewDependentInfo {
         if (selected != null) {
             availableDependents.add(selected);
             selectedDependents.remove(selected);
-            dependentsToRemove.add(selected);  // Track removed dependents
-            dependentsToAdd.remove(selected);  // Remove if it was previously marked for addition
+            dependentsToRemove.add(selected);
+            dependentsToAdd.remove(selected);
         }
     }
 
@@ -78,7 +77,7 @@ public class ViewDependentInfo {
         List<User> dependentsToSave = new ArrayList<>(selectedDependents);
         List<User> dependentsToRemoveList = new ArrayList<>(dependentsToRemove);
 
-        String policyHolderId = UserSession.getCurrentUser().getId(); // Fetch from the session
+        String policyHolderId = UserSession.getCurrentUser().getId();
         boolean success = dbService.saveAndRemoveDependents(dependentsToSave, dependentsToRemoveList, policyHolderId);
 
         if (success) {
@@ -93,7 +92,6 @@ public class ViewDependentInfo {
                 actionLogger.logAction(policyHolderId, "Remove Dependent", "Removed dependent: " + user.getFullName(), null);
             }
 
-            // Clear the tracking sets after successful save and logging
             dependentsToAdd.clear();
             dependentsToRemove.clear();
 
