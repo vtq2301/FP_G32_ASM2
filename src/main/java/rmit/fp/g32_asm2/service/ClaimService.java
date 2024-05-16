@@ -25,9 +25,19 @@ public class ClaimService {
         return claimDAO.findById(claimId);
     }
 
+    public List<Claim> findAllClaims() {
+        return claimDAO.findAll("created_at", Order.ASC, 10, 0);
+    }
+
     public List<Claim> findClaimsByUserId(String userId) {
         Map<String, Object> params = new HashMap<>();
         params.put("insured_person_id", UUID.fromString(userId));
         return claimDAO.findMany(params, "created_at", Order.ASC, 20, 0);
+    }
+
+    public List<Claim> getBeneficiaryClaims(String policyOwnerId) {
+        List<Claim> claims = new ArrayList<>();
+        Map<String, Object> params = new HashMap<>();
+        return List.of();
     }
 }

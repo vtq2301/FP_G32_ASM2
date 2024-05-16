@@ -13,7 +13,7 @@ public class Claim {
     private Status status;
 
     public enum Status {
-        FILED, PROCESS, ACCEPTED, REJECTED, DONE
+        FILED, PROCESSING, ACCEPTED, REJECTED, DONE
     }
 
     public Claim(String id, String insuredPersonId, Date examDate, List<String> documents, double amount, Status status) {

@@ -12,11 +12,14 @@ module rmit.fp.g32_asm2 {
     requires java.sql;
     requires org.json;
     requires java.desktop;
+    requires org.postgresql.jdbc;
 
     opens rmit.fp.g32_asm2 to javafx.fxml;
     exports rmit.fp.g32_asm2;
     exports rmit.fp.g32_asm2.view;
     opens rmit.fp.g32_asm2.view to javafx.fxml;
+    exports rmit.fp.g32_asm2.model.Claim;
+    opens rmit.fp.g32_asm2.model.Claim to javafx.fxml;
 
     exports rmit.fp.g32_asm2.controller.customer.policyHolder;
     opens rmit.fp.g32_asm2.controller.customer.policyHolder to javafx.fxml;

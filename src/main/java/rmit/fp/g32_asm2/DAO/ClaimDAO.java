@@ -1,5 +1,7 @@
 package rmit.fp.g32_asm2.DAO;
 
+import org.postgresql.util.PGobject;
+import rmit.fp.g32_asm2.database.ConnectionPool;
 import rmit.fp.g32_asm2.model.Claim.Claim;
 
 import java.sql.Array;
@@ -13,7 +15,7 @@ import java.util.UUID;
 public class ClaimDAO extends AbstractDAO<Claim> {
     private static final List<String> columns = List.of(
             "id", "insured_person_id", "amount",
-            "total_documents", "exam_date", "claim_status"
+            "documents", "exam_date", "claim_status"
     );
 
     public ClaimDAO() {
@@ -57,21 +59,28 @@ public class ClaimDAO extends AbstractDAO<Claim> {
             ps.setString(i++, object.getId());
         }
 
-        ps.setString(i++, object.getId());
-        ps.setString(i++, object.getInsuredPersonId());
+        ps.setObject(i++, UUID.fromString(object.getInsuredPersonId()));
         ps.setDouble(i++, object.getAmount());
-        ps.setInt(i++, object.getDocuments().size());
+        ps.setArray(i++, ConnectionPool.getInstance().getConnection().createArrayOf("text", object.getDocuments().toArray()));
         ps.setDate(i++, new java.sql.Date(object.getExamDate().getTime()));
-        ps.setString(i, object.getStatus().name());
+
+        PGobject statusObject = new PGobject();
+        statusObject.setType("claim_status");
+        statusObject.setValue(object.getStatus().name());
+        ps.setObject(i, statusObject);
     }
 
     @Override
     protected void setUpdateStatementParameters(PreparedStatement ps, Claim object) throws SQLException {
-        ps.setString(1, object.getInsuredPersonId());
-        ps.setDouble(2, object.getAmount());
-        ps.setInt(3, object.getDocuments().size());
-        ps.setDate(4, new java.sql.Date(object.getExamDate().getTime()));
-        ps.setString(5, object.getStatus().name());
-        ps.setString(6, object.getId());
+        int i = 1;
+        ps.setObject(i++, UUID.fromString(object.getInsuredPersonId()));
+        ps.setDouble(i++, object.getAmount());
+        ps.setArray(i++, ConnectionPool.getInstance().getConnection().createArrayOf("text", object.getDocuments().toArray()));
+        ps.setDate(i++, new java.sql.Date(object.getExamDate().getTime()));
+        PGobject statusObject = new PGobject();
+        statusObject.setType("claim_status");
+        statusObject.setValue(object.getStatus().name());
+        ps.setObject(i++, statusObject);
+        ps.setString(i, object.getId());
     }
 }
