@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="rmit.fp.g32_asm2.controller.customer.policyOwner.DashboardController"
+        prefHeight="800" prefWidth="1200"
+>
+
+    <!-- Header -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #FF0000; -fx-padding: 10;">
+            <Label text="Application Header" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Logout" style="-fx-background-color: #000000; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox fx:id="mainContent" spacing="10">
+            <!-- Main content will be injected here -->
+            <fx:include source="/view/components/card.fxml"/>
+            <fx:include source="/view/components/table.fxml"/>
+        </VBox>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #000000; -fx-padding: 10;">
+            <Label text="Application Footer" style="-fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

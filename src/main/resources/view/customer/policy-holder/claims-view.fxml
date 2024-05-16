@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="rmit.fp.g32_asm2.controller.customer.policyHolder.ClaimController"
+            >
+    <TextField fx:id="textField" layoutX="50" layoutY="50" promptText="claims poho"/>
+</AnchorPane>

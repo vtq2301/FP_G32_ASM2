@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="10" style="-fx-background-color: white; -fx-padding: 10; -fx-border-color: black; -fx-border-width: 1;">
+    <Text fx:id="title" style="-fx-font-weight: bold;" text="Card Title"/>
+    <Text fx:id="content" text="Card Content"/>
+</VBox>

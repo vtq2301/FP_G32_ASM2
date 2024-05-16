@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.fxml.FXMLLoader?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10">
+    <fx:include source="/view/components/card.fxml"/>
+    <fx:include source="/view/components/table.fxml"/>
+</VBox>

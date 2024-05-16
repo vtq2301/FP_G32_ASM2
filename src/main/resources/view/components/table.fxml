@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" padding="10">
+    <TableView fx:id="table" prefHeight="400">
+        <TableColumn fx:id="column1" text="Column 1"/>
+        <TableColumn fx:id="column2" text="Column 2"/>
+    </TableView>
+</VBox>
