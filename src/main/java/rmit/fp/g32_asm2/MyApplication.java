@@ -3,24 +3,12 @@ package rmit.fp.g32_asm2;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
-import rmit.fp.g32_asm2.DAO.UserDAO;
-import rmit.fp.g32_asm2.model.Claim.Claim;
-import rmit.fp.g32_asm2.model.RolesEnum;
 import rmit.fp.g32_asm2.model.User;
-import rmit.fp.g32_asm2.model.admin.SystemAdmin;
-import rmit.fp.g32_asm2.model.customer.Customer;
-import rmit.fp.g32_asm2.model.customer.CustomerRelations;
 import rmit.fp.g32_asm2.model.customer.CustomerType;
 import rmit.fp.g32_asm2.model.customer.PolicyOwner;
-import rmit.fp.g32_asm2.service.AdminService;
-import rmit.fp.g32_asm2.service.ClaimService;
-import rmit.fp.g32_asm2.service.CustomerService;
+import rmit.fp.g32_asm2.service.UserService;
 import rmit.fp.g32_asm2.util.HashUtils;
 import rmit.fp.g32_asm2.util.ViewUtils;
-
-import java.util.Arrays;
-import java.util.Date;
-import java.util.UUID;
 
 
 public class MyApplication extends Application {
@@ -31,7 +19,7 @@ public class MyApplication extends Application {
     }
 
     private static boolean register(String username, String password) {
-        AdminService adminService = new AdminService();
+        UserService userService = new UserService();
         User user = new PolicyOwner.Builder()
                 .withUsername(username)
                 .withName(username)
@@ -39,7 +27,7 @@ public class MyApplication extends Application {
                 .withHashPassword(HashUtils.hashPassword(password))
                 .build();
 
-        return adminService.addUser(user);
+        return userService.addUser(user);
 
     }
 

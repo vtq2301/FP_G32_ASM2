@@ -4,10 +4,8 @@ import org.postgresql.util.PGobject;
 import rmit.fp.g32_asm2.database.ConnectionPool;
 import rmit.fp.g32_asm2.model.Claim.Claim;
 
-import java.sql.Array;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -82,5 +80,30 @@ public class ClaimDAO extends AbstractDAO<Claim> {
         statusObject.setValue(object.getStatus().name());
         ps.setObject(i++, statusObject);
         ps.setString(i, object.getId());
+    }
+
+    public List<Claim> findAllBeneficiariesClaims(String policyOwnerId){
+        Connection conn = null;
+        List<Claim> claims = new ArrayList<>();
+        try {
+            conn = ConnectionPool.getInstance().getConnection();
+            String sql = "SELECT c.* FROM claims c, customers cu WHERE c.insured_person_id = cu.user_id AND cu.policy_owner_id = ?";
+            try (PreparedStatement ps = conn.prepareStatement(sql)){
+                ps.setObject(1, UUID.fromString(policyOwnerId));
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()){
+                    claims.add(createObjectFromResultSet(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            if (conn != null) {
+                ConnectionPool.getInstance().releaseConnection(conn);
+            }
+        }
+
+        return claims;
+
     }
 }

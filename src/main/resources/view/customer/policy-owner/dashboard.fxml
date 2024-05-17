@@ -16,9 +16,9 @@
         <HBox spacing="10" style="-fx-background-color: #FF0000; -fx-padding: 10;">
             <Label text="DASHBOARD" style="-fx-text-fill: white; -fx-font-size: 18px;" />
             <Pane HBox.hgrow="ALWAYS"/>
-            <ImageView fx:id="userIcon" fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true" onMouseClicked="#showProfile"/>
+<!--            <ImageView fx:id="userIcon" fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true" onMouseClicked="#showProfile"/>-->
 
-            <Button text="Logout" style="-fx-background-color: #000000; -fx-text-fill: white;"/>
+            <Button text="Logout" onAction="#logout" style="-fx-background-color: #000000; -fx-text-fill: white;"/>
         </HBox>
     </top>
     <!-- Side Menu -->
@@ -27,6 +27,7 @@
             <Button text="Claims" prefWidth="150" onAction="#showClaims"/>
             <Button text="Beneficiaries" prefWidth="150" onAction="#showBeneficiaries"/>
             <Button text="Logs" prefWidth="150" onAction="#showLogs"/>
+            <Button text="Profile" prefWidth="150" onAction="#showProfile" />
         </VBox>
     </left>
     <!-- Main Content Area -->

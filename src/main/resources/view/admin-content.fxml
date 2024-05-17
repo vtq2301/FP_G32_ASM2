@@ -3,7 +3,7 @@
 <?import javafx.fxml.FXMLLoader?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10">
     <fx:include source="/view/components/card.fxml"/>
     <fx:include source="/view/components/table.fxml"/>
 </VBox>

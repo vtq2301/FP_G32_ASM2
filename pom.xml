@@ -14,6 +14,11 @@
 <junit.version>5.10.0</junit.version>  </properties>
 
   <dependencies>
+      <dependency>
+          <groupId>de.jensd</groupId>
+          <artifactId>fontawesomefx</artifactId>
+          <version>8.9</version>
+      </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>

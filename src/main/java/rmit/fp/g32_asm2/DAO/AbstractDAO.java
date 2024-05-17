@@ -198,20 +198,20 @@ public abstract class AbstractDAO<T> {
             conn = ConnectionPool.getInstance().getConnection();
 
             StringBuilder sqlBuilder = new StringBuilder("UPDATE ").append(table).append(" SET ");
-            List<Object> values = new ArrayList<>();
 
             for (String columnName : columns) {
-                sqlBuilder.append(columnName).append(" = ?, ");
+                if (!columnName.equalsIgnoreCase("id")) {
+                    sqlBuilder.append(columnName).append(" = ?, ");
+                }
             }
 
             sqlBuilder.delete(sqlBuilder.length() - 2, sqlBuilder.length());
-            sqlBuilder.append(" WHERE id = ?"); // Assuming there's an "id" column in the table
+            sqlBuilder.append(" WHERE id = ?");
             System.out.println(sqlBuilder);
 
             ps = conn.prepareStatement(sqlBuilder.toString());
 
             setUpdateStatementParameters(ps, object);
-            ps.setObject(columns.size() + 1, getId(object)); // Assuming the ID is the last parameter
 
             System.out.println(ps);
 

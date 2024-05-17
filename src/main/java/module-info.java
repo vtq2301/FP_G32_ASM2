@@ -14,21 +14,29 @@ module rmit.fp.g32_asm2 {
     requires java.desktop;
     requires org.postgresql.jdbc;
 
+    // Open specific packages for JavaFX FXML reflection
     opens rmit.fp.g32_asm2 to javafx.fxml;
+    opens rmit.fp.g32_asm2.view to javafx.fxml;
+    opens rmit.fp.g32_asm2.model.Claim to javafx.fxml;
+    opens rmit.fp.g32_asm2.model to javafx.fxml;
+    opens rmit.fp.g32_asm2.model.customer to javafx.fxml;
+    opens rmit.fp.g32_asm2.model.provider to javafx.fxml;
+    opens rmit.fp.g32_asm2.controller.customer.policyHolder to javafx.fxml;
+    opens rmit.fp.g32_asm2.controller.components to javafx.fxml;
+    opens rmit.fp.g32_asm2.controller.common to javafx.fxml;
+    opens rmit.fp.g32_asm2.controller.admin to javafx.fxml;
+    opens rmit.fp.g32_asm2.controller.customer.policyOwner to javafx.fxml;
+
+    // Export packages to be used by other modules
     exports rmit.fp.g32_asm2;
     exports rmit.fp.g32_asm2.view;
-    opens rmit.fp.g32_asm2.view to javafx.fxml;
     exports rmit.fp.g32_asm2.model.Claim;
-    opens rmit.fp.g32_asm2.model.Claim to javafx.fxml;
-
+    exports rmit.fp.g32_asm2.model;
+    exports rmit.fp.g32_asm2.model.customer;
+    exports rmit.fp.g32_asm2.model.provider;
     exports rmit.fp.g32_asm2.controller.customer.policyHolder;
-    opens rmit.fp.g32_asm2.controller.customer.policyHolder to javafx.fxml;
     exports rmit.fp.g32_asm2.controller.components;
-    opens rmit.fp.g32_asm2.controller.components to javafx.fxml;
     exports rmit.fp.g32_asm2.controller.common;
-    opens rmit.fp.g32_asm2.controller.common to javafx.fxml;
     exports rmit.fp.g32_asm2.controller.admin;
-    opens rmit.fp.g32_asm2.controller.admin to javafx.fxml;
     exports rmit.fp.g32_asm2.controller.customer.policyOwner;
-    opens rmit.fp.g32_asm2.controller.customer.policyOwner to javafx.fxml;
 }

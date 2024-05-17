@@ -1,16 +1,15 @@
 package rmit.fp.g32_asm2.auth;
 
 import rmit.fp.g32_asm2.model.User;
-import rmit.fp.g32_asm2.service.AdminService;
+import rmit.fp.g32_asm2.service.UserService;
 import rmit.fp.g32_asm2.service.ClaimService;
 import rmit.fp.g32_asm2.service.CustomerService;
-import rmit.fp.g32_asm2.util.HashUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AuthService {
-    private static final AdminService adminService = new AdminService();
+    private static final UserService userService = new UserService();
     private static final CustomerService customerService = new CustomerService();
     private static final ClaimService claimService = new ClaimService();
     public static boolean login(String usernameOrEmail, String password) {
@@ -24,13 +23,18 @@ public class AuthService {
 
         if (isValidEmail(usernameOrEmail)) {
             System.out.println("email is valid.");
-            user = adminService.getUserByEmailAndPassword(usernameOrEmail, password);
+            user = userService.getUserByEmailAndPassword(usernameOrEmail, password);
         } else {
-            user = adminService.getUserByUsernameAndPassword(usernameOrEmail, password);
+            user = userService.getUserByUsernameAndPassword(usernameOrEmail, password);
         }
 
         if (user == null) {
             System.out.println("User not found.");
+            return false;
+        }
+
+        if (!user.getIsActive()) {
+            System.out.println("User is not active.");
             return false;
         }
 
@@ -41,8 +45,6 @@ public class AuthService {
     }
 
     public static void logout() {
-        // check if AuthContext.getCurrentUser() != null
-        // AuthContext.clear();
         User currentUser = AuthContext.getCurrentUser();
         if (currentUser == null) {
             System.out.println("User not found.");

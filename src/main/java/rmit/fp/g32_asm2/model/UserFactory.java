@@ -1,6 +1,6 @@
 package rmit.fp.g32_asm2.model;
 
-import rmit.fp.g32_asm2.service.AdminService;
+import rmit.fp.g32_asm2.service.UserService;
 import rmit.fp.g32_asm2.service.ClaimService;
 import rmit.fp.g32_asm2.service.CustomerService;
 import rmit.fp.g32_asm2.service.ProviderService;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserFactory {
 
-    private static final AdminService adminService = new AdminService();
+    private static final UserService userService = new UserService();
     private static final CustomerService customerService = new CustomerService();
     private static final ClaimService claimService = new ClaimService();
     private static final ProviderService providerService = new ProviderService();
@@ -63,7 +63,7 @@ public class UserFactory {
     private static Dependent createDependent(User user) {
         CustomerRelations cr = customerService.findOneByUserId(user.getId());
         String policyHolderId = cr.getPolicyHolderId();
-        User policyHolderUser = adminService.getUserById(policyHolderId);
+        User policyHolderUser = userService.getUserById(policyHolderId);
         PolicyHolder policyHolder = createPolicyHolder(policyHolderUser);
 
         List<Claim> claims = claimService.findClaimsByUserId(user.getId());

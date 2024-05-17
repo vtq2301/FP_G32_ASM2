@@ -9,13 +9,17 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import org.controlsfx.control.tableview2.FilteredTableColumn?>
+<?import javafx.scene.layout.HBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="rmit.fp.g32_asm2.controller.customer.policyOwner.ClaimsViewController"
       spacing="10">
     <Label text="Claims" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-    <Button text="View Documents" onAction="#viewDocuments"/>
-    <Button text="File Claim" onAction="#fileClaim"/>
-    <Button text="Update Claim" onAction="#updateClaim"/>
+    <HBox>
+        <Button text="View Documents" onAction="#viewDocuments"/>
+        <Button text="File Claim" onAction="#fileClaim"/>
+        <Button text="Update Claim" onAction="#updateClaim"/>
+        <Button text="Delete Claim" onAction="#deleteClaim"/>
+    </HBox>
     <FilteredTableView fx:id="claimsTable" prefHeight="400">
         <columns>
             <FilteredTableColumn fx:id="claimIdColumn" text="Claim ID"/>
@@ -26,6 +30,7 @@
             <FilteredTableColumn fx:id="claimFiledDateColumn" text="Filed Date"/>
         </columns>
     </FilteredTableView>
-    <Button text="Delete Claim" onAction="#deleteClaim"/>
     <Pagination fx:id="pagination" />
+    <Label fx:id="yearlyInsurancePay" text="Yearly Insurance Pay" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
 </VBox>

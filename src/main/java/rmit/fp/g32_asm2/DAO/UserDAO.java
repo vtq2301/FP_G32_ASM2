@@ -1,11 +1,14 @@
 package rmit.fp.g32_asm2.DAO;
 
+import rmit.fp.g32_asm2.database.ConnectionPool;
 import rmit.fp.g32_asm2.model.User;
 import rmit.fp.g32_asm2.model.UserFactory;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,7 +60,7 @@ public class UserDAO extends AbstractDAO<User> {
         ps.setString(i++, user.getEmail());
         ps.setString(i++, user.getAddress());
         ps.setInt(i++, user.getRoleId());
-        ps.setBoolean(i, user.isActive());
+        ps.setBoolean(i, user.getIsActive());
     }
 
     @Override
@@ -69,10 +72,34 @@ public class UserDAO extends AbstractDAO<User> {
         ps.setString(5, user.getEmail());
         ps.setString(6, user.getAddress());
         ps.setInt(7, user.getRoleId());
-        ps.setString(8, user.getId());
+        ps.setBoolean(8, user.getIsActive());
+        ps.setObject(9, UUID.fromString(user.getId()));
     }
 
     public User findById(String id) {
         return findOne("id", UUID.fromString(id));
+    }
+
+    public List<User> findAllBeneficiaries(String policyOwnerId) {
+        Connection conn = null;
+        List<User> users = new ArrayList<>();
+        try {
+            conn = ConnectionPool.getInstance().getConnection();
+            String sql = "SELECT u.* FROM users u, customers c WHERE c.policy_owner_id = ? AND u.id = c.user_id";
+            try (PreparedStatement ps = conn.prepareStatement(sql)){
+                ps.setObject(1, UUID.fromString(policyOwnerId));
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()){
+                    users.add(createObjectFromResultSet(rs));
+                }
+            }
+        } catch (SQLException e){
+            System.err.println(e.getMessage());
+        } finally {
+            if (conn != null) {
+                ConnectionPool.getInstance().releaseConnection(conn);
+            }
+        }
+        return users;
     }
 }

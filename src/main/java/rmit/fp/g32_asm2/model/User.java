@@ -44,6 +44,8 @@ public class User {
         this.actionLogIds = builder.actionLogIds;
     }
 
+
+
     public static class Builder {
         private String id;
         private String username;
@@ -194,11 +196,11 @@ public class User {
         this.actionLogIds.add(actionLogId);
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 

@@ -25,6 +25,11 @@ public class PolicyHolder extends Customer {
             this.dependentIds = new ArrayList<>();
         }
 
+        public Builder() {
+            super();
+            this.dependentIds = new ArrayList<>();
+        }
+
         public Builder withPolicyOwnerId(String policyOwnerId) {
             this.policyOwnerId = policyOwnerId;
             return this;

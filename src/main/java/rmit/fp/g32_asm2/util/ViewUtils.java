@@ -3,10 +3,15 @@ package rmit.fp.g32_asm2.util;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import rmit.fp.g32_asm2.auth.AuthContext;
+import rmit.fp.g32_asm2.model.User;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Stack;
 
 public class ViewUtils {
@@ -71,6 +76,28 @@ public class ViewUtils {
         } else {
             System.err.println("Primary stage is not set.");
         }
+    }
+
+    public boolean showDeleteConfirmationDialog() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Confirmation");
+        alert.setHeaderText("Re-enter your credentials to confirm deletion");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Enter your password");
+
+        alert.getDialogPane().setContent(passwordField);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK){
+            String enteredPassword = passwordField.getText();
+            User user = AuthContext.getCurrentUser();
+            if (Objects.equals(user.getHashPassword(), HashUtils.hashPassword(enteredPassword))) {
+                System.out.println(user + " can delete");
+                return true;
+            }
+        }
+        return false;
     }
 
 //    public static void main(String[] args) {

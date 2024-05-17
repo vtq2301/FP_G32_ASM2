@@ -16,6 +16,9 @@ public class Dependent extends Customer {
         public Builder(User user) {
             super(user);
         }
+        public Builder() {
+            super();
+        }
 
         public Builder withPolicyHolder(PolicyHolder policyHolder) {
             this.policyHolder = policyHolder;

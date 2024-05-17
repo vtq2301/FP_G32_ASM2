@@ -3,30 +3,23 @@ package rmit.fp.g32_asm2.controller.customer.policyOwner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import rmit.fp.g32_asm2.auth.AuthContext;
-import rmit.fp.g32_asm2.controller.common.LayoutController;
-import rmit.fp.g32_asm2.model.Claim.Claim;
+import rmit.fp.g32_asm2.auth.AuthService;
 import rmit.fp.g32_asm2.model.User;
-import rmit.fp.g32_asm2.model.customer.PolicyOwner;
-import rmit.fp.g32_asm2.model.log.MyLogRecord;
-import rmit.fp.g32_asm2.service.AdminService;
+import rmit.fp.g32_asm2.service.UserService;
 import rmit.fp.g32_asm2.service.ClaimService;
 import rmit.fp.g32_asm2.service.CustomerService;
 import rmit.fp.g32_asm2.util.ViewUtils;
-import rmit.fp.g32_asm2.view.Routes;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Objects;
 
 public class DashboardController {
     private final CustomerService customerService = new CustomerService();
     private final ClaimService claimService = new ClaimService();
-    private final AdminService adminService = new AdminService();
+    private final UserService userService = new UserService();
     private final User currentUser = AuthContext.getCurrentUser();
     @FXML private ImageView userIcon;
     @FXML private VBox mainContent;
@@ -34,6 +27,7 @@ public class DashboardController {
     @FXML
     public void initialize(){
         showClaims();
+
     }
 
     public void setMainContent(VBox content) {
@@ -47,7 +41,7 @@ public class DashboardController {
 
     private void loadContent(String fxml) {
         try {
-            VBox content = FXMLLoader.load(getClass().getResource(fxml));
+            VBox content = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));
             setMainContent(content);
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,6 +50,7 @@ public class DashboardController {
 
     @FXML
     private void showBeneficiaries(ActionEvent actionEvent) {
+        loadContent("/view/customer/policy-owner/users-view.fxml");
     }
 
     @FXML
@@ -64,7 +59,17 @@ public class DashboardController {
     }
 
     @FXML
-    private void showProfile(MouseEvent mouseEvent) {
+    private void showProfile(ActionEvent actionEvent) {
         System.out.println(currentUser);
+//        loadContent("/view/customer/policy-owner/profile.fxml");
+        loadContent("/view/common/user-info-view.fxml");
+
+    }
+
+    @FXML
+    private void logout(ActionEvent actionEvent) {
+        AuthService.logout();
+//        System.out.println(currentUser + ", " + AuthContext.getCurrentUser());
+        ViewUtils.getInstance().renderView("/view/common/login-view.fxml", "Login");
     }
 }

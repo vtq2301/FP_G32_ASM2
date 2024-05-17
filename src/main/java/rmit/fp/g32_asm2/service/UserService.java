@@ -3,6 +3,7 @@ package rmit.fp.g32_asm2.service;
 import rmit.fp.g32_asm2.DAO.Order;
 import rmit.fp.g32_asm2.DAO.UserDAO;
 import rmit.fp.g32_asm2.model.User;
+import rmit.fp.g32_asm2.model.customer.CustomerRelations;
 import rmit.fp.g32_asm2.util.HashUtils;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class AdminService {
+public class UserService {
     private final UserDAO userDAO = new UserDAO();
 
     public boolean addUser(User user) {
@@ -53,6 +54,10 @@ public class AdminService {
             return users.getFirst();
         }
         return null;
+    }
+
+    public List<User> getBeneficiaries(String policyOwnerId) {
+        return userDAO.findAllBeneficiaries(policyOwnerId);
     }
 
 }
