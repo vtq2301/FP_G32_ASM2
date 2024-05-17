@@ -7,22 +7,24 @@ import java.util.Objects;
 public class Claim {
     private String id;
     private String insuredPersonId;
-    private Date examDate;
     private List<String> documents;
-    private double amount;
+    private int amount;
     private Status status;
+    private Date claimDate;
+    private Date examDate;
 
     public enum Status {
         FILED, PROCESSING, ACCEPTED, REJECTED, REQUIRED_MORE_INFO, DONE
     }
 
-    public Claim(String id, String insuredPersonId, Date examDate, List<String> documents, double amount, Status status) {
+    public Claim(String id, String insuredPersonId, Date examDate, List<String> documents, int amount, Status status, Date claimDate) {
         this.id = id;
         this.insuredPersonId = insuredPersonId;
         this.examDate = examDate;
         this.documents = documents;
         this.amount = amount;
         this.status = status;
+        this.claimDate = claimDate;
     }
 
     public boolean addDocument(String document) {
@@ -72,8 +74,16 @@ public class Claim {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public Date getClaimDate() {
+        return claimDate;
+    }
+
+    public void setClaimDate(Date claimDate) {
+        this.claimDate = claimDate;
     }
 
     public Status getStatus() {
@@ -94,12 +104,13 @@ public class Claim {
                 Objects.equals(insuredPersonId, claim.insuredPersonId) &&
                 Objects.equals(examDate, claim.examDate) &&
                 Objects.equals(documents, claim.documents) &&
+                Objects.equals(claimDate, claim.claimDate) &&
                 status == claim.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, insuredPersonId, examDate, documents, amount, status);
+        return Objects.hash(id, insuredPersonId, examDate, documents, amount, status, claimDate);
     }
 
     @Override
@@ -107,10 +118,11 @@ public class Claim {
         return "Claim{" +
                 "id='" + id + '\'' +
                 ", insuredPersonId='" + insuredPersonId + '\'' +
-                ", examDate=" + examDate +
                 ", documents count=" + documents.size() +
                 ", amount=" + amount +
                 ", status=" + status +
+                ", examDate=" + examDate +
+                ", claimDate=" + claimDate +
                 '}';
     }
 }

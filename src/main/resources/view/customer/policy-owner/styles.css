@@ -1,22 +1,23 @@
 .button {
-    -fx-background-color: #3498db; /* Blue background */
+    -fx-background-color: black;
     -fx-text-fill: white; /* White text */
     -fx-font-size: 14px; /* Larger font */
     -fx-font-weight: bold; /* Bold text */
+    /*-fx-padding: 5 15;*/
 }
 
 .button:hover {
     -fx-background-color: #2980b9; /* Darker blue on hover */
 }
 
-.label {
-    -fx-font-size: 14px;
+.titleLabel {
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 
 .table-column-header {
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
+    /*-fx-font-weight: bold;*/
 }
 
 .table-row-cell:selected {
@@ -41,4 +42,10 @@
 
 .side-menu-button:hover {
     -fx-background-color: #1a252f; /* Darker on hover */
+}
+
+.progress-indicator {
+    -fx-max-height: 40;
+    -fx-max-width: 40;
+    -fx-background-color: #2C3E50;
 }

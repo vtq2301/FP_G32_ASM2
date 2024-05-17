@@ -10,24 +10,25 @@
 
 <?import org.controlsfx.control.tableview2.FilteredTableColumn?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="rmit.fp.g32_asm2.controller.customer.policyOwner.ClaimsViewController"
-      spacing="10">
-    <Label text="Claims" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-    <HBox>
-        <Button text="View Documents" onAction="#viewDocuments"/>
-        <Button text="File Claim" onAction="#fileClaim"/>
-        <Button text="Update Claim" onAction="#updateClaim"/>
-        <Button text="Delete Claim" onAction="#deleteClaim"/>
+      spacing="10" stylesheets="@styles.css">
+    <Text text="Claims" styleClass="titleLabel"/>
+    <HBox alignment="BASELINE_RIGHT" styleClass="hbox">
+        <Button text="View Documents" onAction="#viewDocuments" styleClass="button"/>
+        <Button text="File Claim" onAction="#fileClaim" styleClass="button" style="-fx-background-color: green"/>
+        <Button text="Update Claim" onAction="#updateClaim" styleClass="button" style="-fx-background-color: orange"/>
+        <Button text="Delete Claim" onAction="#deleteClaim" styleClass="button" style="-fx-background-color: red"/>
     </HBox>
     <FilteredTableView fx:id="claimsTable" prefHeight="400">
         <columns>
-            <FilteredTableColumn fx:id="claimIdColumn" text="Claim ID"/>
-            <FilteredTableColumn fx:id="claimStatusColumn" text="Status"/>
-            <FilteredTableColumn fx:id="claimAmountColumn" text="Amount"/>
-            <FilteredTableColumn fx:id="claimInsuredPersonIdColumn" text="Insured Person ID"/>
-            <FilteredTableColumn fx:id="claimExamDataColumn" text="Exam Date"/>
-            <FilteredTableColumn fx:id="claimFiledDateColumn" text="Filed Date"/>
+            <FilteredTableColumn fx:id="claimIdColumn" text="Claim ID" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="claimStatusColumn" text="Status" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="claimAmountColumn" text="Amount" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="claimInsuredPersonIdColumn" text="Insured Person ID" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="claimExamDataColumn" text="Exam Date" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="claimFiledDateColumn" text="Filed Date" styleClass="table-column-header"/>
         </columns>
     </FilteredTableView>
     <Pagination fx:id="pagination" />

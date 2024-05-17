@@ -30,8 +30,9 @@ public class ClaimDAO extends AbstractDAO<Claim> {
                 rs.getString("insured_person_id"),
                 rs.getDate("exam_date"),
                 Arrays.asList(documentsArr2),
-                rs.getDouble("amount"),
-                Claim.Status.valueOf(rs.getString("claim_status"))
+                rs.getInt("amount"),
+                Claim.Status.valueOf(rs.getString("claim_status")),
+                rs.getDate("created_at")
         );
     }
 
@@ -61,10 +62,11 @@ public class ClaimDAO extends AbstractDAO<Claim> {
         ps.setDouble(i++, object.getAmount());
         ps.setArray(i++, ConnectionPool.getInstance().getConnection().createArrayOf("text", object.getDocuments().toArray()));
         ps.setDate(i++, new java.sql.Date(object.getExamDate().getTime()));
-
+        // Casting claim_status type from Database
         PGobject statusObject = new PGobject();
         statusObject.setType("claim_status");
         statusObject.setValue(object.getStatus().name());
+
         ps.setObject(i, statusObject);
     }
 
@@ -75,10 +77,12 @@ public class ClaimDAO extends AbstractDAO<Claim> {
         ps.setDouble(i++, object.getAmount());
         ps.setArray(i++, ConnectionPool.getInstance().getConnection().createArrayOf("text", object.getDocuments().toArray()));
         ps.setDate(i++, new java.sql.Date(object.getExamDate().getTime()));
+        // Casting claim_status type from Database
         PGobject statusObject = new PGobject();
         statusObject.setType("claim_status");
         statusObject.setValue(object.getStatus().name());
         ps.setObject(i++, statusObject);
+
         ps.setString(i, object.getId());
     }
 

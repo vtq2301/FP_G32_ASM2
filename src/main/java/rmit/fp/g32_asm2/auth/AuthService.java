@@ -40,7 +40,7 @@ public class AuthService {
 
 
         AuthContext.setCurrentUser(user);
-        System.out.println("Logged in.");
+        System.out.println("Logged in. Welcome " + user);
         return true;
     }
 

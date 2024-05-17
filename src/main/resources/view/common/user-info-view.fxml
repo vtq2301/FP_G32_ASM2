@@ -4,31 +4,65 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
+<?import javafx.scene.control.ComboBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="rmit.fp.g32_asm2.controller.common.UserInfoController"
       spacing="10"
-        prefWidth="100" prefHeight="800"
-      alignment="CENTER_LEFT"
+      prefWidth="400" prefHeight="600"
+      alignment="CENTER"
+      stylesheets="@styles.css"
 >
-    <Label text="User Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-    <Label text="Username:"/>
-    <TextField fx:id="usernameField" disable="true"/>
-    <Label text="Password:"/>
-    <PasswordField fx:id="passwordField"/>
-    <Label text="Name:"/>
-    <TextField fx:id="nameField"/>
-    <Label text="Role:"/>
-    <TextField fx:id="roleField"/>
-    <Label text="Phone:"/>
-    <TextField fx:id="phoneField"/>
-    <Label text="Email:"/>
-    <TextField fx:id="emailField"/>
-    <Label text="Address:"/>
-    <TextField fx:id="addressField"/>
-    <Label text="Is Active:"/>
-    <TextField fx:id="isActiveField"/>
-    <Button text="Save" onAction="#saveUserInfo"/>
-    <Button text="Cancel" onAction="#cancel"/>
+    <Label text="User Information" styleClass="header"/>
+    <HBox spacing="5">
+        <Label text="Is Active:"/>
+        <ToggleSwitch fx:id="isActiveSwitch" disable="true"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Username:"/>
+        <TextField fx:id="usernameField" disable="true"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Password:"/>
+        <PasswordField fx:id="passwordField" disable="true"/>
+        <Button text="Edit" onAction="#enablePasswordField" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Name:"/>
+        <TextField fx:id="nameField" disable="true"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Role:"/>
+        <ComboBox fx:id="roleComboBox" disable="true"/>
+        <Button text="Edit" onAction="#enableRoleComboBox" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Phone:"/>
+        <TextField fx:id="phoneField" disable="true"/>
+        <Button text="Edit" onAction="#enablePhoneField" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Email:"/>
+        <TextField fx:id="emailField" disable="true"/>
+        <Button text="Edit" onAction="#enableEmailField" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Address:"/>
+        <TextField fx:id="addressField" disable="true"/>
+        <Button text="Edit" onAction="#enableAddressField" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="5">
+        <Label text="Insurance Rate:"/>
+        <TextField fx:id="rateField" disable="true"/>
+        <Button text="Edit" onAction="#enableRate" styleClass="edit-button"/>
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Save" onAction="#saveUser" style="-fx-background-color: green"/>
+        <Button text="Cancel" onAction="#cancel" style="-fx-background-color: black"/>
+    </HBox>
+
+
 </VBox>

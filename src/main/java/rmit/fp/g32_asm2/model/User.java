@@ -9,7 +9,7 @@ import java.util.Objects;
 public class User {
     private final String id;
     private final String username;
-    private final int roleId;
+    private final RolesEnum role;
     private String hashPassword;
     private String name;
     private String phoneNumber;
@@ -21,7 +21,7 @@ public class User {
     public User(User user) {
         this.id = user.id;
         this.username = user.username;
-        this.roleId = user.roleId;
+        this.role = user.role;
         this.hashPassword = user.hashPassword;
         this.name = user.name;
         this.phoneNumber = user.phoneNumber;
@@ -39,7 +39,7 @@ public class User {
         this.phoneNumber = builder.phoneNumber;
         this.email = builder.email;
         this.address = builder.address;
-        this.roleId = builder.roleId;
+        this.role = builder.role;
         this.isActive = builder.isActive;
         this.actionLogIds = builder.actionLogIds;
     }
@@ -49,7 +49,7 @@ public class User {
     public static class Builder {
         private String id;
         private String username;
-        private int roleId;
+        private RolesEnum role;
         private String hashPassword;
         private String name;
         private String phoneNumber;
@@ -61,7 +61,7 @@ public class User {
         public Builder(User user) {
             this.id = user.id;
             this.username = user.username;
-            this.roleId = user.roleId;
+            this.role = user.role;
             this.hashPassword = user.hashPassword;
             this.name = user.name;
             this.phoneNumber = user.phoneNumber;
@@ -81,7 +81,7 @@ public class User {
         }
 
         public Builder withRoleId(int roleId){
-            this.roleId = roleId;
+            this.role = RolesEnum.fromValue(roleId);
             return this;
         }
 
@@ -133,8 +133,10 @@ public class User {
     // Getters and Setters
 
     public int getRoleId() {
-        return roleId;
+        return role.getValue();
     }
+
+    public RolesEnum getRole() { return role; }
 
     public String getUsername() {
         return username;
@@ -222,7 +224,7 @@ public class User {
         String clazz = this.getClass().getSimpleName();
         return clazz +"{" +
                 "id='" + id + '\'' +
-                ", role='" + RolesEnum.fromValue(roleId) + '\'' +
+                ", role='" + role + '\'' +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

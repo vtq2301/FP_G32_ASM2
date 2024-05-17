@@ -3,15 +3,15 @@ package rmit.fp.g32_asm2.model.customer;
 import rmit.fp.g32_asm2.model.User;
 
 public class Dependent extends Customer {
-    private final PolicyHolder policyHolder;
+    private final String policyHolderId;
 
     private Dependent(Builder builder) {
         super(builder);
-        this.policyHolder = builder.policyHolder;
+        this.policyHolderId = builder.policyHolderId;
     }
 
     public static class Builder extends Customer.Builder<Builder> {
-        private PolicyHolder policyHolder;
+        private String policyHolderId;
 
         public Builder(User user) {
             super(user);
@@ -20,8 +20,8 @@ public class Dependent extends Customer {
             super();
         }
 
-        public Builder withPolicyHolder(PolicyHolder policyHolder) {
-            this.policyHolder = policyHolder;
+        public Builder withPolicyHolderId(String policyHolderId) {
+            this.policyHolderId = policyHolderId;
             return this;
         }
 
@@ -36,14 +36,14 @@ public class Dependent extends Customer {
         }
     }
 
-    public PolicyHolder getPolicyHolder() {
-        return policyHolder;
+    public String getPolicyHolderId() {
+        return policyHolderId;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                ", policyHolder=" + policyHolder.getId() +
+                ", policyHolderId=" + policyHolderId +
                 '}';
     }
 }

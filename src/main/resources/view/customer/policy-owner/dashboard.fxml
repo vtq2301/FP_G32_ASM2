@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <BorderPane
         xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
@@ -30,10 +32,12 @@
             <Button text="Profile" prefWidth="150" onAction="#showProfile" />
         </VBox>
     </left>
+
     <!-- Main Content Area -->
     <center>
         <VBox fx:id="mainContent" spacing="10">
             <!-- Main content will be injected here -->
+            <ProgressIndicator fx:id="progressIndicator" visible="false" maxHeight="40" maxWidth="40" styleClass="progress-indicator"/>
         </VBox>
     </center>
 

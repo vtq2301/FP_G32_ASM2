@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import rmit.fp.g32_asm2.auth.AuthContext;
+import rmit.fp.g32_asm2.controller.common.UserInfoController;
 import rmit.fp.g32_asm2.model.User;
 
 import java.io.IOException;
@@ -80,7 +81,7 @@ public class ViewUtils {
 
     public boolean showDeleteConfirmationDialog() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Confirmation");
+        alert.setTitle("Confirmation");
         alert.setHeaderText("Re-enter your credentials to confirm deletion");
 
         PasswordField passwordField = new PasswordField();
@@ -100,10 +101,30 @@ public class ViewUtils {
         return false;
     }
 
-//    public static void main(String[] args) {
-//        // This main method is just for testing purposes
-//        ViewUtils viewUtils = ViewUtils.getInstance();
-//        viewUtils.setPrimaryStage(new Stage());
-//        viewUtils.renderView("/view/yourView.fxml"); // Replace with your FXML path
-//    }
+    public static void loadUserInfoView(Class<?> clazz, User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(clazz.getResource("/view/common/user-info-view.fxml")));
+            Parent root = loader.load();
+            UserInfoController controller = loader.getController();
+            if (user != null)
+                controller.setUser(user);
+
+
+            Stage stage = new Stage();
+            stage.setTitle("User Info");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }

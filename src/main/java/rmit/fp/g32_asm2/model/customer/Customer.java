@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Customer extends User {
-    protected final double rate;
+    protected double rate;
     protected List<Claim> claims;
 
     public Customer(User user, double rate) {
@@ -53,6 +53,10 @@ public abstract class Customer extends User {
 
     public double getRate() {
         return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
     public List<Claim> getClaims() {

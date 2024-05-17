@@ -8,17 +8,19 @@
 <?import org.controlsfx.control.tableview2.FilteredTableColumn?>
 <?import org.controlsfx.control.tableview2.FilteredTableView?>
 
+<?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="rmit.fp.g32_asm2.controller.customer.policyOwner.UsersViewController"
       spacing="10" stylesheets="@styles.css">
-    <Label text="Your Beneficiaries" styleClass="label"/>
+    <Text text="Your Beneficiaries" styleClass="titleLabel"/>
     <HBox alignment="BASELINE_RIGHT" styleClass="hbox">
         <Button text="View Info" onAction="#viewInfo" styleClass="button"/>
-        <Button text="Add" onAction="#addUser" styleClass="button"/>
-        <Button text="Update" onAction="#updateUser" styleClass="button"/>
-        <Button text="Delete" onAction="#deleteUser" styleClass="button"/>
+        <Button text="Add" onAction="#addUser" styleClass="button" style="-fx-background-color: green"/>
+        <Button text="Update" onAction="#updateUser" styleClass="button" style="-fx-background-color: orange"/>
+        <Button text="Delete" onAction="#deleteUser" styleClass="button" style="-fx-background-color: red"/>
     </HBox>
-    <FilteredTableView fx:id="usersTable" prefHeight="400">
+
+    <FilteredTableView  fx:id="usersTable" prefHeight="400">
         <columns>
             <FilteredTableColumn fx:id="idColumn" text="User ID" prefWidth="100" styleClass="table-column-header"/>
             <FilteredTableColumn fx:id="nameColumn" text="Name" prefWidth="150" styleClass="table-column-header"/>
@@ -26,7 +28,7 @@
             <FilteredTableColumn fx:id="phoneColumn" text="Phone" prefWidth="120" styleClass="table-column-header"/>
             <FilteredTableColumn fx:id="emailColumn" text="Email" prefWidth="200" styleClass="table-column-header"/>
             <FilteredTableColumn fx:id="addressColumn" text="Address" prefWidth="200" styleClass="table-column-header"/>
-            <FilteredTableColumn fx:id="isActiveColumn" text="Is active?" prefWidth="80" styleClass="table-column-header"/>
+            <FilteredTableColumn fx:id="isActiveColumn" text="Active?" styleClass="table-column-header"/>
         </columns>
     </FilteredTableView>
     <Pagination fx:id="pagination" />

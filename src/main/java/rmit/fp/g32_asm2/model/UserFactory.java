@@ -50,12 +50,12 @@ public class UserFactory {
         String policyOwnerId = cr.getPolicyOwnerId();
         double insuranceRate = cr.getInsuranceRate();
 
-        List<String> dependentIds = customerService.findDependentsByPolicyHolderId(user.getId());
-        List<Claim> claims = claimService.findClaimsByUserId(user.getId());
+//        List<String> dependentIds = customerService.findDependentsByPolicyHolderId(user.getId());
+//        List<Claim> claims = claimService.findClaimsByUserId(user.getId());
         return new PolicyHolder.Builder(user)
                 .withPolicyOwnerId(policyOwnerId)
-                .withDependentIds(dependentIds)
-                .withClaims(claims)
+//                .withDependentIds(dependentIds)
+//                .withClaims(claims)
                 .withRate(insuranceRate)
                 .build();
     }
@@ -64,12 +64,12 @@ public class UserFactory {
         CustomerRelations cr = customerService.findOneByUserId(user.getId());
         String policyHolderId = cr.getPolicyHolderId();
         User policyHolderUser = userService.getUserById(policyHolderId);
-        PolicyHolder policyHolder = createPolicyHolder(policyHolderUser);
+//        PolicyHolder policyHolder = createPolicyHolder(policyHolderUser);
 
-        List<Claim> claims = claimService.findClaimsByUserId(user.getId());
+//        List<Claim> claims = claimService.findClaimsByUserId(user.getId());
         return new Dependent.Builder(user)
-                .withPolicyHolder(policyHolder)
-                .withClaims(claims)
+                .withPolicyHolderId(policyHolderUser.getId())
+//                .withClaims(claims)
                 .build();
     }
 

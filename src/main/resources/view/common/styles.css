@@ -1,0 +1,25 @@
+.header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: white;
+}
+
+.edit-button {
+    -fx-background-color: #3498DB; /* Blue */
+}
+
+.save-button {
+    -fx-background-color: #27AE60; /* Green */
+}
+
+.cancel-button {
+    -fx-background-color: #E74C3C; /* Red */
+}

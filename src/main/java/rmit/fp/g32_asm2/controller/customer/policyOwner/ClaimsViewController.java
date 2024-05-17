@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.tableview2.FilteredTableColumn;
@@ -48,12 +49,13 @@ public class ClaimsViewController {
 
     @FXML
     private Pagination pagination;
+    @FXML private Label yearlyInsurancePay;
 
-    private ObservableList<Claim> claimData = FXCollections.observableArrayList();
+    private final ObservableList<Claim> claimData = FXCollections.observableArrayList();
     private FilteredList<Claim> filteredData;
     private static final int ROWS_PER_PAGE = 15;
-    private ClaimService claimService = new ClaimService();
-    private User currentUser = AuthContext.getCurrentUser();
+    private final ClaimService claimService = new ClaimService();
+    private final User currentUser = AuthContext.getCurrentUser();
 
     @FXML
     private void initialize() {
@@ -63,42 +65,24 @@ public class ClaimsViewController {
         claimAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         claimInsuredPersonIdColumn.setCellValueFactory(new PropertyValueFactory<>("insuredPersonId"));
         claimExamDataColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
-        claimFiledDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate")); // Assuming filed date is exam date for demo purposes
+        claimFiledDateColumn.setCellValueFactory(new PropertyValueFactory<>("claimDate"));
 
 
         List<Claim> claims = claimService.getBeneficiaryClaims(currentUser.getId());
         claimData.setAll(claims);
-        // Add sample data to the table.
-//        claimData.addAll(
-//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE)
-//        );
+//        double sum = claims.stream()
+//                .filter(c -> c.getStatus().equals(Claim.Status.ACCEPTED))
+//                .mapToDouble(Claim::getAmount)
+//                .sum();
+//        yearlyInsurancePay.setText(Double.toString(sum));
 
         // Create a FilteredList wrapping the ObservableList.
         filteredData = new FilteredList<>(claimData, p -> true);
+        double sum2 = filteredData.stream()
+//                .filter(c -> c.getStatus().equals(Claim.Status.ACCEPTED))
+                .mapToDouble(Claim::getAmount)
+                .sum();
+        yearlyInsurancePay.setText(Double.toString(sum2));
 
         // Bind the predicate and comparator properties.
         filteredData.predicateProperty().bind(claimsTable.predicateProperty());
