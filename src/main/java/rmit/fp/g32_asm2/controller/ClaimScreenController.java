@@ -91,7 +91,7 @@ public class ClaimScreenController implements Initializable {
         }
     }
     private void setBtnSumUp(){
-        claimData.setAll(ClaimDatabase.getClaimsByStatus("New"));
+        claimData.setAll(ClaimDatabase.getClaimsByStatus("Approved"));
         tvClaims.setItems(claimData);
         double s = 0;
         for (int i = 0; i <claimData.size(); i++){

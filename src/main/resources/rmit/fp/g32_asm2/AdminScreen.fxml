@@ -24,13 +24,14 @@
         <padding>
             <Insets left="20.0" right="20.0" />
         </padding>
-        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePolicyHolderButton" prefHeight="30.0" text="Policy Holder" />
-        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDependentButton" prefHeight="30.0" text="Dependent" GridPane.columnIndex="1" />
-        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInsuranceManagerButton" prefHeight="30.0" text="Insurance Manager" GridPane.rowIndex="1" />
-        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInsuranceSurveyorsButton" prefHeight="30.0" text="Insurance Suveyor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClaimButton" prefHeight="30.0" text="Claim" GridPane.rowIndex="2" />
-        <Button layoutX="50.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleAdminButton" prefHeight="30.0" text="Admin" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePolicyHolderButton" prefHeight="30.0" text="Policy Holder" GridPane.columnIndex="1" />
+        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDependentButton" prefHeight="30.0" text="Dependent" GridPane.rowIndex="1" />
+        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInsuranceManagerButton" prefHeight="30.0" text="Insurance Manager" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInsuranceSurveyorsButton" prefHeight="30.0" text="Insurance Suveyor" GridPane.rowIndex="2" />
+        <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClaimButton" prefHeight="30.0" text="Claim" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button layoutX="50.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleAdminButton" prefHeight="30.0" text="Admin" GridPane.rowIndex="3" />
         <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="30.0" text="LOGOUT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePolicyOwnerButton" prefHeight="30.0" text="Policy Owner" />
     </GridPane>
     <Label fx:id="labelAdmin" layoutX="185.0" layoutY="14.0" text="Admin System">
         <font>

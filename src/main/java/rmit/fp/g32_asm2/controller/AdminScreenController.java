@@ -16,7 +16,20 @@ public class AdminScreenController{
     @FXML
     private AnchorPane anchorPane;
 
+    @FXML
+    protected void handlePolicyOwnerButton(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/rmit/fp/g32_asm2/PolicyOwnerScreen.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) anchorPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException | IllegalStateException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
 
+    }
     @FXML
     protected void handlePolicyHolderButton(ActionEvent event){
             try {
