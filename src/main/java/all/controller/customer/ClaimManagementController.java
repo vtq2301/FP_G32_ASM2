@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Optional;
 
 public class ClaimManagementController {
@@ -198,11 +197,8 @@ public class ClaimManagementController {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        LocalDate claimDateLocal = selectedClaim.getClaimDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate examDateLocal = selectedClaim.getExamDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-        DatePicker claimDatePicker = new DatePicker(claimDateLocal);
-        DatePicker examDatePicker = new DatePicker(examDateLocal);
+        DatePicker claimDatePicker = new DatePicker(convertToLocalDate(selectedClaim.getClaimDate()));
+        DatePicker examDatePicker = new DatePicker(convertToLocalDate(selectedClaim.getExamDate()));
         TextField insuredPersonField = new TextField(selectedClaim.getInsuredPerson());
         TextField documentsField = new TextField(String.join(",", selectedClaim.getDocuments()));
         TextField claimAmountField = new TextField(String.valueOf(selectedClaim.getClaimAmount()));
@@ -296,5 +292,13 @@ public class ClaimManagementController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public LocalDate convertToLocalDate(java.sql.Date sqlDate) {
+        return sqlDate.toLocalDate();
+    }
+
+    public LocalDate convertToLocalDate(java.util.Date utilDate) {
+        return new java.sql.Date(utilDate.getTime()).toLocalDate();
     }
 }

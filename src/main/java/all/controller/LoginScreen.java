@@ -83,6 +83,9 @@ public class LoginScreen {
                 case "InsuranceManager":
                     ((InsuranceManager) controller).loadData(user);
                     break;
+                case "Admin":
+                    ((AdminScreenController) controller).loadData(user);
+                    break;
             }
 
             Stage stage = (Stage) usernameField.getScene().getWindow();
