@@ -93,7 +93,7 @@ public class InsuranceManagerScreenController implements Initializable {
              PreparedStatement ps = conn.prepareStatement(query)){
             ps.setString(1, id);
             ps.setString(2, tfUsername.getText());
-            ps.setString(3, "1");
+            ps.setString(3, tfPassword.getText());
             ps.setString(4, "InsuranceManager");
             ps.setString(5, tfFullName.getText());
             ps.setString(6, tfAddress.getText());

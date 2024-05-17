@@ -78,23 +78,14 @@ public class DependentScreenController implements Initializable {
     }
 
     private void handleAddDependents() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Dependent");
-        dialog.setHeaderText("Create a New Dependent");
-        dialog.setContentText("Please enter the dependent information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User dependent = new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText(),tfPolicyHolderId.getText());
-            list.addAll(dependent);
-            addDependents(dependent);
-            ActionLogger actionLogger = new ActionLogger();
-            actionLogger.logAction(dependent.getId(), "Add Dependent", "Added new Dependent" + description,null);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+        User dependent = new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText(),tfPolicyHolderId.getText());
+        list.addAll(dependent);
+        addDependents(dependent);
+        try {
+            loadData();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void addDependents(User dependent) {
@@ -137,13 +128,6 @@ public class DependentScreenController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-        TextInputDialog dialog = new TextInputDialog(selectedDependent.getId());
-        dialog.setTitle("Update dependent");
-        dialog.setHeaderText("Edit the dependent");
-        dialog.setContentText("Enter the new information:");
-
-        Optional<String> result = dialog.showAndWait();
 
         updateDependents(selectedDependent);
         try {

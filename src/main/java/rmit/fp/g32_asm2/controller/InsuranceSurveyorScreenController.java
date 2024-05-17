@@ -74,23 +74,10 @@ public class InsuranceSurveyorScreenController implements Initializable {
         handleDeleteInsuranceSurveyors();
     }
     private void handleAddInsuranceSurveyors() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Insurance Surveyor");
-        dialog.setHeaderText("Create a New Insurance Surveyor");
-        dialog.setContentText("Please enter the Insurance Surveyor information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User insuranceSurveyor = new User(null,tfUsername.getText(),"1","InsuranceSurveyor",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
-            list.addAll(insuranceSurveyor);
-            addInsuranceSurveyors(insuranceSurveyor);
-            ActionLogger actionLogger = new ActionLogger();
-            actionLogger.logAction(insuranceSurveyor.getId(), "Add InsuranceSurveyor", "Added new InsuranceSurveyor" + description,null);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+        User insuranceSurveyor = new User(null,tfUsername.getText(),"1","InsuranceSurveyor",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
+        list.addAll(insuranceSurveyor);
+        addInsuranceSurveyors(insuranceSurveyor);
+        loadData();
     }
 
     private void addInsuranceSurveyors(User insuranceSurveyor) {
@@ -128,20 +115,8 @@ public class InsuranceSurveyorScreenController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-        TextInputDialog dialog = new TextInputDialog(selectedInsuranceSurveyor.getId());
-        dialog.setTitle("Update Insurance Surveyor");
-        dialog.setHeaderText("Edit the Insurance Surveyor");
-        dialog.setContentText("Enter the new information:");
-
-        Optional<String> result = dialog.showAndWait();
-
         updateInsuranceSurveyors();
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        loadData();
     }
 
     private void updateInsuranceSurveyors() {

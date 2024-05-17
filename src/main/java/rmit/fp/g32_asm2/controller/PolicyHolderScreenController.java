@@ -103,21 +103,10 @@ public class PolicyHolderScreenController implements Initializable {
         colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
     }
     private void handleAddPolicyHolder(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Policy Holder");
-        dialog.setHeaderText("Create a New Policy Holder");
-        dialog.setContentText("Please enter the policy holder information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User policyHolder = new User(null,tfUsername.getText(),"1","PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
-            list.addAll(policyHolder);
-            addPolicyHolders(policyHolder);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+        User policyHolder = new User(null,tfUsername.getText(),"1","PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
+        list.addAll(policyHolder);
+        addPolicyHolders(policyHolder);
+        loadData();
     }
     public void addPolicyHolders(User policyHolder){
         String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
@@ -174,20 +163,8 @@ public class PolicyHolderScreenController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-        TextInputDialog dialog = new TextInputDialog(selectedPolicyHolder.getId());
-        dialog.setTitle("Update Policy Holder");
-        dialog.setHeaderText("Edit the Policy Holder");
-        dialog.setContentText("Enter the new information:");
-
-        Optional<String> result = dialog.showAndWait();
-
         updatePolicyHolder(selectedPolicyHolder);
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        loadData();
     }
     public void deletePolicyHolder(String id) {
         String sql = "DELETE FROM users WHERE id = ?";
@@ -237,11 +214,7 @@ public class PolicyHolderScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+       loadData();
     }
     int index = -1;
     @FXML
