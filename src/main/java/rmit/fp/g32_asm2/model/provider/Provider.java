@@ -19,7 +19,7 @@ public abstract class Provider {
         return id;
     }
 
-    public static void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 

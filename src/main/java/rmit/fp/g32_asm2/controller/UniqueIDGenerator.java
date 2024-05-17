@@ -10,7 +10,7 @@ import java.util.Random;
 public class UniqueIDGenerator {
     private static final SecureRandom random = new SecureRandom();
 
-    // Generates a random user ID in the "c-10numbers" format
+
     public static String generateUniqueID(Connection connection) {
         String generatedID;
         do {

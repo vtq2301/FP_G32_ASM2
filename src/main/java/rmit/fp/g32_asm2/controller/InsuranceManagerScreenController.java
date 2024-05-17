@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import rmit.fp.g32_asm2.auth.ActionLogger;
 import rmit.fp.g32_asm2.auth.InsuranceManagerDatabase;
 import rmit.fp.g32_asm2.database.dbConnection;
-import rmit.fp.g32_asm2.model.provider.InsuranceManager;
+import rmit.fp.g32_asm2.model.User;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -28,36 +28,39 @@ public class InsuranceManagerScreenController implements Initializable {
     @FXML
     private TextField tfID;
     @FXML
-    private TextField tfName;
+    private TextField tfFullName;
     @FXML
-    private TextField tfPhone;
+    private TextField tfPhoneNumber;
     @FXML
     private TextField tfAddress;
     @FXML
-    private TextField tfEmail;
+    private TextField tfPassword;
     @FXML
-    private TableView<InsuranceManager> tvInsuranceManager = new TableView<InsuranceManager>();
+    private TextField tfUsername;
     @FXML
-    private TableColumn<InsuranceManager,String> colId;
+    private TextField tfRole;
     @FXML
-    private TableColumn<InsuranceManager, String> colName;
+    private TableView<User> tvInsuranceManager = new TableView<User>();
     @FXML
-    private TableColumn<InsuranceManager, String> colPhone;
+    private TableColumn<User,String> colId;
     @FXML
-    private TableColumn<InsuranceManager, String> colAddress;
+    private TableColumn<User, String> colUsername;
     @FXML
-    private TableColumn<InsuranceManager, String> colEmail;
+    private TableColumn<User, String> colPassword;
     @FXML
-    private Button btnAdd;
+    private TableColumn<User, String> colRole;
     @FXML
-    private Button btnUpdate;
+    private TableColumn<User, String> colFullName;
     @FXML
-    private Button btnDelete;
+    private TableColumn<User, String> colPhoneNumber;
+    @FXML
+    private TableColumn<User, String> colAddress;
+
     @FXML
     private Button btnBack;
 
     private static final dbConnection dbConn = new dbConnection();
-    private final ObservableList<InsuranceManager> list = FXCollections.observableArrayList();
+    private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
         handleAddInsuranceManagers();
@@ -70,7 +73,7 @@ public class InsuranceManagerScreenController implements Initializable {
         dialog.setContentText("Please enter the Insurance Manager information:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(description -> {
-            InsuranceManager insuranceManager = new InsuranceManager(null,tfName.getText(),tfPhone.getText(),tfAddress.getText(),tfEmail.getText());
+            User insuranceManager = new User(null,tfUsername.getText(),"1","InsuranceManager",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
             list.addAll(insuranceManager);
             addInsuranceManagers(insuranceManager);
             ActionLogger actionLogger = new ActionLogger();
@@ -83,19 +86,21 @@ public class InsuranceManagerScreenController implements Initializable {
         });
     }
 
-    private void addInsuranceManagers(InsuranceManager insuranceManager) {
-        String query = "INSERT INTO insurance_managers VALUES (?,?,?,?,?)";
+    private void addInsuranceManagers(User insuranceManager) {
+        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
         String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(query)){
             ps.setString(1, id);
-            ps.setString(2, tfName.getText());
-            ps.setString(3, tfPhone.getText());
-            ps.setString(4, tfAddress.getText());
-            ps.setString(5, tfEmail.getText());
+            ps.setString(2, tfUsername.getText());
+            ps.setString(3, "1");
+            ps.setString(4, "InsuranceManager");
+            ps.setString(5, tfFullName.getText());
+            ps.setString(6, tfAddress.getText());
+            ps.setString(7, tfPhoneNumber.getText());
             int affectedRows = ps.executeUpdate();
             if (affectedRows > 0) {
-                InsuranceManager.setId(id);
+                insuranceManager.setId(id);
             } else {
                 throw new SQLException("Creating InsuranceManager failed, no rows affected.");
             }
@@ -111,7 +116,7 @@ public class InsuranceManagerScreenController implements Initializable {
     }
 
     private void handleUpdateInsuranceManagers() {
-        InsuranceManager selectedInsuranceManager = tvInsuranceManager.getSelectionModel().getSelectedItem();
+        User selectedInsuranceManager = tvInsuranceManager.getSelectionModel().getSelectedItem();
         if (selectedInsuranceManager == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No InsuranceManager Selected");
@@ -136,15 +141,21 @@ public class InsuranceManagerScreenController implements Initializable {
         }
     }
 
-    private void updateInsuranceManagers(InsuranceManager insuranceManager) {
-        String sql = "UPDATE insurance_managers SET name = ?, phone = ?, address = ?, email = ? WHERE id = ?";
+    private void updateInsuranceManagers(User insuranceManager) {
+        String sql = "UPDATE users SET username = ?," +
+                " password_hash = ?, role = ?" +
+                " full_name = ?," +
+                " address = ?," +
+                " phone_number = ? WHERE id = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfName.getText());
-            ps.setString(2, tfPhone.getText());
-            ps.setString(3, tfAddress.getText());
-            ps.setString(4, tfEmail.getText());
-            ps.setString(5, tfID.getText());
+            ps.setString(1, tfUsername.getText());
+            ps.setString(2, tfPassword.getText());
+            ps.setString(3, tfRole.getText());
+            ps.setString(4, tfFullName.getText());
+            ps.setString(5, tfAddress.getText());
+            ps.setString(6, tfPhoneNumber.getText());
+            ps.setString(7, tfID.getText());
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("Update failed, no rows affected.");
             }
@@ -159,7 +170,7 @@ public class InsuranceManagerScreenController implements Initializable {
     }
 
     private void handleDeleteInsuranceManagers() throws Exception {
-        InsuranceManager selectedInsuranceManager = tvInsuranceManager.getSelectionModel().getSelectedItem();
+        User selectedInsuranceManager = tvInsuranceManager.getSelectionModel().getSelectedItem();
         if (selectedInsuranceManager != null) {
             deleteInsuranceManagers(selectedInsuranceManager.getId());
             loadData();
@@ -174,7 +185,7 @@ public class InsuranceManagerScreenController implements Initializable {
     }
 
     private void deleteInsuranceManagers(String id) {
-        String sql = "DELETE FROM InsuranceManagers WHERE id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, tfID.getText());
@@ -201,17 +212,19 @@ public class InsuranceManagerScreenController implements Initializable {
             return null;
         }
     }
-    private void loadData() throws Exception {
+    private void loadData() {
         setCellValueInsuranceManagers();
         list.setAll(InsuranceManagerDatabase.getInsuranceManagerList());
         tvInsuranceManager.setItems(list);
     }
     public void setCellValueInsuranceManagers(){
-        colId.setCellValueFactory(new PropertyValueFactory<InsuranceManager, String>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<InsuranceManager, String>("name"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<InsuranceManager, String>("phone"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<InsuranceManager, String>("email"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<InsuranceManager, String>("address"));
+        colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+        colFullName.setCellValueFactory(new PropertyValueFactory<User,String>("fullName"));
+        colPhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNumber"));
+        colUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
+        colRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
     }
 
     private void setBtnBack() {
@@ -238,17 +251,15 @@ public class InsuranceManagerScreenController implements Initializable {
             return;
         }
         tfID.setText(colId.getCellData(index).toString());
-        tfName.setText(colName.getCellData(index).toString());
-        tfPhone.setText(colPhone.getCellData(index).toString());
-        tfEmail.setText(colEmail.getCellData(index).toString());
+        tfUsername.setText(colUsername.getCellData(index).toString());
+        tfPassword.setText(colPassword.getCellData(index).toString());
+        tfRole.setText(colRole.getCellData(index).toString());
         tfAddress.setText(colAddress.getCellData(index).toString());
+        tfFullName.setText(colFullName.getCellData(index).toString());
+        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        loadData();
     }
 }

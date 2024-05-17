@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import rmit.fp.g32_asm2.auth.ActionLogger;
 import rmit.fp.g32_asm2.auth.DependentDatabase;
 import rmit.fp.g32_asm2.database.dbConnection;
-import rmit.fp.g32_asm2.model.customer.Dependent;
+import rmit.fp.g32_asm2.model.User;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -28,25 +28,39 @@ public class DependentScreenController implements Initializable {
     @FXML
     private TextField tfID;
     @FXML
-    private TextField tfName;
+    private TextField tfUsername;
     @FXML
-    private TextField tfPhone;
+    private TextField tfPassword;
+    @FXML
+    private TextField tfPhoneNumber;
+    @FXML
+    private TextField tfFullName;
+    @FXML
+    private TextField tfRole;
+    @FXML
+    private TextField tfPolicyHolderId;
     @FXML
     private TextField tfAddress;
+
     @FXML
-    private TextField tfEmail;
+    private TableView<User> tvDependent = new TableView<User>();
     @FXML
-    private TableView<Dependent> tvDependent = new TableView<Dependent>();
+    private TableColumn<User,String> colId;
     @FXML
-    private TableColumn<Dependent,String> colId;
+    private TableColumn<User, String> colUsername;
     @FXML
-    private TableColumn<Dependent, String> colName;
+    private TableColumn<User, String> colPassword;
     @FXML
-    private TableColumn<Dependent, String> colPhone;
+    private TableColumn<User, String> colRole;
     @FXML
-    private TableColumn<Dependent, String> colAddress;
+    private TableColumn<User, String> colFullName;
     @FXML
-    private TableColumn<Dependent, String> colEmail;
+    private TableColumn<User, String> colPhoneNumber;
+    @FXML
+    private TableColumn<User, String> colAddress;
+    @FXML
+    private TableColumn<User, String> colPolicyHolderId;
+
     @FXML
     private Button btnAdd;
     @FXML
@@ -57,7 +71,7 @@ public class DependentScreenController implements Initializable {
     private Button btnBack;
 
     private static final dbConnection dbConn = new dbConnection();
-    private final ObservableList<Dependent> list = FXCollections.observableArrayList();
+    private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
         handleAddDependents();
@@ -70,7 +84,7 @@ public class DependentScreenController implements Initializable {
         dialog.setContentText("Please enter the dependent information:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(description -> {
-            Dependent dependent = new Dependent(null,tfName.getText(),tfPhone.getText(),tfAddress.getText(),tfEmail.getText());
+            User dependent = new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText(),tfPolicyHolderId.getText());
             list.addAll(dependent);
             addDependents(dependent);
             ActionLogger actionLogger = new ActionLogger();
@@ -83,16 +97,19 @@ public class DependentScreenController implements Initializable {
         });
     }
 
-    private void addDependents(Dependent dependent) {
-        String query = "INSERT INTO dependents VALUES (?,?,?,?,?)";
+    private void addDependents(User dependent) {
+        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)";
         String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(query)){
             ps.setString(1, id);
-            ps.setString(2, tfName.getText());
-            ps.setString(3, tfPhone.getText());
-            ps.setString(4, tfAddress.getText());
-            ps.setString(5, tfEmail.getText());
+            ps.setString(2, tfUsername.getText());
+            ps.setString(3, tfPassword.getText());
+            ps.setString(4, "Dependent");
+            ps.setString(5, tfFullName.getText());
+            ps.setString(6, tfPhoneNumber.getText());
+            ps.setString(7, tfAddress.getText());
+            ps.setString(8, tfPolicyHolderId.getText());
             int affectedRows = ps.executeUpdate();
             if (affectedRows > 0) {
                 dependent.setId(id);
@@ -111,7 +128,7 @@ public class DependentScreenController implements Initializable {
     }
 
     private void handleUpdateDependents() {
-        Dependent selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
+        User selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
         if (selectedDependent == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Dependent Selected");
@@ -136,15 +153,18 @@ public class DependentScreenController implements Initializable {
         }
     }
 
-    private void updateDependents(Dependent dependent) {
-        String sql = "UPDATE dependents SET name = ?, phone = ?, address = ?, email = ? WHERE id = ?";
+    private void updateDependents(User dependent) {
+        String sql = "UPDATE users SET username = ?, password = ?, role = ?, full_name = ?,address = ?, phone_number = ?, policy_holder_id = ? WHERE id = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfName.getText());
-            ps.setString(2, tfPhone.getText());
-            ps.setString(3, tfAddress.getText());
-            ps.setString(4, tfEmail.getText());
-            ps.setString(5, tfID.getText());
+            ps.setString(1, tfUsername.getText());
+            ps.setString(2, tfPassword.getText());
+            ps.setString(3, tfRole.getText());
+            ps.setString(4, tfFullName.getText());
+            ps.setString(5, tfAddress.getText());
+            ps.setString(6, tfPhoneNumber.getText());
+            ps.setString(7, tfPolicyHolderId.getText());
+            ps.setString(8, tfID.getText());
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("Update failed, no rows affected.");
             }
@@ -159,7 +179,7 @@ public class DependentScreenController implements Initializable {
     }
 
     private void handleDeleteDependents() throws Exception {
-        Dependent selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
+        User selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
         if (selectedDependent != null) {
             deleteDependents(selectedDependent.getId());
             loadData();
@@ -174,7 +194,7 @@ public class DependentScreenController implements Initializable {
     }
 
     private void deleteDependents(String id) {
-        String sql = "DELETE FROM dependents WHERE id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, tfID.getText());
@@ -201,17 +221,20 @@ public class DependentScreenController implements Initializable {
             return null;
         }
     }
-    private void loadData() throws Exception {
+    private void loadData() {
         setCellValueDependents();
         list.setAll(DependentDatabase.getDependentList());
         tvDependent.setItems(list);
     }
     public void setCellValueDependents(){
-        colId.setCellValueFactory(new PropertyValueFactory<Dependent, String>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<Dependent, String>("name"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<Dependent, String>("phone"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<Dependent, String>("email"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<Dependent, String>("address"));
+        colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+        colFullName.setCellValueFactory(new PropertyValueFactory<User,String>("fullName"));
+        colPhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNumber"));
+        colUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
+        colRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
+        colPolicyHolderId.setCellValueFactory(new PropertyValueFactory<User,String>("policyHolderId"));
     }
 
     private void setBtnBack() {
@@ -238,17 +261,16 @@ public class DependentScreenController implements Initializable {
             return;
         }
         tfID.setText(colId.getCellData(index).toString());
-        tfName.setText(colName.getCellData(index).toString());
-        tfPhone.setText(colPhone.getCellData(index).toString());
-        tfEmail.setText(colEmail.getCellData(index).toString());
+        tfUsername.setText(colUsername.getCellData(index).toString());
+        tfPassword.setText(colPassword.getCellData(index).toString());
+        tfRole.setText(colRole.getCellData(index).toString());
         tfAddress.setText(colAddress.getCellData(index).toString());
+        tfFullName.setText(colFullName.getCellData(index).toString());
+        tfPolicyHolderId.setText(colPolicyHolderId.getCellData(index).toString());
+        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        loadData();
     }
 }

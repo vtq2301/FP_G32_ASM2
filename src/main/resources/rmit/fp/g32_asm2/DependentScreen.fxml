@@ -10,21 +10,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.DependentScreenController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rmit.fp.g32_asm2.controller.DependentScreenController">
    <children>
-      <TableView fx:id="tvDependent" prefHeight="254.0" prefWidth="600.0">
-        <columns>
-          <TableColumn fx:id="colId" prefWidth="79.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="109.0" text="Name" />
-            <TableColumn fx:id="colPhone" prefWidth="134.0" text="Phone" />
-            <TableColumn fx:id="colAddress" prefWidth="139.5" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="148.5" text="Email" />
-        </columns>
+      <TableView fx:id="tvDependent" onMouseClicked="#getSelected" prefHeight="319.0" prefWidth="800.0" style="-fx-background-color: beige;">
+          <columns>
+              <TableColumn fx:id="colId" style="-fx-background-color: beige;" text="ID" />
+              <TableColumn fx:id="colUsername" prefWidth="120.0" style="-fx-background-color: beige;" text="Username" />
+              <TableColumn fx:id="colPassword" prefWidth="130.0" style="-fx-background-color: beige;" text="Password" />
+            <TableColumn fx:id="colRole" style="-fx-background-color: beige;" text="Role" />
+              <TableColumn fx:id="colFullName" prefWidth="130.0" style="-fx-background-color: beige;" text="FullName" />
+              <TableColumn fx:id="colAddress" prefWidth="150.0" style="-fx-background-color: beige;" text="Address" />
+            <TableColumn fx:id="colPhoneNumber" prefWidth="100.0" style="-fx-background-color: beige;" text="Phone Number" />
+            <TableColumn fx:id="colPolicyHolderId" prefWidth="100.0" style="-fx-background-color: beige;" text="Policy Holder Id" />
+          </columns>
       </TableView>
-      <GridPane layoutX="14.0" layoutY="269.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="185.0" prefWidth="530.0">
+      <GridPane layoutX="14.0" layoutY="327.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="262.0" prefWidth="622.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.5" minWidth="10.0" prefWidth="66.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.5" minWidth="10.0" prefWidth="385.5" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.5" minWidth="10.0" prefWidth="88.5" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.5" minWidth="10.0" prefWidth="382.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="40.5" />
         </columnConstraints>
         <rowConstraints>
@@ -34,23 +37,32 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleAddButtonAction" text="Add" GridPane.columnIndex="2" />
             <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleUpdateButtonAction" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDeleteButtonAction" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label text="ID" />
-            <Label text="Name" GridPane.rowIndex="1" />
-            <Label text="Phone" GridPane.rowIndex="2" />
-            <Label text="Address " GridPane.rowIndex="3" />
-            <Label text="Email" GridPane.rowIndex="4" />
-            <TextField fx:id="tfID" disable="true" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" />
-            <TextField fx:id="tfName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="tfPhone" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="tfEmail" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Username" GridPane.rowIndex="1" />
+            <Label text="Password" GridPane.rowIndex="2" />
+            <Label text="FullName" GridPane.rowIndex="4" />
+            <Label text="Address" GridPane.rowIndex="5" />
+            <TextField fx:id="tfID" disable="true" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="ID" GridPane.columnIndex="1" />
+            <TextField fx:id="tfUsername" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfPassword" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfRole" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Role" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfFullName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Fullname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="tfPhoneNumber" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Phone" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="tfPolicyHolderId" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Policy Holder ID" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="Phone" GridPane.rowIndex="6" />
+            <Label text="Role" GridPane.rowIndex="3" />
+            <Label text="Policy Holder ID" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Button fx:id="btnBack" layoutX="515.0" layoutY="441.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="71.0" text="Back" />
+      <Button fx:id="btnBack" layoutX="715.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="71.0" text="Back" />
    </children>
 </AnchorPane>

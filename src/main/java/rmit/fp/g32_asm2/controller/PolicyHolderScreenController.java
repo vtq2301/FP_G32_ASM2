@@ -11,10 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import rmit.fp.g32_asm2.auth.ActionLogger;
 import rmit.fp.g32_asm2.auth.PolicyHolderDatabase;
 import rmit.fp.g32_asm2.database.dbConnection;
-import rmit.fp.g32_asm2.model.customer.PolicyHolder;
+import rmit.fp.g32_asm2.model.User;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -28,29 +27,39 @@ public class PolicyHolderScreenController implements Initializable {
     @FXML
     private TextField tfID;
     @FXML
-    private TextField tfName;
+    private TextField tfFullName;
     @FXML
-    private TextField tfPhone;
+    private TextField tfPhoneNumber;
     @FXML
     private TextField tfAddress;
     @FXML
-    private TextField tfEmail;
+    private TextField tfPassword;
     @FXML
-    private TableView<PolicyHolder> tvPolicyHolder = new TableView<PolicyHolder>();
+    private TextField tfUsername;
     @FXML
-    private TableColumn<PolicyHolder,String> colId;
+    private TextField tfRole;
+
     @FXML
-    private TableColumn<PolicyHolder, String> colName;
+    private TableView<User> tvPolicyHolder = new TableView<User>();
     @FXML
-    private TableColumn<PolicyHolder, String> colPhone;
+    private TableColumn<User,String> colId;
     @FXML
-    private TableColumn<PolicyHolder, String> colAddress;
+    private TableColumn<User, String> colUsername;
     @FXML
-    private TableColumn<PolicyHolder, String> colEmail;
+    private TableColumn<User, String> colPassword;
+    @FXML
+    private TableColumn<User, String> colRole;
+    @FXML
+    private TableColumn<User, String> colFullName;
+    @FXML
+    private TableColumn<User, String> colPhoneNumber;
+    @FXML
+    private TableColumn<User, String> colAddress;
+
     @FXML
     private Button btnBack;
     private static final dbConnection dbConn = new dbConnection();
-    private final ObservableList<PolicyHolder> list = FXCollections.observableArrayList();
+    private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
         handleAddPolicyHolder();
@@ -78,55 +87,20 @@ public class PolicyHolderScreenController implements Initializable {
         }
     }
 
-    private void loadData() throws Exception {
+    private void loadData() {
         setCellValuePolicyHolders();
-        list.setAll(PolicyHolderDatabase.getPolicyHolderList());
+        list.setAll(PolicyHolderDatabase.getUserList());
         tvPolicyHolder.setItems(list);
     }
 
     public void setCellValuePolicyHolders(){
-        colId.setCellValueFactory(new PropertyValueFactory<PolicyHolder,String>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<PolicyHolder,String>("name"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<PolicyHolder,String>("phone"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<PolicyHolder,String>("email"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<PolicyHolder,String>("address"));
-    }
-    public void addPolicyHolders(PolicyHolder policyHolder){
-        String query = "INSERT INTO policy_holders VALUES (?,?,?,?,?)";
-        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setString(1, id);
-            ps.setString(2, tfName.getText());
-            ps.setString(3, tfPhone.getText());
-            ps.setString(4, tfAddress.getText());
-            ps.setString(5, tfEmail.getText());
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows > 0) {
-                policyHolder.setId(id); // Set the claim ID back on the object
-            } else {
-                throw new SQLException("Creating policy holder failed, no rows affected.");
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void updatePolicyHolder(PolicyHolder policyHolder) {
-        String sql = "UPDATE policy_holders SET name = ?, phone = ?, address = ?, email = ? WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfName.getText());
-            ps.setString(2, tfPhone.getText());
-            ps.setString(3, tfAddress.getText());
-            ps.setString(4, tfEmail.getText());
-            ps.setString(5, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Update failed, no rows affected.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+        colFullName.setCellValueFactory(new PropertyValueFactory<User,String>("fullName"));
+        colPhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNumber"));
+        colUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
+        colRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
     }
     private void handleAddPolicyHolder(){
         TextInputDialog dialog = new TextInputDialog();
@@ -135,11 +109,9 @@ public class PolicyHolderScreenController implements Initializable {
         dialog.setContentText("Please enter the policy holder information:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(description -> {
-            PolicyHolder policyHolder = new PolicyHolder(null,tfName.getText(),tfPhone.getText(),tfAddress.getText(),tfEmail.getText());
+            User policyHolder = new User(null,tfUsername.getText(),"1","PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
             list.addAll(policyHolder);
             addPolicyHolders(policyHolder);
-            ActionLogger actionLogger = new ActionLogger();
-            actionLogger.logAction(policyHolder.getId(), "Add Policy Holder", "Added new Policy Holder" + description,null);
             try {
                 loadData();
             } catch (Exception e) {
@@ -147,8 +119,53 @@ public class PolicyHolderScreenController implements Initializable {
             }
         });
     }
+    public void addPolicyHolders(User policyHolder){
+        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
+        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(query)){
+            ps.setString(1, id);
+            ps.setString(2, tfUsername.getText());
+            ps.setString(3, "1");
+            ps.setString(4, "PolicyHolder");
+            ps.setString(5, tfFullName.getText());
+            ps.setString(6, tfAddress.getText());
+            ps.setString(7, tfPhoneNumber.getText());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+                policyHolder.setId(id);
+            } else {
+                throw new SQLException("Creating policy holder failed, no rows affected.");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updatePolicyHolder(User policyHolder) {
+        String sql = "UPDATE users SET username = ?," +
+                    " password_hash = ?," +
+                    " full_name = ?," +
+                    " address = ?," +
+                    " phone_number = ? WHERE id = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, tfUsername.getText());
+            ps.setString(2, tfPassword.getText());
+            ps.setString(3, tfFullName.getText());
+            ps.setString(4, tfAddress.getText());
+            ps.setString(5, tfPhoneNumber.getText());
+            ps.setString(6, tfID.getText());
+            if (ps.executeUpdate() == 0) {
+                throw new SQLException("Update failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void handleUpdatePolicyHolder() {
-        PolicyHolder selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
+        User selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Policy Holder Selected");
@@ -173,7 +190,7 @@ public class PolicyHolderScreenController implements Initializable {
         }
     }
     public void deletePolicyHolder(String id) {
-        String sql = "DELETE FROM policy_holders WHERE id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, tfID.getText());
@@ -185,7 +202,7 @@ public class PolicyHolderScreenController implements Initializable {
         }
     }
     private void handleDeletePolicyHolder() throws Exception {
-        PolicyHolder selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
+        User selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
             deletePolicyHolder(selectedPolicyHolder.getId());
             loadData();
@@ -216,7 +233,7 @@ public class PolicyHolderScreenController implements Initializable {
             System.out.println("Failed to load the screen: " + e.getMessage());
         }
     }
-    int index = -1;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -226,6 +243,7 @@ public class PolicyHolderScreenController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    int index = -1;
     @FXML
     public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
         index = tvPolicyHolder.getSelectionModel().getSelectedIndex();
@@ -233,9 +251,11 @@ public class PolicyHolderScreenController implements Initializable {
             return;
         }
         tfID.setText(colId.getCellData(index).toString());
-        tfName.setText(colName.getCellData(index).toString());
-        tfPhone.setText(colPhone.getCellData(index).toString());
-        tfEmail.setText(colEmail.getCellData(index).toString());
+        tfUsername.setText(colUsername.getCellData(index).toString());
+        tfPassword.setText(colPassword.getCellData(index).toString());
+        tfRole.setText(colRole.getCellData(index).toString());
         tfAddress.setText(colAddress.getCellData(index).toString());
+        tfFullName.setText(colFullName.getCellData(index).toString());
+        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
     }
 }

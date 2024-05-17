@@ -1,7 +1,7 @@
 package rmit.fp.g32_asm2.auth;
 
 import rmit.fp.g32_asm2.database.dbConnection;
-import rmit.fp.g32_asm2.model.provider.InsuranceManager;
+import rmit.fp.g32_asm2.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,19 +12,23 @@ import java.util.List;
 
 public class InsuranceManagerDatabase {
     private static final dbConnection dbConn = new dbConnection();
-    public static List<InsuranceManager> getInsuranceManagerList() {
-        List<InsuranceManager> insuranceManagerList = new ArrayList<>();
-        String query = "SELECT * FROM insurance_managers";
+    public static List<User> getInsuranceManagerList() {
+        List<User> insuranceManagerList = new ArrayList<>();
+        String query = "SELECT * FROM users WHERE role = 'InsuranceManager'";
         try(Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
             PreparedStatement ps = conn.prepareStatement(query)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                insuranceManagerList.add(new InsuranceManager(
+                insuranceManagerList.add(new User(
                         rs.getString("id"),
-                        rs.getString("name"),
-                        rs.getString("phone"),
+                        rs.getString("username"),
+                        rs.getString("password_hash"),
+                        rs.getString("role"),
+                        rs.getString("full_name"),
                         rs.getString("address"),
-                        rs.getString("email")));
+                        rs.getString("phone_number"),
+                        rs.getString("policy_holder_id")
+                ));
             };
             return insuranceManagerList;
         } catch(SQLException e){

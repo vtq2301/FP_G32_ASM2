@@ -1,7 +1,6 @@
 package rmit.fp.g32_asm2.auth;
 
 
-
 import rmit.fp.g32_asm2.database.dbConnection;
 
 import java.sql.Connection;
@@ -9,14 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ActionLogger {
-    private dbConnection dbConn = new dbConnection();
+    private final dbConnection dbConn = new dbConnection();
 
-    // Check if the user ID exists (now String)
-    private boolean isUserIdValid(String policyHolderId) {
-        String sql = "SELECT username FROM users WHERE username = ?";  // Assuming username is the unique identifier
+    private boolean isUsernameValid(String username) {
+        String sql = "SELECT username FROM users WHERE username = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, policyHolderId);
+            pstmt.setString(1, username);
             return pstmt.executeQuery().next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -24,24 +22,24 @@ public class ActionLogger {
         }
     }
 
-    public void logAction(String policyHolderId, String actionType, String description, String claimId) {
-        if (policyHolderId == null || policyHolderId.isEmpty()) {
-            System.err.println("Error: policyHolderId is empty or null.");
+    public void logAction(String username, String actionType, String description, String claimId) {
+        if (username == null || username.isEmpty()) {
+            System.err.println("Error: username is empty or null.");
             return;
         }
 
-        if (!isUserIdValid(policyHolderId)) {
-            System.err.println("Error: No such policy holder exists with ID: " + policyHolderId);
+        if (!isUsernameValid(username)) {
+            System.err.println("Error: No such user exists with username: " + username);
             return;
         }
 
-        String sql = "INSERT INTO user_actions (policyHolderId, action_type, action_description, claim_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO user_actions (username, action_type, action_description, claim_id) VALUES (?, ?, ?, ?)";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, policyHolderId);
+            pstmt.setString(1, username);
             pstmt.setString(2, actionType);
             pstmt.setString(3, description);
-            pstmt.setString(4, claimId);  // Include the claim ID in the INSERT statement; it can be null
+            pstmt.setString(4, claimId);
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
                 System.err.println("Insertion failed, no rows affected.");
