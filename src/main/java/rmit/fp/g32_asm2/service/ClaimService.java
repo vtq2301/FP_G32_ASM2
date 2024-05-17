@@ -36,8 +36,6 @@ public class ClaimService {
     }
 
     public List<Claim> getBeneficiaryClaims(String policyOwnerId) {
-        List<Claim> claims = new ArrayList<>();
-        Map<String, Object> params = new HashMap<>();
-        return List.of();
+        return claimDAO.findAllBeneficiariesClaims(policyOwnerId);
     }
 }

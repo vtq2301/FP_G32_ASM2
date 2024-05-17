@@ -20,6 +20,7 @@ import rmit.fp.g32_asm2.service.ClaimService;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 
 public class ClaimsViewController {
@@ -64,34 +65,37 @@ public class ClaimsViewController {
         claimExamDataColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
         claimFiledDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate")); // Assuming filed date is exam date for demo purposes
 
+
+        List<Claim> claims = claimService.getBeneficiaryClaims(currentUser.getId());
+        claimData.setAll(claims);
         // Add sample data to the table.
-        claimData.addAll(
-                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
-                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
-                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
-                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
-                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
-                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE)
-        );
+//        claimData.addAll(
+//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
+//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
+//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
+//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
+//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
+//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
+//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
+//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
+//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
+//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
+//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
+//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
+//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
+//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
+//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
+//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
+//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
+//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
+//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
+//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE),
+//                new Claim("C001", "P001", new Date(), Arrays.asList("Doc1", "Doc2"), 1000.0, Claim.Status.FILED),
+//                new Claim("C002", "P002", new Date(), Arrays.asList("Doc3", "Doc4"), 2000.0, Claim.Status.PROCESSING),
+//                new Claim("C003", "P003", new Date(), Arrays.asList("Doc5"), 500.0, Claim.Status.ACCEPTED),
+//                new Claim("C004", "P004", new Date(), Arrays.asList("Doc6", "Doc7"), 1500.0, Claim.Status.REJECTED),
+//                new Claim("C005", "P005", new Date(), Arrays.asList("Doc8"), 2500.0, Claim.Status.DONE)
+//        );
 
         // Create a FilteredList wrapping the ObservableList.
         filteredData = new FilteredList<>(claimData, p -> true);
