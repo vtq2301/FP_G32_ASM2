@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.ClaimManagementController"
+            style="-fx-background-color: #F7F9FB;">
+    <top>
+        <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #2C3E50;">
+            <Button fx:id="addButton" text="Add New Claim" onAction="#handleAddNewClaim" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button fx:id="deleteButton" text="Delete Selected Claim" onAction="#handleDeleteClaim" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button fx:id="updateButton" text="Update Claim" onAction="#handleUpdateClaim" style="-fx-background-color: #F1C40F; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button fx:id="backButton" text="Back" onAction="#handleBackButton" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="Claim Management" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;"/>
+            <TableView fx:id="claimsTable" style="-fx-background-color: white; -fx-border-color: #D5D8DC; -fx-border-width: 1;">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Customer ID" fx:id="customerIdColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="customerId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Claim Date" fx:id="claimDateColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="claimDate" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Insured Person" fx:id="insuredPersonColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="insuredPerson" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Exam Date" fx:id="examDateColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="examDate" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Documents" fx:id="documentsColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="documents" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Claim Amount" fx:id="claimAmountColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="claimAmount" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Receiver Banking Info" fx:id="receiverBankingInfoColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="receiverBankingInfo" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Status" fx:id="statusColumn" style="-fx-alignment: CENTER;">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="status" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

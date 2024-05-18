@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.PolicyHolder">
+    <top>
+        <HBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
+            <Button text="Logout" onAction="#handleLogout" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+            <Text text="Policy Holder Information" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #34495E;"/>
+            <GridPane hgap="10" vgap="15">
+                <padding>
+                    <Insets top="10" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" editable="false" style="-fx-font-size: 16px;"/>
+
+                <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false" style="-fx-font-size: 16px;"/>
+
+                <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false" style="-fx-font-size: 16px;"/>
+
+                <Label text="Policy Number:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="policyNumberField" GridPane.columnIndex="1" GridPane.rowIndex="3" text="POLICY123456" editable="false" style="-fx-font-size: 16px;"/>
+
+                <Button fx:id="manageClaimButton" text="Manage Claim" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleManageClaim" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="View Dependents" GridPane.columnIndex="1" GridPane.rowIndex="5" onAction="#handleViewDependents" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="changeDependentInfoButton" text="Change Dependent Info" onAction="#handleChangeDependentInfo" GridPane.columnIndex="1" GridPane.rowIndex="6" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="updateUserInfoButton" text="Update User Information" onAction="#handleUpdateUserInfo" GridPane.columnIndex="1" GridPane.rowIndex="7" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button fx:id="changePasswordButton" text="Change Password" onAction="#handleChangePassword" GridPane.columnIndex="1" GridPane.rowIndex="8" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

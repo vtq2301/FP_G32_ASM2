@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.insurance.InsuranceManager"
+      style="-fx-background-color: #F7F9FB; -fx-padding: 20;">
+    <HBox spacing="10" alignment="TOP_RIGHT" style="-fx-padding: 10; -fx-background-color: #2C3E50;">
+        <Button text="Logout" onAction="#handleLogout" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="fullNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-background-color: #ECF0F1; -fx-font-size: 14px;"/>
+
+        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="emailField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: #ECF0F1; -fx-font-size: 14px;"/>
+
+        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="contactNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-background-color: #ECF0F1; -fx-font-size: 14px;"/>
+
+        <Label text="Manager ID:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="managerIdField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-color: #ECF0F1; -fx-font-size: 14px;"/>
+    </GridPane>
+    <Button fx:id="manageInsuranceButton" text="Manage Insurance Claim" onAction="#handleManageInsurance" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-size: 14px;"/>
+</VBox>
