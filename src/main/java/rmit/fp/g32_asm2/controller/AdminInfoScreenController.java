@@ -10,7 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
+import rmit.fp.g32_asm2.auth.ActionLogger;
 import rmit.fp.g32_asm2.auth.AdminDatabase;
 import rmit.fp.g32_asm2.database.dbConnection;
 import rmit.fp.g32_asm2.model.User;
@@ -24,20 +27,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminInfoScreenController implements Initializable {
-    @FXML
-    private TextField tfID;
-    @FXML
-    private TextField tfFullName;
-    @FXML
-    private TextField tfPhoneNumber;
-    @FXML
-    private TextField tfAddress;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private TextField tfUsername;
-    @FXML
-    private TextField tfRole;
 
     @FXML
     private TableView<User> tvAdmin = new TableView<User>();
@@ -56,25 +45,56 @@ public class AdminInfoScreenController implements Initializable {
     private TableColumn<User, String> colPhoneNumber;
     @FXML
     private TableColumn<User, String> colAddress;
-    private static final dbConnection dbConn = new dbConnection();
     private final ObservableList<User> list = FXCollections.observableArrayList();
+    private final AdminDatabase dbService = new AdminDatabase();
     @FXML
     private Button btnBack;
     @FXML
     private void handleAddButtonAction(ActionEvent e){handleAddAdmins();}
 
     private void handleAddAdmins() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Admin");
-        dialog.setHeaderText("Create a New Admin");
-        dialog.setContentText("Please enter the Admin information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User admin = new User(null,tfUsername.getText(),"1","Admin",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
-            list.addAll(admin);
-            addAdmin(admin);
-            loadData();
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Add new Admin");
+        dialog.setHeaderText("Create new Admin");
+        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+
+        TextField tfFullName = new TextField();
+        TextField tfPhoneNumber = new TextField();
+        TextField tfAddress = new TextField();
+        TextField tfPassword = new TextField();
+        TextField tfUsername = new TextField();
+
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Full name:"), 0, 2);
+        grid.add(tfFullName, 1, 2);
+        grid.add(new Label("Address:"), 0, 3);
+        grid.add(tfAddress, 1, 3);
+        grid.add(new Label("Phone Number:"), 0, 4);
+        grid.add(tfPhoneNumber, 1, 4);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == addButtonType) {
+                return new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyOwner",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
+            }
+            return null;
         });
+        Optional<User> result =dialog.showAndWait();
+        result.ifPresent(admin ->{
+            dbService.addAdmin(admin);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(tfUsername.getText(), "Add Admin", "Add new Admin", null);
+            loadData();
+        }) ;
     }
 
     private void loadData() {
@@ -83,29 +103,6 @@ public class AdminInfoScreenController implements Initializable {
         tvAdmin.setItems(list);
     }
 
-    private void addAdmin(User admin) {
-        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
-        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setString(1, id);
-            ps.setString(2, tfUsername.getText());
-            ps.setString(3, tfPassword.getText());
-            ps.setString(4, "Admin");
-            ps.setString(5, tfFullName.getText());
-            ps.setString(6, tfAddress.getText());
-            ps.setString(7, tfPhoneNumber.getText());
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows > 0) {
-                admin.setId(id);
-            } else {
-                throw new SQLException("Creating Admin failed, no rows affected.");
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     private void handleUpdateButtonAction(ActionEvent e){handleUpdateAdmins();}
@@ -121,43 +118,60 @@ public class AdminInfoScreenController implements Initializable {
             return;
         }
 
-        TextInputDialog dialog = new TextInputDialog(selectedAdmin.getId());
+        Dialog<User> dialog = new Dialog<>();
         dialog.setTitle("Update Admin");
         dialog.setHeaderText("Edit the Admin");
         dialog.setContentText("Enter the new information:");
 
-        Optional<String> result = dialog.showAndWait();
+        ButtonType updateButtonType = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(updateButtonType, ButtonType.CANCEL);
 
-        updateAdmin();
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        TextField tfFullName = new TextField(selectedAdmin.getFullName());
+        TextField tfPhoneNumber = new TextField(selectedAdmin.getPhoneNumber());
+        TextField tfAddress = new TextField(selectedAdmin.getAddress());
+        TextField tfPassword = new TextField(selectedAdmin.getPassword());
+        TextField tfUsername = new TextField(selectedAdmin.getUsername());
+        TextField tfRole = new TextField(selectedAdmin.getRole());
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Role:"), 0, 2);
+        grid.add(tfRole, 1, 2);
+        grid.add(new Label("Full name:"), 0, 3);
+        grid.add(tfFullName, 1, 3);
+        grid.add(new Label("Address:"), 0, 4);
+        grid.add(tfAddress, 1, 4);
+        grid.add(new Label("Phone Number:"), 0, 5);
+        grid.add(tfPhoneNumber, 1, 5);
+        dialog.getDialogPane().setContent(grid);
 
-    private void updateAdmin() {
-        String sql = "UPDATE users SET username = ?," +
-                " password_hash = ?, role = ?" +
-                " full_name = ?," +
-                " address = ?," +
-                " phone_number = ? WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfUsername.getText());
-            ps.setString(2, tfPassword.getText());
-            ps.setString(3, tfRole.getText());
-            ps.setString(4, tfFullName.getText());
-            ps.setString(5, tfAddress.getText());
-            ps.setString(6, tfPhoneNumber.getText());
-            ps.setString(7, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Update failed, no rows affected.");
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == updateButtonType) {
+                selectedAdmin.setUsername(tfUsername.getText());
+                selectedAdmin.setAddress(tfAddress.getText());
+                selectedAdmin.setPassword(tfPassword.getText());
+                selectedAdmin.setFullName(tfFullName.getText());
+                selectedAdmin.setPhoneNumber(tfPhoneNumber.getText());
+                selectedAdmin.setRole(tfRole.getText());
+                return selectedAdmin;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            return null;
+        });
+        Optional<User> result = dialog.showAndWait();
+        result.ifPresent(insuranceSurveyor -> {
+            dbService.updateAdmin(selectedAdmin);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedAdmin.getUsername(), "Update Admin", "Edit Admin", null);
+
+            loadData();
+        });
     }
+
 
     @FXML
     private void handleDeleteButtonAction(ActionEvent e){handleDeleteAdmins();}
@@ -165,7 +179,7 @@ public class AdminInfoScreenController implements Initializable {
     private void handleDeleteAdmins() {
         User selectedAdmin = tvAdmin.getSelectionModel().getSelectedItem();
         if (selectedAdmin != null) {
-            deleteAdmin(selectedAdmin.getId());
+            dbService.deleteAdmin(selectedAdmin.getId());
             loadData();
         }
         else{
@@ -176,75 +190,38 @@ public class AdminInfoScreenController implements Initializable {
             alert.showAndWait();
         }
     }
-    private void deleteAdmin(String id){
-        String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Deletion failed, no rows affected.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @FXML
     private void handleBackButtonAction(ActionEvent e){
             setBtnBack();
         }
-        public Connection getConnection(){
-            Connection conn;
-            try {
-                conn = DriverManager.getConnection("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-                return conn;
-            }
-            catch (Exception e){
-                System.out.println("Error"+ e.getMessage());
-                return null;
-            }
-        }
 
-        public void setCellValueAdmin(){
-            colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
-            colFullName.setCellValueFactory(new PropertyValueFactory<User,String>("fullName"));
-            colPhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNumber"));
-            colUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
-            colAddress.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
-            colRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
-            colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
-        }
+    public void setCellValueAdmin(){
+        colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+        colFullName.setCellValueFactory(new PropertyValueFactory<User,String>("fullName"));
+        colPhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNumber"));
+        colUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
+        colRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
+    }
 
-        private void setBtnBack() {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/AdminScreen.fxml"));
-                if (loader.getLocation() == null) {
-                    throw new IllegalStateException("FXML file not found in the specified path.");
-                }
-                Parent root = loader.load();
-                Stage currentstage = (Stage) btnBack.getScene().getWindow();
-                currentstage.setScene(new Scene(root));
-                currentstage.setTitle("Admin System");
-                currentstage.show();
-            }  catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Failed to load the screen: " + e.getMessage());
+    private void setBtnBack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rmit/fp/g32_asm2/AdminScreen.fxml"));
+            if (loader.getLocation() == null) {
+                throw new IllegalStateException("FXML file not found in the specified path.");
             }
+            Parent root = loader.load();
+            Stage currentstage = (Stage) btnBack.getScene().getWindow();
+            currentstage.setScene(new Scene(root));
+            currentstage.setTitle("Admin System");
+            currentstage.show();
+        }  catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the screen: " + e.getMessage());
         }
-    int index = -1;
-    @FXML
-    public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
-        index = tvAdmin.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-            return;
-        }
-        tfID.setText(colId.getCellData(index).toString());
-        tfUsername.setText(colUsername.getCellData(index).toString());
-        tfPassword.setText(colPassword.getCellData(index).toString());
-        tfRole.setText(colRole.getCellData(index).toString());
-        tfAddress.setText(colAddress.getCellData(index).toString());
-        tfFullName.setText(colFullName.getCellData(index).toString());
-        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

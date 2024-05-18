@@ -1,4 +1,5 @@
 package rmit.fp.g32_asm2.auth;
+import rmit.fp.g32_asm2.controller.UniqueIDGenerator;
 import rmit.fp.g32_asm2.database.dbConnection;
 import rmit.fp.g32_asm2.model.User;
 
@@ -34,6 +35,65 @@ public class AdminDatabase {
             e.printStackTrace();
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    public void addAdmin(User admin) {
+        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
+        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(query)){
+            ps.setString(1, id);
+            ps.setString(2, admin.getUsername());
+            ps.setString(3, admin.getPassword());
+            ps.setString(4, "Admin");
+            ps.setString(5, admin.getFullName());
+            ps.setString(6, admin.getAddress());
+            ps.setString(7, admin.getPhoneNumber());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+                admin.setId(id);
+            } else {
+                throw new SQLException("Creating Admin failed, no rows affected.");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateAdmin(User admin) {
+        String sql = "UPDATE users SET username = ?," +
+                " password_hash = ?, role = ?," +
+                " full_name = ?," +
+                " address = ?," +
+                " phone_number = ? WHERE id = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, admin.getUsername());
+            ps.setString(2, admin.getPassword());
+            ps.setString(3, admin.getRole());
+            ps.setString(4, admin.getFullName());
+            ps.setString(5, admin.getAddress());
+            ps.setString(6, admin.getPhoneNumber());
+            ps.setString(7, admin.getId());
+            if (ps.executeUpdate() == 0) {
+                throw new SQLException("Update failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAdmin(String id){
+        String sql = "DELETE FROM users WHERE id = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, id);
+            if (ps.executeUpdate() == 0) {
+                throw new SQLException("Deletion failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -104,7 +104,7 @@ public class ClaimScreenController implements Initializable {
     private void setBtnSumUp(){
         sumUpAllClaims();
     }
- 
+
     private void sumUpAllClaims() {
         double totalAmount = 0;
         ObservableList<ClaimManagement> items = tvClaims.getItems();
