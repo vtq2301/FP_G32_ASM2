@@ -1,6 +1,7 @@
 package all.controller.insurance;
 
 import all.model.customer.User;
+import all.controller.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,7 @@ public class InsuranceManager {
     @FXML private TextField contactNumberField;
     @FXML private TextField managerIdField;
     @FXML private Button manageInsuranceButton;
+    @FXML private Button logoutButton;
 
     public void loadData(User user) {
         fullNameField.setText(user.getFullName());
@@ -32,10 +34,7 @@ public class InsuranceManager {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/InsuranceManagement.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-
             Stage stage = (Stage) manageInsuranceButton.getScene().getWindow();
-
-
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -43,6 +42,20 @@ public class InsuranceManager {
         }
     }
 
+    @FXML
+    private void handleLogout() {
+        UserSession.logout();
+        loadLoginScreen();
+    }
 
-
+    private void loadLoginScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginScreen.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) fullNameField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

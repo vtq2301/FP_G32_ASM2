@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,7 +11,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.InsuranceSurveyorScreenController">
     <children>
-        <TableView fx:id="tvInsuranceSurveyor" layoutY="-3.0" onMouseClicked="#getSelected" prefHeight="323.0" prefWidth="800.0" style="-fx-background-color: beige;">
+        <TableView fx:id="tvInsuranceSurveyor" layoutY="-3.0" onMouseClicked="#getSelected" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="250.0" style="-fx-background-color: beige;">
             <columns>
                 <TableColumn fx:id="colId" style="-fx-background-color: beige;" text="ID" />
                 <TableColumn fx:id="colUsername" prefWidth="120.0" style="-fx-background-color: beige;" text="Username" />
@@ -23,8 +22,7 @@
                 <TableColumn fx:id="colPhoneNumber" prefWidth="109.0" style="-fx-background-color: beige;" text="Phone Number" />
             </columns>
         </TableView>
-        <Button fx:id="btnBack" layoutX="715.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="71.0" text="Back" />
-        <GridPane layoutX="24.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="262.0" prefWidth="622.0">
+        <GridPane layoutX="24.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.5" minWidth="10.0" prefWidth="88.5" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.5" minWidth="10.0" prefWidth="382.0" />
@@ -51,7 +49,7 @@
                 <TextField fx:id="tfID" disable="true" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="ID" GridPane.columnIndex="1" />
                 <TextField fx:id="tfUsername" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="tfPassword" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField fx:id="tfRole" disable="true" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Role" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="tfRole" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Role" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField fx:id="tfFullName" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Fullname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <TextField fx:id="tfAddress" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <TextField fx:id="tfPhoneNumber" maxWidth="-Infinity" prefHeight="30.0" prefWidth="320.0" promptText="Phone" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -59,5 +57,6 @@
                 <Label text="Role" GridPane.rowIndex="3" />
             </children>
         </GridPane>
+        <Button fx:id="btnBack" layoutX="715.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="71.0" text="Back" />
     </children>
 </AnchorPane>
