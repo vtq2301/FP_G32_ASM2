@@ -56,7 +56,13 @@ public class PolicyHolderScreenController implements Initializable {
         handleUpdatePolicyHolder();    }
     @FXML
     private void handleDeleteButtonAction(ActionEvent e) {
-        handleDeletePolicyHolder();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to delete?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK)
+            {handleDeletePolicyHolder();}
     }
     @FXML
     private void handleBackButtonAction(ActionEvent e){
@@ -127,9 +133,10 @@ public class PolicyHolderScreenController implements Initializable {
         });
         Optional<User> result =dialog.showAndWait();
         result.ifPresent(policyHolder ->{
-            dbService.addPolicyHolders(policyHolder);
+
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(tfUsername.getText(), "Add Policy Holder", "Add new policy holder", null);
+            dbService.addPolicyHolders(policyHolder);
             loadData();
         }) ;
     }
@@ -204,10 +211,11 @@ public class PolicyHolderScreenController implements Initializable {
     private void handleDeletePolicyHolder() {
         User selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            dbService.deletePolicyHolder(selectedPolicyHolder.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedPolicyHolder.getUsername(), "Delete Policy Holder", "Deleted Policy Holder with ID: " + selectedPolicyHolder.getId(), null);
+            dbService.deletePolicyHolder(selectedPolicyHolder.getId());
+            loadData();
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

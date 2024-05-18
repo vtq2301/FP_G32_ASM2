@@ -61,7 +61,13 @@ public class PolicyOwnerScreenController implements Initializable {
         handleUpdatePolicyOwner();    }
     @FXML
     private void handleDeleteButtonAction(ActionEvent e) throws Exception {
-        handleDeletePolicyOwner();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to delete?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK)
+            {handleDeletePolicyOwner();}
     }
     @FXML
     private void handleBackButtonAction(ActionEvent e){
@@ -210,10 +216,10 @@ public class PolicyOwnerScreenController implements Initializable {
     private void handleDeletePolicyOwner() {
         User selectedPolicyOwner = tvPolicyOwner.getSelectionModel().getSelectedItem();
         if (selectedPolicyOwner != null) {
-            dbService.deletePolicyOwner(selectedPolicyOwner.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedPolicyOwner.getUsername(), "Delete Policy Owner", "Deleted Policy Owner with ID: " + selectedPolicyOwner.getId(), null);
+            dbService.deletePolicyOwner(selectedPolicyOwner.getId());
+            loadData();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

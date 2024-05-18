@@ -184,16 +184,23 @@ public class DependentScreenController implements Initializable {
 
     @FXML
     private void handleDeleteButtonAction(ActionEvent e) {
-        handleDeleteDependents();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to delete?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK)
+            {handleDeleteDependents();}
     }
 
     private void handleDeleteDependents() {
         User selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
         if (selectedDependent != null) {
-            dbService.deleteDependents(selectedDependent.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedDependent.getPolicyHolderId(), "Delete Dependent", "Deleted Dependent with ID: " + selectedDependent.getId(), null);
+            dbService.deleteDependents(selectedDependent.getId());
+            loadData();
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

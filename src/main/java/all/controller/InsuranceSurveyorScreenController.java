@@ -57,7 +57,13 @@ public class InsuranceSurveyorScreenController implements Initializable {
     }
     @FXML
     private void handleDeleteButtonAction(ActionEvent e) {
-        handleDeleteInsuranceSurveyors();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to delete?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK)
+            {handleDeleteInsuranceSurveyors();}
     }
     private void handleAddInsuranceSurveyors() {
         Dialog<User> dialog = new Dialog<>();
@@ -184,10 +190,10 @@ public class InsuranceSurveyorScreenController implements Initializable {
     private void handleDeleteInsuranceSurveyors() {
         User selectedInsuranceSurveyor = tvInsuranceSurveyor.getSelectionModel().getSelectedItem();
         if (selectedInsuranceSurveyor != null) {
-            dbService.deleteInsuranceSurveyors(selectedInsuranceSurveyor.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedInsuranceSurveyor.getUsername(), "Delete Insurance Surveyors", "Deleted Insurance Surveyors with ID: " + selectedInsuranceSurveyor.getId(), null);
+            dbService.deleteInsuranceSurveyors(selectedInsuranceSurveyor.getId());
+            loadData();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

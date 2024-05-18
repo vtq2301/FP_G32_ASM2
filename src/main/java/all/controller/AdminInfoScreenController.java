@@ -168,15 +168,22 @@ public class AdminInfoScreenController implements Initializable {
 
 
     @FXML
-    private void handleDeleteButtonAction(ActionEvent e){handleDeleteAdmins();}
+    private void handleDeleteButtonAction(ActionEvent e){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to delete?");
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK){handleDeleteAdmins();}}
 
     private void handleDeleteAdmins() {
         User selectedAdmin = tvAdmin.getSelectionModel().getSelectedItem();
         if (selectedAdmin != null) {
-            dbService.deleteAdmin(selectedAdmin.getId());
-            loadData();
+
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedAdmin.getUsername(), "Delete Admin", "Deleted Admin with ID: " + selectedAdmin.getId(), null);
+            dbService.deleteAdmin(selectedAdmin.getId());
+            loadData();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
