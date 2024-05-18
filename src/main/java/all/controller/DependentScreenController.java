@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import all.auth.ActionLogger;
 import all.auth.DependentDatabase;
@@ -24,23 +25,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DependentScreenController implements Initializable {
-    @FXML
-    private TextField tfID;
-    @FXML
-    private TextField tfUsername;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private TextField tfPhoneNumber;
-    @FXML
-    private TextField tfFullName;
-    @FXML
-    private TextField tfRole;
-    @FXML
-    private TextField tfPolicyHolderId;
-    @FXML
-    private TextField tfAddress;
-
+    private final DependentDatabase dbService = new DependentDatabase();
     @FXML
     private TableView<User> tvDependent = new TableView<User>();
     @FXML
@@ -61,15 +46,8 @@ public class DependentScreenController implements Initializable {
     private TableColumn<User, String> colPolicyHolderId;
 
     @FXML
-    private Button btnAdd;
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnDelete;
-    @FXML
     private Button btnBack;
 
-    private static final dbConnection dbConn = new dbConnection();
     private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
@@ -77,49 +55,53 @@ public class DependentScreenController implements Initializable {
     }
 
     private void handleAddDependents() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Dependent");
-        dialog.setHeaderText("Create a New Dependent");
-        dialog.setContentText("Please enter the dependent information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User dependent = new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyHolder",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText(),tfPolicyHolderId.getText());
-            list.addAll(dependent);
-            addDependents(dependent);
-            ActionLogger actionLogger = new ActionLogger();
-            actionLogger.logAction(dependent.getId(), "Add Dependent", "Added new Dependent" + description,null);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Add new Dependent");
+        dialog.setHeaderText("Create new dependent");
+        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+
+        TextField tfFullName = new TextField();
+        TextField tfPhoneNumber = new TextField();
+        TextField tfAddress = new TextField();
+        TextField tfPassword = new TextField();
+        TextField tfUsername = new TextField();
+        TextField tfPolicyHolderId = new TextField();
+
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Full name:"), 0, 2);
+        grid.add(tfFullName, 1, 2);
+        grid.add(new Label("Address:"), 0, 3);
+        grid.add(tfAddress, 1, 3);
+        grid.add(new Label("Phone Number:"), 0, 4);
+        grid.add(tfPhoneNumber, 1, 4);
+        grid.add(new Label("Policy Holder Id"),0,5);
+        grid.add(tfPolicyHolderId, 1, 5);
+        dialog.getDialogPane().setContent(grid);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == addButtonType) {
+                return new User(null,tfUsername.getText(),tfPassword.getText(),"Dependent",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText(),tfPolicyHolderId.getText());
             }
+            return null;
         });
+        Optional<User> result =dialog.showAndWait();
+        result.ifPresent(dependent ->{
+            dbService.addDependents(dependent);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(tfUsername.getText(), "Add Dependent", "Add new Dependent", null);
+            loadData();
+        }) ;
     }
 
-    private void addDependents(User dependent) {
-        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)";
-        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setString(1, id);
-            ps.setString(2, tfUsername.getText());
-            ps.setString(3, tfPassword.getText());
-            ps.setString(4, "Dependent");
-            ps.setString(5, tfFullName.getText());
-            ps.setString(6, tfPhoneNumber.getText());
-            ps.setString(7, tfAddress.getText());
-            ps.setString(8, tfPolicyHolderId.getText());
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows > 0) {
-                dependent.setId(id);
-            } else {
-                throw new SQLException("Creating dependent failed, no rows affected.");
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     @FXML
     private void handleUpdateButtonAction(ActionEvent e){
@@ -132,56 +114,86 @@ public class DependentScreenController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Dependent Selected");
             alert.setHeaderText("Update Error");
-            alert.setContentText("Please select a dependent to update.");
+            alert.setContentText("Please select a Dependent to update.");
             alert.showAndWait();
             return;
         }
 
-        TextInputDialog dialog = new TextInputDialog(selectedDependent.getId());
-        dialog.setTitle("Update dependent");
-        dialog.setHeaderText("Edit the dependent");
-        dialog.setContentText("Enter the new information:");
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Update Dependent");
+        dialog.setHeaderText("Edit the Dependent");
+        dialog.setContentText("Enter Dependent information:");
 
-        Optional<String> result = dialog.showAndWait();
+        ButtonType updateButtonType = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(updateButtonType, ButtonType.CANCEL);
 
-        updateDependents(selectedDependent);
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        TextField tfFullName = new TextField(selectedDependent.getFullName());
+        TextField tfPhoneNumber = new TextField(selectedDependent.getPhoneNumber());
+        TextField tfAddress = new TextField(selectedDependent.getAddress());
+        TextField tfPassword = new TextField(selectedDependent.getPassword());
+        TextField tfUsername = new TextField(selectedDependent.getUsername());
+        TextField tfPolicyHolderId = new TextField(selectedDependent.getPolicyHolderId());
+        TextField tfRole = new TextField(selectedDependent.getRole());
 
-    private void updateDependents(User dependent) {
-        String sql = "UPDATE users SET username = ?, password = ?, role = ?, full_name = ?,address = ?, phone_number = ?, policy_holder_id = ? WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfUsername.getText());
-            ps.setString(2, tfPassword.getText());
-            ps.setString(3, tfRole.getText());
-            ps.setString(4, tfFullName.getText());
-            ps.setString(5, tfAddress.getText());
-            ps.setString(6, tfPhoneNumber.getText());
-            ps.setString(7, tfPolicyHolderId.getText());
-            ps.setString(8, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Update failed, no rows affected.");
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Role:"), 0, 2);
+        grid.add(tfRole, 1, 2);
+        grid.add(new Label("Full name:"), 0, 3);
+        grid.add(tfFullName, 1, 3);
+        grid.add(new Label("Address:"), 0, 4);
+        grid.add(tfAddress, 1, 4);
+        grid.add(new Label("Phone Number:"), 0, 5);
+        grid.add(tfPhoneNumber, 1, 5);
+        grid.add(new Label("Policy Holder ID"), 0, 6);
+        grid.add(tfPolicyHolderId, 1, 6);
+        dialog.getDialogPane().setContent(grid);
+
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == updateButtonType) {
+                selectedDependent.setUsername(tfUsername.getText());
+                selectedDependent.setPassword(tfPassword.getText());
+                selectedDependent.setAddress(tfAddress.getText());
+                selectedDependent.setFullName(tfFullName.getText());
+                selectedDependent.setPhoneNumber(tfPhoneNumber.getText());
+                selectedDependent.setPolicyHolderId(tfPolicyHolderId.getText());
+                selectedDependent.setRole(tfRole.getText());
+
+                return selectedDependent;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            return null;
+        });
+        Optional<User> result = dialog.showAndWait();
+        result.ifPresent(dependent -> {
+            dbService.updateDependents(selectedDependent);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedDependent.getUsername(), "Update Dependent", "Edit Dependent", null);
+
+            loadData();
+        });
+
     }
+
+
 
     @FXML
-    private void handleDeleteButtonAction(ActionEvent e) throws Exception {
+    private void handleDeleteButtonAction(ActionEvent e) {
         handleDeleteDependents();
     }
 
-    private void handleDeleteDependents() throws Exception {
+    private void handleDeleteDependents() {
         User selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
         if (selectedDependent != null) {
-            deleteDependents(selectedDependent.getId());
+            dbService.deleteDependents(selectedDependent.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedDependent.getPolicyHolderId(), "Delete Dependent", "Deleted Dependent with ID: " + selectedDependent.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -192,34 +204,13 @@ public class DependentScreenController implements Initializable {
         }
     }
 
-    private void deleteDependents(String id) {
-        String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Deletion failed, no rows affected.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @FXML
     private void handleBackButtonAction(ActionEvent e){
         setBtnBack();
     }
-    public Connection getConnection(){
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-            return conn;
-        }
-        catch (Exception e){
-            System.out.println("Error"+ e.getMessage());
-            return null;
-        }
-    }
+
     private void loadData() {
         setCellValueDependents();
         list.setAll(DependentDatabase.getDependentList());
@@ -252,22 +243,7 @@ public class DependentScreenController implements Initializable {
             System.out.println("Failed to load the screen: " + e.getMessage());
         }
     }
-    int index = -1;
-    @FXML
-    public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
-        index = tvDependent.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-            return;
-        }
-        tfID.setText(colId.getCellData(index).toString());
-        tfUsername.setText(colUsername.getCellData(index).toString());
-        tfPassword.setText(colPassword.getCellData(index).toString());
-        tfRole.setText(colRole.getCellData(index).toString());
-        tfAddress.setText(colAddress.getCellData(index).toString());
-        tfFullName.setText(colFullName.getCellData(index).toString());
-        tfPolicyHolderId.setText(colPolicyHolderId.getCellData(index).toString());
-        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();

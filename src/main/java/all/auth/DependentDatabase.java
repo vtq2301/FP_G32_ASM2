@@ -1,9 +1,8 @@
 package all.auth;
 
+import all.controller.UniqueIDGenerator;
 import all.db.dbConnection;
 import all.model.customer.User;
-import all.model.customer.Dependent;
-import all.model.customer.PolicyHolder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +36,61 @@ public class DependentDatabase {
             e.printStackTrace();
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    public void addDependents(User dependent){
+        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)";
+        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(query)){
+            ps.setString(1, id);
+            ps.setString(2, dependent.getUsername());
+            ps.setString(3, dependent.getPassword());
+            ps.setString(4, "Dependent");
+            ps.setString(5, dependent.getFullName());
+            ps.setString(6, dependent.getAddress());
+            ps.setString(7, dependent.getPhoneNumber());
+            ps.setString(8, dependent.getPolicyHolderId());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+                dependent.setId(id);
+            } else {
+                throw new SQLException("Creating policy Holder failed, no rows affected.");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateDependents(User dependent) {
+        String sql = "UPDATE users SET username = ?, password_hash = ?, role = ?, full_name = ?,address = ?, phone_number = ?, policy_holder_id = ? WHERE id = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, dependent.getUsername());
+            ps.setString(2, dependent.getPassword());
+            ps.setString(3, dependent.getRole());
+            ps.setString(4, dependent.getFullName());
+            ps.setString(5, dependent.getAddress());
+            ps.setString(6, dependent.getPhoneNumber());
+            ps.setString(7, dependent.getPolicyHolderId());
+            ps.setString(8, dependent.getId());
+            if (ps.executeUpdate() == 0) {
+                throw new SQLException("Update failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteDependents(String id) {
+        String sql = "DELETE FROM users WHERE id = ?";
+        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, id);
+            if (ps.executeUpdate() == 0) {
+                throw new SQLException("Deletion failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

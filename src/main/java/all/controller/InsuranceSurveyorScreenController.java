@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import all.auth.ActionLogger;
 import all.auth.InsuranceSurveyorDatabase;
@@ -25,21 +26,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class InsuranceSurveyorScreenController implements Initializable {
-    @FXML
-    private TextField tfID;
-    @FXML
-    private TextField tfFullName;
-    @FXML
-    private TextField tfPhoneNumber;
-    @FXML
-    private TextField tfAddress;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private TextField tfUsername;
-    @FXML
-    private TextField tfRole;
-
     @FXML
     private TableView<User> tvInsuranceSurveyor = new TableView<User>();
     @FXML
@@ -59,7 +45,7 @@ public class InsuranceSurveyorScreenController implements Initializable {
 
     @FXML
     private Button btnBack;
-    private static final dbConnection dbConn = new dbConnection();
+    private final InsuranceSurveyorDatabase dbService = new InsuranceSurveyorDatabase();
     private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
@@ -70,52 +56,60 @@ public class InsuranceSurveyorScreenController implements Initializable {
         handleUpdateInsuranceSurveyors();
     }
     @FXML
-    private void handleDeleteButtonAction(ActionEvent e) throws Exception {
+    private void handleDeleteButtonAction(ActionEvent e) {
         handleDeleteInsuranceSurveyors();
     }
     private void handleAddInsuranceSurveyors() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Insurance Surveyor");
-        dialog.setHeaderText("Create a New Insurance Surveyor");
-        dialog.setContentText("Please enter the Insurance Surveyor information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User insuranceSurveyor = new User(null,tfUsername.getText(),"1","InsuranceSurveyor",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
-            list.addAll(insuranceSurveyor);
-            addInsuranceSurveyors(insuranceSurveyor);
-            ActionLogger actionLogger = new ActionLogger();
-            actionLogger.logAction(insuranceSurveyor.getId(), "Add InsuranceSurveyor", "Added new InsuranceSurveyor" + description,null);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Add new Insurance Surveyor");
+        dialog.setHeaderText("Create new Insurance Surveyor");
+        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField tfFullName = new TextField();
+        TextField tfPhoneNumber = new TextField();
+        TextField tfAddress = new TextField();
+        TextField tfPassword = new TextField();
+        TextField tfUsername = new TextField();
+
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Full name:"), 0, 2);
+        grid.add(tfFullName, 1, 2);
+        grid.add(new Label("Address:"), 0, 3);
+        grid.add(tfAddress, 1, 3);
+        grid.add(new Label("Phone Number:"), 0, 4);
+        grid.add(tfPhoneNumber, 1, 4);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == addButtonType) {
+                String username = tfUsername.getText();
+                String password = tfPassword.getText();
+                String fullName = tfFullName.getText();
+                String phoneNumber = tfPhoneNumber.getText();
+                String address = tfAddress.getText();
+
+                return new User(null,username,password,"InsuranceSurveyor",fullName,address,phoneNumber);
             }
+            return null;
         });
+        Optional<User> result =dialog.showAndWait();
+        result.ifPresent(insuranceSurveyor ->{
+            dbService.addInsuranceSurveyors(insuranceSurveyor);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(tfUsername.getText(), "Add Insurance Surveyor", "Add new Insurance Surveyor", null);
+            loadData();
+        }) ;
     }
 
-    private void addInsuranceSurveyors(User insuranceSurveyor) {
-        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
-        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setString(1, id);
-            ps.setString(2, tfUsername.getText());
-            ps.setString(3, tfPassword.getText());
-            ps.setString(4, "InsuranceSurveyor");
-            ps.setString(5, tfFullName.getText());
-            ps.setString(6, tfAddress.getText());
-            ps.setString(7, tfPhoneNumber.getText());
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows > 0) {
-                insuranceSurveyor.setId(id);
-            } else {
-                throw new SQLException("Creating InsuranceSurveyor failed, no rows affected.");
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
 
     private void handleUpdateInsuranceSurveyors() {
@@ -128,50 +122,69 @@ public class InsuranceSurveyorScreenController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-        TextInputDialog dialog = new TextInputDialog(selectedInsuranceSurveyor.getId());
+        Dialog<User> dialog = new Dialog<>();
         dialog.setTitle("Update Insurance Surveyor");
         dialog.setHeaderText("Edit the Insurance Surveyor");
         dialog.setContentText("Enter the new information:");
 
-        Optional<String> result = dialog.showAndWait();
+        ButtonType updateButtonType = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(updateButtonType, ButtonType.CANCEL);
 
-        updateInsuranceSurveyors();
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        TextField tfFullName = new TextField(selectedInsuranceSurveyor.getFullName());
+        TextField tfPhoneNumber = new TextField(selectedInsuranceSurveyor.getPhoneNumber());
+        TextField tfAddress = new TextField(selectedInsuranceSurveyor.getAddress());
+        TextField tfPassword = new TextField(selectedInsuranceSurveyor.getPassword());
+        TextField tfUsername = new TextField(selectedInsuranceSurveyor.getUsername());
+        TextField tfRole = new TextField(selectedInsuranceSurveyor.getRole());
 
-    private void updateInsuranceSurveyors() {
-        String sql = "UPDATE users SET username = ?," +
-                " password_hash = ?, role = ?" +
-                " full_name = ?," +
-                " address = ?," +
-                " phone_number = ? WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfUsername.getText());
-            ps.setString(2, tfPassword.getText());
-            ps.setString(3, tfRole.getText());
-            ps.setString(4, tfFullName.getText());
-            ps.setString(5, tfAddress.getText());
-            ps.setString(6, tfPhoneNumber.getText());
-            ps.setString(7, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Update failed, no rows affected.");
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Role:"), 0, 2);
+        grid.add(tfRole, 1, 2);
+        grid.add(new Label("Full name:"), 0, 3);
+        grid.add(tfFullName, 1, 3);
+        grid.add(new Label("Address:"), 0, 4);
+        grid.add(tfAddress, 1, 4);
+        grid.add(new Label("Phone Number:"), 0, 5);
+        grid.add(tfPhoneNumber, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == updateButtonType) {
+                selectedInsuranceSurveyor.setUsername(tfUsername.getText());
+                selectedInsuranceSurveyor.setAddress(tfAddress.getText());
+                selectedInsuranceSurveyor.setPassword(tfPassword.getText());
+                selectedInsuranceSurveyor.setRole(tfRole.getText());
+                selectedInsuranceSurveyor.setFullName(tfFullName.getText());
+                selectedInsuranceSurveyor.setPhoneNumber(tfPhoneNumber.getText());
+
+                return selectedInsuranceSurveyor;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            return null;
+        });
+        Optional<User> result = dialog.showAndWait();
+        result.ifPresent(insuranceSurveyor -> {
+            dbService.updateInsuranceSurveyors(selectedInsuranceSurveyor);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedInsuranceSurveyor.getUsername(), "Update Insurance Surveyor", "Edit Insurance Surveyor", null);
+
+            loadData();
+        });
     }
 
 
-    private void handleDeleteInsuranceSurveyors() throws Exception {
+
+    private void handleDeleteInsuranceSurveyors() {
         User selectedInsuranceSurveyor = tvInsuranceSurveyor.getSelectionModel().getSelectedItem();
         if (selectedInsuranceSurveyor != null) {
-            deleteInsuranceSurveyors(selectedInsuranceSurveyor.getId());
+            dbService.deleteInsuranceSurveyors(selectedInsuranceSurveyor.getId());
             loadData();
         }
         else{
@@ -183,33 +196,11 @@ public class InsuranceSurveyorScreenController implements Initializable {
         }
     }
 
-    private void deleteInsuranceSurveyors(String id) {
-        String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Deletion failed, no rows affected.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @FXML
     private void handleBackButtonAction(ActionEvent e){
         setBtnBack();
-    }
-    public Connection getConnection(){
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-            return conn;
-        }
-        catch (Exception e){
-            System.out.println("Error"+ e.getMessage());
-            return null;
-        }
     }
     public void setCellValueInsuranceSurveyor(){
         colId.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
@@ -241,21 +232,7 @@ public class InsuranceSurveyorScreenController implements Initializable {
             System.out.println("Failed to load the screen: " + e.getMessage());
         }
     }
-    int index = -1;
-    @FXML
-    public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
-        index = tvInsuranceSurveyor.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-            return;
-        }
-        tfID.setText(colId.getCellData(index).toString());
-        tfUsername.setText(colUsername.getCellData(index).toString());
-        tfPassword.setText(colPassword.getCellData(index).toString());
-        tfRole.setText(colRole.getCellData(index).toString());
-        tfAddress.setText(colAddress.getCellData(index).toString());
-        tfFullName.setText(colFullName.getCellData(index).toString());
-        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        loadData();

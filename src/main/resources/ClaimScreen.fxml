@@ -15,7 +15,14 @@
 <BorderPane style="-fx-background-color: #F7F9FB;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.ClaimScreenController">
     <center>
         <VBox spacing="10" style="-fx-padding: 20;">
-            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Claim Management" />
+            <HBox prefHeight="31.0" prefWidth="724.0" spacing="30.0">
+                <Label text="Info">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tfSearch" prefHeight="25.0" prefWidth="581.0" promptText="Claim Informaiton" />
+            </HBox>
             <TableView fx:id="tvClaims" prefHeight="300.0" prefWidth="724.0" style="-fx-background-color: white; -fx-border-color: #D5D8DC; -fx-border-width: 1;">
                 <columns>
                     <TableColumn fx:id="colId" style="-fx-alignment: CENTER;" text="ID">
@@ -67,53 +74,25 @@
             </TableView>
         </VBox>
     </center>
-   <bottom>
-        <HBox alignment="CENTER" spacing="80.0" style="-fx-padding: 10; -fx-background-color: #2C3E50;" BorderPane.alignment="CENTER">
-         <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-            <children>
-               <Label text="Customer ID" textFill="WHITE" />
-               <Label text="Claim Date" textFill="WHITE" />
-               <Label text="Exam Date" textFill="WHITE" />
-               <Label text="Insured Person" textFill="WHITE" />
-               <Label text="Status" textFill="WHITE" />
-               <Label text="Status" textFill="WHITE" />
-            </children>
-         </VBox>
-         <VBox prefHeight="200.0" prefWidth="301.0" spacing="10.0">
-            <children>
-               <TextField />
-               <TextField />
-               <TextField />
-               <TextField />
-               <TextField />
-               <TextField />
-            </children>
-         </VBox>
-         <VBox prefHeight="119.0" prefWidth="165.0" spacing="20.0">
-            <children>
-               <TextField fx:id="tfTotalAmount" alignment="CENTER" disable="true" promptText="Total amount">
-                  <font>
-                     <Font name="System Italic" size="20.0" />
-                  </font>
-               </TextField>
-                  <Button fx:id="btnSumUp" maxWidth="1.7976931348623157E308" onAction="#handleSumUpButton" prefHeight="32.0" prefWidth="165.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;" text="Sum All Successful Claims" />
-               <Button fx:id="btnReload" maxWidth="1.7976931348623157E308" onAction="#handleReloadButton" prefHeight="28.0" prefWidth="163.0" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;" text="Reload" />
-               <Button fx:id="backButton" maxWidth="1.7976931348623157E308" onAction="#handleBackButton" prefHeight="28.0" prefWidth="163.0" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Back">
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <HBox.margin>
-               <Insets />
-            </HBox.margin>
-         </VBox>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="78.0" prefWidth="764.0" spacing="40.0" style="-fx-padding: 10; -fx-background-color: #2C3E50;" BorderPane.alignment="CENTER">
+            <TextField fx:id="tfTotalAmount" alignment="CENTER" disable="true" promptText="Total amount">
+                <font>
+                    <Font name="System Italic" size="18.0" />
+                </font>
+            </TextField>
+            <Button fx:id="btnSumUp" maxWidth="1.7976931348623157E308" onAction="#handleSumUpButton" prefHeight="32.0" prefWidth="165.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;" text="Sum All Successful Claims" />
+            <Button fx:id="btnReload" maxWidth="1.7976931348623157E308" onAction="#handleReloadButton" prefHeight="28.0" prefWidth="125.0" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;" text="Reload" />
+            <Button fx:id="backButton" maxWidth="1.7976931348623157E308" onAction="#handleBackButton" prefHeight="28.0" prefWidth="125.0" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-weight: bold;" text="Back" />
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
         </HBox>
-   </bottom>
+    </bottom>
+    <top>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Claim Management" BorderPane.alignment="CENTER" />
+    </top>
 </BorderPane>

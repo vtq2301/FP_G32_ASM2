@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionHistoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionLogger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminInfoScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminInfoScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChangePassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChangePasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimIDGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimManagement.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimManagementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClaimScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dependent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependentScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagement.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagementSurveyor.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagerAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagerDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagerScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceManagerScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyHolderAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyHolderDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyHolderScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyHolderScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyOwner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyOwnerAdmin.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyOwnerDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyOwnerScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolicyOwnerScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignUpScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignUpScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniqueIDGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UpdateUserInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UpdateUserInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserActionHistoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewDependentInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewDependentInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/AdminDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/AdminDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/DependentDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/DependentDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceManagerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceManagerDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceSurveyorDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceSurveyorDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/PolicyHolderDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyHolderDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/PolicyOwnerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyOwnerDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/ClaimScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/ClaimScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminInfoScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminInfoScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClaimScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClaimScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DependentAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DependentAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceManagerAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InsuranceManagerAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyHolderAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyHolderAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyOwnerAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyOwnerAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ViewDependentInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ViewDependentInfo.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2gduClKE6mBmWzocUffqWkJVH0P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "test3",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\insurance" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\customer" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\resources" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\auth" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-temurin-21.0.1-4caba194b151-b7b86d5d" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="" />
+      <created>1716039650865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716039650865</updated>
+      <workItem from="1716039651936" duration="659000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

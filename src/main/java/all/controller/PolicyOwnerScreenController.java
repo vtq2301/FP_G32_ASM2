@@ -1,5 +1,6 @@
 package all.controller;
 
+import all.auth.ActionLogger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import all.auth.PolicyOwnerDatabase;
 import all.db.dbConnection;
@@ -27,20 +29,6 @@ public class PolicyOwnerScreenController implements Initializable {
     public Button btnAdd;
     public Button btnUpdate;
     public Button btnDelete;
-    @FXML
-    private TextField tfID;
-    @FXML
-    private TextField tfFullName;
-    @FXML
-    private TextField tfPhoneNumber;
-    @FXML
-    private TextField tfAddress;
-    @FXML
-    private TextField tfPassword;
-    @FXML
-    private TextField tfUsername;
-    @FXML
-    private TextField tfRole;
 
     @FXML
     private TableView<User> tvPolicyOwner = new TableView<User>();
@@ -62,6 +50,7 @@ public class PolicyOwnerScreenController implements Initializable {
     @FXML
     private Button btnBack;
     private static final dbConnection dbConn = new dbConnection();
+    private final PolicyOwnerDatabase dbService = new PolicyOwnerDatabase();
     private final ObservableList<User> list = FXCollections.observableArrayList();
     @FXML
     private void handleAddButtonAction(ActionEvent e){
@@ -106,66 +95,51 @@ public class PolicyOwnerScreenController implements Initializable {
         colPassword.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
     }
     private void handleAddPolicyOwner(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add New Policy Owner");
-        dialog.setHeaderText("Create a New Policy Owner");
-        dialog.setContentText("Please enter the policy Owner information:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(description -> {
-            User policyOwner = new User(null,tfUsername.getText(),"1","PolicyOwner",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
-            list.addAll(policyOwner);
-            addPolicyOwners(policyOwner);
-            try {
-                loadData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Add new Policy Owner");
+        dialog.setHeaderText("Create new Policy Owner");
+        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        TextField tfID = new TextField();
+        TextField tfFullName = new TextField();
+        TextField tfPhoneNumber = new TextField();
+        TextField tfAddress = new TextField();
+        TextField tfPassword = new TextField();
+        TextField tfUsername = new TextField();
+        TextField tfRole = new TextField();
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Full name:"), 0, 2);
+        grid.add(tfFullName, 1, 2);
+        grid.add(new Label("Address:"), 0, 3);
+        grid.add(tfAddress, 1, 3);
+        grid.add(new Label("Phone Number:"), 0, 4);
+        grid.add(tfPhoneNumber, 1, 4);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == addButtonType) {
+                return new User(null,tfUsername.getText(),tfPassword.getText(),"PolicyOwner",tfFullName.getText(),tfAddress.getText(),tfPhoneNumber.getText());
             }
+            return null;
         });
+        Optional<User> result =dialog.showAndWait();
+        result.ifPresent(policyOwner ->{
+            dbService.addPolicyOwners(policyOwner);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(tfUsername.getText(), "Add Policy Owner", "Add new policy owner", null);
+            loadData();
+        }) ;
     }
-    public void addPolicyOwners(User policyOwner){
-        String query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)";
-        String id = UniqueIDGenerator.generateUniqueID(dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS"));
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setString(1, id);
-            ps.setString(2, tfUsername.getText());
-            ps.setString(3, "1");
-            ps.setString(4, "PolicyOwner");
-            ps.setString(5, tfFullName.getText());
-            ps.setString(6, tfAddress.getText());
-            ps.setString(7, tfPhoneNumber.getText());
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows > 0) {
-                policyOwner.setId(id);
-            } else {
-                throw new SQLException("Creating policy Owner failed, no rows affected.");
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void updatePolicyOwner(User policyOwner) {
-        String sql = "UPDATE users SET username = ?," +
-                " password_hash = ?," +
-                " full_name = ?," +
-                " address = ?," +
-                " phone_number = ? WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfUsername.getText());
-            ps.setString(2, tfPassword.getText());
-            ps.setString(3, tfFullName.getText());
-            ps.setString(4, tfAddress.getText());
-            ps.setString(5, tfPhoneNumber.getText());
-            ps.setString(6, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Update failed, no rows affected.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
+
 
     private void handleUpdatePolicyOwner() {
         User selectedPolicyOwner = tvPolicyOwner.getSelectionModel().getSelectedItem();
@@ -177,37 +151,66 @@ public class PolicyOwnerScreenController implements Initializable {
             alert.showAndWait();
             return;
         }
-
-        TextInputDialog dialog = new TextInputDialog(selectedPolicyOwner.getId());
-        dialog.setTitle("Update Policy Owner");
-        dialog.setHeaderText("Edit the Policy Owner");
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle("Update Insurance Manager");
+        dialog.setHeaderText("Edit the Insurance Manager");
         dialog.setContentText("Enter the new information:");
 
-        Optional<String> result = dialog.showAndWait();
+        ButtonType updateButtonType = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(updateButtonType, ButtonType.CANCEL);
 
-        updatePolicyOwner(selectedPolicyOwner);
-        try {
-            loadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void deletePolicyOwner(String id) {
-        String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, tfID.getText());
-            if (ps.executeUpdate() == 0) {
-                throw new SQLException("Deletion failed, no rows affected.");
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        TextField tfFullName = new TextField(selectedPolicyOwner.getFullName());
+        TextField tfPhoneNumber = new TextField(selectedPolicyOwner.getPhoneNumber());
+        TextField tfAddress = new TextField(selectedPolicyOwner.getAddress());
+        TextField tfPassword = new TextField(selectedPolicyOwner.getPassword());
+        TextField tfUsername = new TextField(selectedPolicyOwner.getUsername());
+        TextField tfRole = new TextField(selectedPolicyOwner.getRole());
+
+        grid.add(new Label("Username:"), 0, 0);
+        grid.add(tfUsername, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(tfPassword, 1, 1);
+        grid.add(new Label("Role:"), 0, 2);
+        grid.add(tfRole, 1, 2);
+        grid.add(new Label("Full name:"), 0, 3);
+        grid.add(tfFullName, 1, 3);
+        grid.add(new Label("Address:"), 0, 4);
+        grid.add(tfAddress, 1, 4);
+        grid.add(new Label("Phone Number:"), 0, 5);
+        grid.add(tfPhoneNumber, 1, 5);
+
+        dialog.getDialogPane().setContent(grid);
+
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == updateButtonType) {
+                selectedPolicyOwner.setUsername(tfUsername.getText());
+                selectedPolicyOwner.setAddress(tfAddress.getText());
+                selectedPolicyOwner.setPassword(tfPassword.getText());
+                selectedPolicyOwner.setFullName(tfFullName.getText());
+                selectedPolicyOwner.setPhoneNumber(tfPhoneNumber.getText());
+                selectedPolicyOwner.setRole(tfRole.getText());
+                return selectedPolicyOwner;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            return null;
+        });
+        Optional<User> result = dialog.showAndWait();
+        result.ifPresent(PolicyOwner -> {
+            dbService.updatePolicyOwner(selectedPolicyOwner);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedPolicyOwner.getUsername(), "Update Insurance Manager", "Edit Insurance Manager", null);
+
+            loadData();
+        });
     }
-    private void handleDeletePolicyOwner() throws Exception {
+
+    private void handleDeletePolicyOwner() {
         User selectedPolicyOwner = tvPolicyOwner.getSelectionModel().getSelectedItem();
         if (selectedPolicyOwner != null) {
-            deletePolicyOwner(selectedPolicyOwner.getId());
+            dbService.deletePolicyOwner(selectedPolicyOwner.getId());
             loadData();
         }
         else{
@@ -246,19 +249,5 @@ public class PolicyOwnerScreenController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    int index = -1;
-    @FXML
-    public void getSelected(javafx.scene.input.MouseEvent mouseEvent) {
-        index = tvPolicyOwner.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-            return;
-        }
-        tfID.setText(colId.getCellData(index).toString());
-        tfUsername.setText(colUsername.getCellData(index).toString());
-        tfPassword.setText(colPassword.getCellData(index).toString());
-        tfRole.setText(colRole.getCellData(index).toString());
-        tfAddress.setText(colAddress.getCellData(index).toString());
-        tfFullName.setText(colFullName.getCellData(index).toString());
-        tfPhoneNumber.setText(colPhoneNumber.getCellData(index).toString());
-    }
+
 }
