@@ -32,9 +32,9 @@
                 <Label text="Policy Number:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-text-fill: white;"/>
                 <TextField fx:id="policyNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-color: white;"/>
             </GridPane>
-            <Button text="Claims" onAction="#showClaims" style="-fx-background-color: red; -fx-text-fill: white;"/>
-            <Button text="Beneficiaries" onAction="#showBeneficiaries" style="-fx-background-color: red; -fx-text-fill: white;"/>
-            <Button text="Logs" onAction="#showLogs" style="-fx-background-color: red; -fx-text-fill: white;"/>
+            <Button fx:id="claimsButton" text="Claims" onAction="#showClaims" style="-fx-background-color: red; -fx-text-fill: white;"/>
+            <Button fx:id="beneficiariesButton" text="Beneficiaries" onAction="#showBeneficiaries" style="-fx-background-color: red; -fx-text-fill: white;"/>
+            <Button fx:id="logsButton" text="Logs" onAction="#showLogs" style="-fx-background-color: red; -fx-text-fill: white;"/>
         </VBox>
     </left>
 

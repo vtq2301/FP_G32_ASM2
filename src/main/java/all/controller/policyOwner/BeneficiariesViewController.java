@@ -11,12 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.util.Objects;
 
 public class BeneficiariesViewController {
 
+    public AnchorPane beneficiariesView;
     @FXML
     private TextField searchField;
     @FXML

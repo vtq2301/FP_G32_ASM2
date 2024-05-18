@@ -5,7 +5,7 @@
 <?import org.controlsfx.control.tableview2.FilteredTableView?>
 
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.LogsViewController" style="-fx-background-color: white;">
+<AnchorPane fx:id="logsView" xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.LogsViewController" style="-fx-background-color: white;">
 
 
     <VBox spacing="10" alignment="CENTER">

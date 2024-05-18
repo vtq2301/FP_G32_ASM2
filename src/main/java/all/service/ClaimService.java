@@ -12,12 +12,21 @@ import java.util.List;
 
 public class ClaimService {
 
+    private final ConnectionPool connectionPool;
+
+    public ClaimService() {
+        this.connectionPool = ConnectionPool.getInstance();
+    }
+    public ClaimService(ConnectionPool connectionPool) {
+        this.connectionPool = connectionPool;
+    }
+
     public List<ClaimManagement> findAllBeneficiaryClaims(String policyOwnerId) {
         List<ClaimManagement> claims = new ArrayList<>();
         String sql = "SELECT c.* FROM claims c, users u WHERE c.insured_person = u.username AND u.policy_owner_id = ?";
         Connection conn = null;
         try {
-            conn = ConnectionPool.getInstance().getConnection();
+            conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, policyOwnerId);
                 ResultSet rs = ps.executeQuery();
@@ -39,7 +48,7 @@ public class ClaimService {
             System.err.println(e.getMessage());
         } finally {
             if (conn != null) {
-                ConnectionPool.getInstance().releaseConnection(conn);
+                connectionPool.releaseConnection(conn);
             }
         }
         return claims;
@@ -49,7 +58,7 @@ public class ClaimService {
         String sql = "INSERT INTO claims (id, customer_id, claim_date, insured_person, exam_date, documents, claim_amount, receiver_banking_info, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         try {
-            conn = ConnectionPool.getInstance().getConnection();
+            conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, claim.getId());
                 ps.setString(2, claim.getCustomerId());
@@ -66,7 +75,7 @@ public class ClaimService {
             System.err.println(e.getMessage());
         } finally {
             if (conn != null) {
-                ConnectionPool.getInstance().releaseConnection(conn);
+                connectionPool.releaseConnection(conn);
             }
         }
     }
@@ -75,7 +84,7 @@ public class ClaimService {
         String sql = "UPDATE claims SET insured_person = ?, claim_amount = ?, status = ?, claim_date = ?, exam_date = ?, documents = ?, receiver_banking_info = ? WHERE id = ?";
         Connection conn = null;
         try {
-            conn = ConnectionPool.getInstance().getConnection();
+            conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, claim.getInsuredPerson());
                 ps.setDouble(2, claim.getClaimAmount());
@@ -91,7 +100,7 @@ public class ClaimService {
             System.err.println(e.getMessage());
         } finally {
             if (conn != null) {
-                ConnectionPool.getInstance().releaseConnection(conn);
+                connectionPool.releaseConnection(conn);
             }
         }
     }
@@ -100,7 +109,7 @@ public class ClaimService {
         String sql = "DELETE FROM claims WHERE id = ?";
         Connection conn = null;
         try {
-            conn = ConnectionPool.getInstance().getConnection();
+            conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, claimId);
                 ps.executeUpdate();
@@ -109,7 +118,7 @@ public class ClaimService {
             System.err.println(e.getMessage());
         } finally {
             if (conn != null) {
-                ConnectionPool.getInstance().releaseConnection(conn);
+                connectionPool.releaseConnection(conn);
             }
         }
     }

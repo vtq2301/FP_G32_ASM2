@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.tableview2.FilteredTableView;
 
 import java.sql.Connection;
@@ -21,6 +22,7 @@ import java.util.Date;
 
 public class LogsViewController {
 
+    public AnchorPane logsView;
     @FXML
     private TextField searchField;
     @FXML

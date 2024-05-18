@@ -10,12 +10,14 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.tableview2.FilteredTableView;
 
 import java.util.Date;
 
 public class ClaimsViewController {
 
+    public AnchorPane claimsView;
     @FXML
     private TextField searchField;
     @FXML

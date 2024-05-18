@@ -16,6 +16,11 @@ public class ConnectionPool {
 
     private static ConnectionPool instance;
 
+    // Public constructor for testing
+    public ConnectionPool(List<Connection> connections) {
+        connectionPool.addAll(connections);
+    }
+
     private ConnectionPool() {
         try {
             for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
@@ -42,7 +47,7 @@ public class ConnectionPool {
             throw new SQLException("All connections are in use!");
         }
 
-        Connection connection = connectionPool.remove(connectionPool.size() - 1);
+        Connection connection = connectionPool.removeLast();
         usedConnections.add(connection);
         System.out.println("Available Connections: " + getPoolSize());
         return connection;
