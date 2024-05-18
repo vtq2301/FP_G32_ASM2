@@ -173,10 +173,11 @@ public class AdminInfoScreenController implements Initializable {
     private void handleDeleteAdmins() {
         User selectedAdmin = tvAdmin.getSelectionModel().getSelectedItem();
         if (selectedAdmin != null) {
-            dbService.deleteAdmin(selectedAdmin.getId());
-            loadData();
+
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedAdmin.getUsername(), "Delete Admin", "Deleted Admin with ID: " + selectedAdmin.getId(), null);
+            dbService.deleteAdmin(selectedAdmin.getId());
+            loadData();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

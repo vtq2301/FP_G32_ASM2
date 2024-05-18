@@ -210,10 +210,10 @@ public class PolicyOwnerScreenController implements Initializable {
     private void handleDeletePolicyOwner() {
         User selectedPolicyOwner = tvPolicyOwner.getSelectionModel().getSelectedItem();
         if (selectedPolicyOwner != null) {
-            dbService.deletePolicyOwner(selectedPolicyOwner.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedPolicyOwner.getUsername(), "Delete Policy Owner", "Deleted Policy Owner with ID: " + selectedPolicyOwner.getId(), null);
+            dbService.deletePolicyOwner(selectedPolicyOwner.getId());
+            loadData();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

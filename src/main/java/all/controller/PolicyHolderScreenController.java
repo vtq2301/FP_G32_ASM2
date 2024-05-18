@@ -127,9 +127,10 @@ public class PolicyHolderScreenController implements Initializable {
         });
         Optional<User> result =dialog.showAndWait();
         result.ifPresent(policyHolder ->{
-            dbService.addPolicyHolders(policyHolder);
+
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(tfUsername.getText(), "Add Policy Holder", "Add new policy holder", null);
+            dbService.addPolicyHolders(policyHolder);
             loadData();
         }) ;
     }
@@ -204,10 +205,11 @@ public class PolicyHolderScreenController implements Initializable {
     private void handleDeletePolicyHolder() {
         User selectedPolicyHolder = tvPolicyHolder.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            dbService.deletePolicyHolder(selectedPolicyHolder.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedPolicyHolder.getUsername(), "Delete Policy Holder", "Deleted Policy Holder with ID: " + selectedPolicyHolder.getId(), null);
+            dbService.deletePolicyHolder(selectedPolicyHolder.getId());
+            loadData();
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

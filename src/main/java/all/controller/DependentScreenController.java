@@ -190,10 +190,11 @@ public class DependentScreenController implements Initializable {
     private void handleDeleteDependents() {
         User selectedDependent = tvDependent.getSelectionModel().getSelectedItem();
         if (selectedDependent != null) {
-            dbService.deleteDependents(selectedDependent.getId());
-            loadData();
             ActionLogger actionLogger = new ActionLogger();
             actionLogger.logAction(selectedDependent.getPolicyHolderId(), "Delete Dependent", "Deleted Dependent with ID: " + selectedDependent.getId(), null);
+            dbService.deleteDependents(selectedDependent.getId());
+            loadData();
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
