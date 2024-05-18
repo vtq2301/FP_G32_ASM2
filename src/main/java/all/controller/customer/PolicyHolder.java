@@ -1,6 +1,5 @@
 package all.controller.customer;
 
-import all.auth.ActionLogger;
 import all.model.customer.User;
 import all.controller.UserSession;
 import javafx.event.ActionEvent;

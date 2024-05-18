@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="Admin screen update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TVNT99&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6b8ca4f4-2a04-4c24-b3c6-d0f136a9091d" />
+        <option name="url" value="https://github.com/vtq2301/FP_G32_ASM2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2gduClKE6mBmWzocUffqWkJVH0P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "test3",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\insurance" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\customer" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\resources" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\auth" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="G32_ASM2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="G32_ASM2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-temurin-21.0.1-4caba194b151-b7b86d5d" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="" />
+      <created>1716039650865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716039650865</updated>
+      <workItem from="1716039651936" duration="1706000" />
+      <workItem from="1716042107342" duration="1177000" />
+      <workItem from="1716043876530" duration="528000" />
+    </task>
+    <task id="LOCAL-00001" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716040463567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716040463567</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716041311967</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716041311967</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716042936880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716042936880</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716043092945</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716043092945</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="test3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Admin screen update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin screen update" />
+  </component>
+</project>

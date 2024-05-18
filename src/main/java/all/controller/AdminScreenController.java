@@ -20,7 +20,7 @@ public class AdminScreenController {
     @FXML
     protected void handlePolicyOwnerButton(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/PolicyOwnerScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/PolicyOwnerAdmin.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) anchorPane.getScene().getWindow();
             stage.setScene(scene);
@@ -136,6 +136,6 @@ public class AdminScreenController {
     }
 
     public void loadData(User user) {
-        labelAdmin.setText("Welcome, " + user.getUsername() + "!");
+        labelAdmin.setText("Welcome, " + user.getFullName() + "!");
     }
 }
