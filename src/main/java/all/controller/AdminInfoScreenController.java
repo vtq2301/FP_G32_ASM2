@@ -175,6 +175,8 @@ public class AdminInfoScreenController implements Initializable {
         if (selectedAdmin != null) {
             dbService.deleteAdmin(selectedAdmin.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedAdmin.getUsername(), "Delete Admin", "Deleted Admin with ID: " + selectedAdmin.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

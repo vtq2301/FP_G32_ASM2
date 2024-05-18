@@ -186,6 +186,8 @@ public class InsuranceSurveyorScreenController implements Initializable {
         if (selectedInsuranceSurveyor != null) {
             dbService.deleteInsuranceSurveyors(selectedInsuranceSurveyor.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedInsuranceSurveyor.getUsername(), "Delete Insurance Surveyors", "Deleted Insurance Surveyors with ID: " + selectedInsuranceSurveyor.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

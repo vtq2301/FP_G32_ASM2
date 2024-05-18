@@ -206,6 +206,8 @@ public class PolicyHolderScreenController implements Initializable {
         if (selectedPolicyHolder != null) {
             dbService.deletePolicyHolder(selectedPolicyHolder.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedPolicyHolder.getUsername(), "Delete Policy Holder", "Deleted Policy Holder with ID: " + selectedPolicyHolder.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

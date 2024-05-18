@@ -212,6 +212,8 @@ public class PolicyOwnerScreenController implements Initializable {
         if (selectedPolicyOwner != null) {
             dbService.deletePolicyOwner(selectedPolicyOwner.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedPolicyOwner.getUsername(), "Delete Policy Owner", "Deleted Policy Owner with ID: " + selectedPolicyOwner.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -184,6 +184,8 @@ public class InsuranceManagerScreenController implements Initializable {
         if (selectedInsuranceManager != null) {
             dbService.deleteInsuranceManager(selectedInsuranceManager.getId());
             loadData();
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(selectedInsuranceManager.getUsername(), "Delete Insurance Manager", "Deleted Insurance Manager with ID: " + selectedInsuranceManager.getId(), null);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
