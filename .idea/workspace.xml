@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="Admin screen update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClaimScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ClaimScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LoginScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SignUpScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SignUpScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/auth/DatabaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/controller/ClaimsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/controller/LoginScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/controller/LoginScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/controller/SignUpScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/controller/SignUpScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/db/dbConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/db/dbConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/model/Claim.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +25,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -65,8 +60,8 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "test3",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,7 +111,8 @@
       <option name="presentableId" value="Default" />
       <updated>1716039650865</updated>
       <workItem from="1716039651936" duration="1706000" />
-      <workItem from="1716042107342" duration="426000" />
+      <workItem from="1716042107342" duration="1177000" />
+      <workItem from="1716043876530" duration="528000" />
     </task>
     <task id="LOCAL-00001" summary="Admin screen update">
       <option name="closed" value="true" />
@@ -134,7 +130,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716041311967</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716042936880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716042936880</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Admin screen update">
+      <option name="closed" value="true" />
+      <created>1716043092945</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716043092945</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
