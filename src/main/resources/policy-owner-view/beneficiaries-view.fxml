@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.tableview2.FilteredTableView?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.BeneficiariesViewController" style="-fx-background-color: white;">
+    <VBox alignment="CENTER" spacing="10">
+        <Text text="BENEFICIARIES" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <TextField fx:id="searchField" promptText="Search Beneficiaries" style="-fx-background-color: white;"/>
+            <Button text="Add" onAction="#addUser" style="-fx-background-color: green; -fx-text-fill: white;"/>
+            <Button text="Update" onAction="#updateUser" style="-fx-background-color: yellow; -fx-text-fill: black;"/>
+            <Button text="Remove" onAction="#removeUser" style="-fx-background-color: red; -fx-text-fill: white;"/>
+        </HBox>
+
+        <FilteredTableView fx:id="beneficiariesTable" style="-fx-background-color: white;">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID"/>
+                <TableColumn fx:id="nameColumn" text="Name"/>
+                <TableColumn fx:id="roleColumn" text="Role"/>
+                <TableColumn fx:id="phoneColumn" text="Phone"/>
+                <TableColumn fx:id="addressColumn" text="Address"/>
+                <TableColumn fx:id="emailColumn" text="Email"/>
+                <TableColumn fx:id="isActiveSwitchColumn" text="Active?"/>
+            </columns>
+        </FilteredTableView>
+
+        <Pagination fx:id="pagination"/>
+
+        <HBox alignment="CENTER" spacing="10" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+            <Text text="Your Annual Payment for this year:" style="-fx-text-fill: black;"/>
+            <Label fx:id="yearlyPayment" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

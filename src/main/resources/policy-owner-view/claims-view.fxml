@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.tableview2.FilteredTableView?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.ClaimsViewController" style="-fx-background-color: white;">
+    <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <Text text="CLAIMS OF BENEFICIARIES" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <TextField fx:id="searchField" promptText="Search Claims" style="-fx-background-color: white;"/>
+            <Button text="Add" onAction="#addClaim" style="-fx-background-color: green; -fx-text-fill: white;"/>
+            <Button text="Update" onAction="#updateClaim" style="-fx-background-color: yellow; -fx-text-fill: black;"/>
+            <Button text="Remove" onAction="#removeClaim" style="-fx-background-color: red; -fx-text-fill: white;"/>
+        </HBox>
+
+        <FilteredTableView fx:id="claimsTable" style="-fx-background-color: white;">
+            <columns>
+                <TableColumn fx:id="claimIdColumn" text="Claim ID"/>
+                <TableColumn fx:id="customerIdColumn" text="Customer ID"/>
+                <TableColumn fx:id="insuredPersonColumn" text="Insured Person"/>
+                <TableColumn fx:id="claimAmountColumn" text="Claim Amount"/>
+                <TableColumn fx:id="statusColumn" text="Status"/>
+                <TableColumn fx:id="claimDateColumn" text="Claim Date"/>
+                <TableColumn fx:id="examDateColumn" text="Exam Date"/>
+            </columns>
+        </FilteredTableView>
+
+        <Pagination fx:id="pagination"/>
+        <HBox alignment="CENTER_LEFT" spacing="10" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+            <Text text="Successfully claimed amount: " style="-fx-text-fill: black;"/>
+            <Label fx:id="claimedAmount" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+        </HBox>
+    </VBox>
+
+
+</AnchorPane>

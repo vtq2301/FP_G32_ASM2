@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.customer.PolicyOwner">
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
-    <GridPane hgap="10" vgap="10">
-        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="fullNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.customer.PolicyOwner"
+            prefWidth="1200" prefHeight="800">
+<!--    <padding>-->
+<!--        <Insets top="20" right="20" bottom="20" left="20"/>-->
+<!--    </padding>-->
 
-        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <TextField fx:id="emailField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <top>
+        <!-- Header -->
+        <HBox spacing="10" alignment="CENTER" style="-fx-background-color: orange;">
+            <Label text="Policy Owner Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Button alignment="CENTER_RIGHT" text="LOGOUT" fx:id="logout" onAction="#logout" style="-fx-background-color: red; -fx-text-fill: black;"/>
+        </HBox>
+    </top>
 
-        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <TextField fx:id="contactNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <left>
+        <VBox spacing="10" style="-fx-background-color: black; -fx-padding: 10;">
+            <GridPane hgap="10" vgap="10">
+                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-text-fill: white;"/>
+                <TextField fx:id="fullNameField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-background-color: white;"/>
 
-        <Label text="Policy Number:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-        <TextField fx:id="policyNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-    </GridPane>
-</VBox>
+                <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill: white;"/>
+                <TextField fx:id="emailField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: white;"/>
+
+                <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-text-fill: white;"/>
+                <TextField fx:id="contactNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-background-color: white;"/>
+
+                <Label text="Policy Number:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-text-fill: white;"/>
+                <TextField fx:id="policyNumberField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-color: white;"/>
+            </GridPane>
+            <Button text="Claims" onAction="#showClaims" style="-fx-background-color: red; -fx-text-fill: white;"/>
+            <Button text="Beneficiaries" onAction="#showBeneficiaries" style="-fx-background-color: red; -fx-text-fill: white;"/>
+            <Button text="Logs" onAction="#showLogs" style="-fx-background-color: red; -fx-text-fill: white;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox fx:id="mainContent" style="-fx-background-color: beige; -fx-padding: 10;">
+            <!-- Main content goes here -->
+        </VBox>
+    </center>
+
+    <bottom>
+        <!-- Footer -->
+        <HBox spacing="10" alignment="CENTER" style="-fx-background-color: black; -fx-padding: 10;">
+            <Label text="© 2024 Insurance Management System" style="-fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
