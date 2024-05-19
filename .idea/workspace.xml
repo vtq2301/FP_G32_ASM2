@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="BeneficiariesViewController.java">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/dbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/dbConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/MyLogRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/MyLogRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/admin/AdminAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/AdminAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/admin/SystemAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/SystemAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/ClaimManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/ClaimManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/Dependent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/Dependent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ImageUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ValidationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ViewUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ViewUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-    </list>
+    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="BeneficiariesViewController.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -335,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716126380717</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="BeneficiariesViewController.java">
+      <option name="closed" value="true" />
+      <created>1716136037687</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716136037687</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
