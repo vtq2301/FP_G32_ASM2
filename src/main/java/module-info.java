@@ -7,6 +7,7 @@ module all {
     requires org.controlsfx.controls;
     requires org.postgresql.jdbc;
 
+
     opens all.controller to javafx.fxml;
     opens all.controller.customer to javafx.fxml;
     opens all.model.customer to javafx.fxml;
