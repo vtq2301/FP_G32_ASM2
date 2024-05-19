@@ -2,6 +2,8 @@ package all.controller.customer;
 
 import all.auth.DependencyService;
 import all.auth.ActionLogger;
+import all.controller.insurance.InsuranceManager;
+import all.controller.insurance.InsuranceSurveyor;
 import all.model.customer.User;
 import all.controller.UserSession;
 import javafx.event.ActionEvent;
@@ -53,37 +55,60 @@ public class UpdateUserInfoController {
         }
     }
 
-
     @FXML
     private void handleBackButton(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             User currentUser = UserSession.getCurrentUser();
             String role = currentUser.getRole();
+            String fxmlPath = "";
+
             switch (role) {
                 case "PolicyOwner":
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyOwnerScreen.fxml"));
+                    fxmlPath = "/PolicyOwnerScreen.fxml";
                     break;
                 case "Dependent":
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/DependentScreen.fxml"));
+                    fxmlPath = "/DependentScreen.fxml";
                     break;
                 case "PolicyHolder":
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
+                    fxmlPath = "/PolicyHolderScreen.fxml";
+                    break;
+                case "InsuranceSurveyor":
+                    fxmlPath = "/InsuranceSurveyorScreen.fxml";
+                    break;
+                case "InsuranceManager":
+                    fxmlPath = "/InsuranceManagerScreen.fxml";
                     break;
                 default:
-                    // Handle unknown roles if necessary
-                    break;
+                    System.err.println("Unknown role: " + role);
+                    showAlert("Error", "Unknown user role: " + role, Alert.AlertType.ERROR);
+                    return;
             }
+
+            fxmlLoader.setLocation(getClass().getResource(fxmlPath));
             Parent parent = fxmlLoader.load();
-            if (role.equals("PolicyOwner")) {
-                PolicyOwner controller = fxmlLoader.getController();
-                controller.loadData(currentUser);
-            } else if (role.equals("Dependent")) {
-                Dependent controller = fxmlLoader.getController();
-                controller.loadData(currentUser);
-            } else if (role.equals("PolicyHolder")) {
-                PolicyHolder controller = fxmlLoader.getController();
-                controller.loadData(currentUser);
+
+            switch (role) {
+                case "PolicyOwner":
+                    PolicyOwner policyOwnerController = fxmlLoader.getController();
+                    policyOwnerController.loadData(currentUser);
+                    break;
+                case "Dependent":
+                    Dependent dependentController = fxmlLoader.getController();
+                    dependentController.loadData(currentUser);
+                    break;
+                case "PolicyHolder":
+                    PolicyHolder policyHolderController = fxmlLoader.getController();
+                    policyHolderController.loadData(currentUser);
+                    break;
+                case "InsuranceSurveyor":
+                    InsuranceSurveyor insuranceSurveyorController = fxmlLoader.getController();
+                    insuranceSurveyorController.loadData(currentUser);
+                    break;
+                case "InsuranceManager":
+                    InsuranceManager insuranceManagerController = fxmlLoader.getController();
+                    insuranceManagerController.loadData(currentUser);
+                    break;
             }
 
             Scene scene = new Scene(parent);
