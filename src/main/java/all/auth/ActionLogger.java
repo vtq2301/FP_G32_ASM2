@@ -3,13 +3,15 @@ package all.auth;
 import all.db.dbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ActionLogger {
     private final dbConnection dbConn = new dbConnection();
 
-    private boolean isUsernameValid(String username) {
+    public ActionLogger() {
+    }
+    public ActionLogger(Connection mockConnection){}
+    boolean isUsernameValid(String username) {
         String sql = "SELECT username FROM users WHERE username = ?";
         try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

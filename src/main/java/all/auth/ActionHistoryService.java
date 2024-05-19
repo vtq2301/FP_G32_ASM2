@@ -1,5 +1,6 @@
     package all.auth;
 
+    import all.db.ConnectionPool;
     import all.db.dbConnection;
     import all.model.UserAction;
 
@@ -13,13 +14,12 @@
 
     public class ActionHistoryService {
         private final dbConnection dbConn = new dbConnection();
-
-        public List<UserAction> getUserActions(int userId) {
+        public List<UserAction> getUserActions(String userId) {
             List<UserAction> actions = new ArrayList<>();
-            String sql = "SELECT action_type, action_description, timestamp FROM user_actions WHERE user_id = ? ORDER BY timestamp DESC";
+            String sql = "SELECT action_type, action_description, timestamp FROM user_actions WHERE username = ? ORDER BY timestamp DESC";
             try (Connection conn = dbConn.connection_to_db("postgres", "postgres.orimpphhrfwkilebxiki", "RXj1sf5He5ORnrjS");
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, userId);
+                pstmt.setString(1, userId);
                 try (ResultSet rs = pstmt.executeQuery()) {
                     while (rs.next()) {
                         String actionType = rs.getString("action_type");

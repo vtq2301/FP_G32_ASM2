@@ -13,6 +13,9 @@ public class UserAction {
         this.timestamp = timestamp;
     }
 
+    public UserAction() {
+    }
+
     // Getters
     public String getActionType() {
         return actionType;
