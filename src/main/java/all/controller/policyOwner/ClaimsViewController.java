@@ -58,11 +58,11 @@ public class ClaimsViewController {
     @FXML
     private Label claimedAmount;
 
-    private User currentUser = UserSession.getCurrentUser();
+    private User currentUser = UserSession.getUser();
     private final ClaimService claimService = new ClaimService();
     private ObservableList<ClaimManagement> claimList = FXCollections.observableArrayList();
     private FilteredList<ClaimManagement> filteredData;
-    private final int ROWS_PER_PAGE = 10;
+    private final int ROWS_PER_PAGE = 20;
 
     @FXML
     public void initialize() {
@@ -95,8 +95,9 @@ public class ClaimsViewController {
     }
 
     private void initializeClaimList() {
-        String id = UserSession.getCurrentUser().getId();
-        claimList.setAll(claimService.findAllBeneficiaryClaims(id));
+        String id = currentUser.getId();
+        List<ClaimManagement> claims = claimService.findAllBeneficiaryClaims(id);
+        claimList.setAll(claims);
         filteredData = new FilteredList<>(claimList, p -> true);
     }
 
@@ -137,7 +138,7 @@ public class ClaimsViewController {
 
     private void updateClaimedAmount() {
         double totalClaimedAmount = claimList.stream()
-                .filter(claim -> "Accepted".equalsIgnoreCase(claim.getStatus()))
+                .filter(claim -> "Approved".equalsIgnoreCase(claim.getStatus().trim()))
                 .mapToDouble(ClaimManagement::getClaimAmount)
                 .sum();
         claimedAmount.setText(String.format("$%.2f", totalClaimedAmount));
@@ -223,6 +224,7 @@ public class ClaimsViewController {
         DatePicker examDatePicker = new DatePicker();
         examDatePicker.setPromptText("Exam Date");
         examDatePicker.setValue(claim != null ? new java.sql.Date(claim.getExamDate().getTime()).toLocalDate() : null);
+        examDatePicker.setDisable(true);
 
         VBox imagesBox = new VBox();
         if (claim != null) {
@@ -249,7 +251,9 @@ public class ClaimsViewController {
                 // Assuming documents are the names of files in the upload directory for this claim
                 List<String> documents = ImageUtils.fetchImages(id);
 
-                return new ClaimManagement(id, customerId, claimDate, insuredPerson, examDate, documents.toArray(new String[0]), claimAmount, bank, status);
+                ClaimManagement newClaim = new ClaimManagement(id, customerId, claimDate, insuredPerson, examDate, documents.toArray(new String[0]), claimAmount, bank, status);
+                System.out.println(newClaim);
+                return newClaim;
             }
             return null;
         });

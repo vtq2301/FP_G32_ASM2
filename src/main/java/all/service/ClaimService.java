@@ -23,12 +23,13 @@ public class ClaimService {
 
     public List<ClaimManagement> findAllBeneficiaryClaims(String policyOwnerId) {
         List<ClaimManagement> claims = new ArrayList<>();
-        String sql = "SELECT c.* FROM claims c, users u WHERE c.insured_person = u.username AND u.policy_owner_id = ?";
+        String sql = "SELECT c.* FROM claims c, users u WHERE c.insured_person = u.id AND u.policy_owner_id = ?";
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, policyOwnerId);
+                System.out.println(ps);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     claims.add(new ClaimManagement(

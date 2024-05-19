@@ -3,6 +3,7 @@ package all.controller.policyOwner;
 import all.controller.UserSession;
 import all.db.ConnectionPool;
 import all.model.MyLogRecord;
+import all.model.customer.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -41,6 +42,7 @@ public class LogsViewController {
     private TableColumn<MyLogRecord, String> claimIdColumn;
 
     private final ObservableList<MyLogRecord> logList = FXCollections.observableArrayList();
+    private final User currentUser = UserSession.getUser();
 
     @FXML
     public void initialize() {
@@ -51,7 +53,7 @@ public class LogsViewController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         claimIdColumn.setCellValueFactory(new PropertyValueFactory<>("claimId"));
 
-        logList.setAll(findAll(UserSession.getCurrentUser().getUsername()));
+        logList.setAll(findAll(UserSession.getUser().getUsername()));
 
         FilteredList<MyLogRecord> filteredData = new FilteredList<>(logList, b -> true);
 

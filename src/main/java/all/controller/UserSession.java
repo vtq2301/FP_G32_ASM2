@@ -21,4 +21,17 @@
             currentUser = null;
         }
 
+        public static User getUser() {
+            return new User (
+                    currentUser.getUsername(),
+                    currentUser.getId(),
+                    currentUser.getPassword(),
+                    currentUser.getRole(),
+                    currentUser.getFullName(),
+                    currentUser.getAddress(),
+                    currentUser.getPhoneNumber(),
+                    currentUser.getPolicyHolderId()
+            );
+        }
+
     }

@@ -9,7 +9,7 @@ public class ValidationUtils {
     private static final Pattern PHONE_PATTERN = Pattern.compile("^[0-9]{10,15}$");
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[0-9]).{6,}$");
 
-    private static final PolicyOwnerService userService = new PolicyOwnerService(); // Assuming UserService can be instantiated like this
+    private static final PolicyOwnerService userService = new PolicyOwnerService();
 
     // Validate email format
     public static boolean isValidEmail(String email) {

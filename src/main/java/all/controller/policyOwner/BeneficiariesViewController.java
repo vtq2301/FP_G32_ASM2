@@ -58,8 +58,8 @@ public class BeneficiariesViewController {
 
     private ObservableList<User> beneficiaryList = FXCollections.observableArrayList();
     private FilteredList<User> filteredData;
-    private final int ROWS_PER_PAGE = 10;
-    private User currentUser = UserSession.getCurrentUser();
+    private final int ROWS_PER_PAGE = 20;
+    private User currentUser = UserSession.getUser();
 
     @FXML
     public void initialize() {
@@ -118,7 +118,6 @@ public class BeneficiariesViewController {
     }
 
     private void initializeBeneficiaryList() {
-        User currentUser = UserSession.getCurrentUser();
         beneficiaryList.setAll(service.findAllBeneficiaries(currentUser));
         filteredData = new FilteredList<>(beneficiaryList, b -> true);
         filteredData.predicateProperty().bind(beneficiariesTable.predicateProperty());
@@ -298,11 +297,11 @@ public class BeneficiariesViewController {
                 }
 
                 if (!ValidationUtils.isValidPassword(password)) {
-                    ViewUtils.showErrorMessage("Password must contain at least 8 characters, including a number and a special character.");
+                    ViewUtils.showErrorMessage("Password must contain at least 6 characters, including a number and a special character.");
                     return null;
                 }
 
-                if (ValidationUtils.userExists(id)) {
+                if (ValidationUtils.userExists(id) && user == null) {
                     ViewUtils.showErrorMessage("User with this ID already exists.");
                     return null;
                 }

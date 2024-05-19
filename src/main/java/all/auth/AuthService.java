@@ -63,8 +63,8 @@ public class AuthService {
                 String storedPassword = rs.getString("password_hash");
                 if (storedPassword.equals(password)) {
                     return new User(
-                            rs.getString("id"),
                             rs.getString("username"),
+                            rs.getString("id"),
                             rs.getString("role"),
                             rs.getString("full_name"),
                             rs.getString("address"),
