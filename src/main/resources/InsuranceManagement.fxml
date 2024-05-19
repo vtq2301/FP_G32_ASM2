@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="all.controller.insurance.InsuranceManagement"
+      style="-fx-background-color: #F7F9FB; -fx-padding: 20;">
+    <ComboBox fx:id="filterOptions" promptText="Select Claim Status" style="-fx-font-size: 14px; -fx-padding: 10px;"/>
+    <TableView fx:id="claimsTable" style="-fx-font-size: 14px; -fx-padding: 10px;">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" />
+            <TableColumn text="Customer ID" fx:id="customerIdColumn" />
+            <TableColumn text="Claim Date" fx:id="claimDateColumn" />
+            <TableColumn text="Insured Person" fx:id="insuredPersonColumn" />
+            <TableColumn text="Exam Date" fx:id="examDateColumn" />
+            <TableColumn text="Documents" fx:id="documentsColumn" />
+            <TableColumn text="Claim Amount" fx:id="claimAmountColumn" />
+            <TableColumn text="Receiver Banking Info" fx:id="receiverBankingInfoColumn" />
+            <TableColumn text="Status" fx:id="statusColumn" />
+        </columns>
+    </TableView>
+    <Button fx:id="approveButton" text="Approve Claim" onAction="#approveClaim" style="-fx-background-color: #2ECC71; -fx-text-fill: white; -fx-font-size: 14px;"/>
+    <Button fx:id="rejectButton" text="Reject Claim" onAction="#rejectClaim" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-size: 14px;"/>
+    <Label fx:id="notificationLabel" text="Notifications" onMouseClicked="#showNotifications" style="-fx-font-size: 14px; -fx-underline: true; -fx-text-fill: #3498DB;"/>
+    <Button fx:id="backButton" text="Back" onAction="#handleBackButton" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-size: 14px;"/>
+</VBox>
