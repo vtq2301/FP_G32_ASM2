@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="BeneficiariesViewController.java" />
+    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="add jar file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,12 +39,12 @@
     &quot;assignee&quot;: &quot;TVNT99&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/vtq2301/FP_G32_ASM2.git",
-    "accountId": "e9ecf392-8c29-4b48-8c0e-d1ac0603bbcf"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/vtq2301/FP_G32_ASM2.git&quot;,
+    &quot;accountId&quot;: &quot;e9ecf392-8c29-4b48-8c0e-d1ac0603bbcf&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -66,6 +68,7 @@
     "Application.HelloApplication.executor": "Debug",
     "Application.Main.executor": "Run",
     "Application.MyApplication.executor": "Debug",
+    "JAR Application.demo.jar.executor": "Run",
     "JUnit.All in demo.executor": "Debug",
     "JUnit.ClaimServiceTest.executor": "Debug",
     "JUnit.DatabaseConnectionTest.executor": "Debug",
@@ -110,14 +113,14 @@
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2" />
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources" />
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\policy-owner-view" />
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\customer\policy-owner" />
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view" />
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\components" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JAR Application.demo.jar">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="all.Main" />
       <module name="demo" />
@@ -154,22 +157,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolicyOwnerTest.testLoadData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="METHOD_NAME" value="testLoadData(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PolicyOwnerTest.testShowClaims" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -186,20 +173,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="demo.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/demo.jar" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.demo.jar" />
       <item itemvalue="JUnit.All in demo" />
       <item itemvalue="JUnit.PolicyOwnerTest" />
-      <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
       <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.demo.jar" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in demo" />
         <item itemvalue="JUnit.PolicyOwnerTest" />
         <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
-        <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
       </list>
     </recent_temporary>
   </component>
@@ -320,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716136037687</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add jar file">
+      <option name="closed" value="true" />
+      <created>1716136721945</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716136721946</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,6 +343,7 @@
     <MESSAGE value="Fix Claim Views" />
     <MESSAGE value="PO" />
     <MESSAGE value="BeneficiariesViewController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="BeneficiariesViewController.java" />
+    <MESSAGE value="add jar file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add jar file" />
   </component>
 </project>
