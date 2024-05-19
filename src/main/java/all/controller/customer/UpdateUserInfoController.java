@@ -18,14 +18,10 @@ import java.io.IOException;
 
 public class UpdateUserInfoController {
 
-    @FXML
-    private TextField fullNameField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField contactNumberField;
-    @FXML
-    private Button backButton;
+    @FXML private TextField fullNameField;
+    @FXML private TextField emailField;
+    @FXML private TextField contactNumberField;
+    @FXML private Button backButton;
 
     private User currentUser;
 
@@ -42,14 +38,21 @@ public class UpdateUserInfoController {
         currentUser.setAddress(emailField.getText());
         currentUser.setPhoneNumber(contactNumberField.getText());
 
+        System.out.println("Updating user: " + currentUser);
+
         DependencyService dbService = new DependencyService();
-        dbService.updatePolicyHolder(currentUser);
+        if (dbService.updatePolicyHolder(currentUser)) {
+            System.out.println("User updated successfully in the database.");
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(currentUser.getId(), "Update User Info", "Updated user information for: " + currentUser.getFullName(), null);
 
-        ActionLogger actionLogger = new ActionLogger();
-        actionLogger.logAction(currentUser.getId(), "Update User Info", "Updated user information for: " + currentUser.getFullName(), null);
-
-        showAlert("Success", "User information updated successfully.", Alert.AlertType.INFORMATION);
+            showAlert("Success", "User information updated successfully.", Alert.AlertType.INFORMATION);
+        } else {
+            System.err.println("Failed to update user in the database.");
+            showAlert("Error", "Failed to update user information.", Alert.AlertType.ERROR);
+        }
     }
+
 
     @FXML
     private void handleBackButton(ActionEvent event) {
@@ -72,11 +75,14 @@ public class UpdateUserInfoController {
                     break;
             }
             Parent parent = fxmlLoader.load();
-            if (role.equals("PolicyOwner") || role.equals("PolicyHolder")) {
+            if (role.equals("PolicyOwner")) {
                 PolicyOwner controller = fxmlLoader.getController();
                 controller.loadData(currentUser);
             } else if (role.equals("Dependent")) {
                 Dependent controller = fxmlLoader.getController();
+                controller.loadData(currentUser);
+            } else if (role.equals("PolicyHolder")) {
+                PolicyHolder controller = fxmlLoader.getController();
                 controller.loadData(currentUser);
             }
 
@@ -87,9 +93,11 @@ public class UpdateUserInfoController {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "Failed to load the previous screen.", Alert.AlertType.ERROR);
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to cast the controller.", Alert.AlertType.ERROR);
         }
     }
-
 
     private void showAlert(String title, String content, Alert.AlertType type) {
         Alert alert = new Alert(type);

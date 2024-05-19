@@ -51,7 +51,7 @@ public class LogsViewController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         claimIdColumn.setCellValueFactory(new PropertyValueFactory<>("claimId"));
 
-        logList.setAll(findAll(UserSession.getCurrentUser().getId()));
+        logList.setAll(findAll(UserSession.getCurrentUser().getUsername()));
 
         FilteredList<MyLogRecord> filteredData = new FilteredList<>(logList, b -> true);
 

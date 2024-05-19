@@ -5,6 +5,7 @@
 <?import org.controlsfx.control.tableview2.FilteredTableView?>
 <?import javafx.scene.text.Text?>
 
+<?import org.controlsfx.control.tableview2.FilteredTableColumn?>
 <AnchorPane fx:id="claimsView" xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.ClaimsViewController" style="-fx-background-color: white;">
     <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <Text text="CLAIMS OF BENEFICIARIES" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: black;"/>
@@ -18,13 +19,13 @@
 
         <FilteredTableView fx:id="claimsTable" style="-fx-background-color: white;">
             <columns>
-                <TableColumn fx:id="claimIdColumn" text="Claim ID"/>
-                <TableColumn fx:id="customerIdColumn" text="Customer ID"/>
-                <TableColumn fx:id="insuredPersonColumn" text="Insured Person"/>
-                <TableColumn fx:id="claimAmountColumn" text="Claim Amount"/>
-                <TableColumn fx:id="statusColumn" text="Status"/>
-                <TableColumn fx:id="claimDateColumn" text="Claim Date"/>
-                <TableColumn fx:id="examDateColumn" text="Exam Date"/>
+                <FilteredTableColumn fx:id="claimIdColumn" text="Claim ID"/>
+                <FilteredTableColumn fx:id="customerIdColumn" text="Customer ID"/>
+                <FilteredTableColumn fx:id="insuredPersonColumn" text="Insured Person"/>
+                <FilteredTableColumn fx:id="claimAmountColumn" text="Claim Amount"/>
+                <FilteredTableColumn fx:id="statusColumn" text="Status"/>
+                <FilteredTableColumn fx:id="claimDateColumn" text="Claim Date"/>
+                <FilteredTableColumn fx:id="examDateColumn" text="Exam Date"/>
             </columns>
         </FilteredTableView>
 

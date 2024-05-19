@@ -62,7 +62,7 @@ public class PolicyOwnerService {
         try {
             conn = connectionPool.getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, user.getUsername());
+                ps.setString(1, user.getId());
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         User foundUser = new User.Builder()

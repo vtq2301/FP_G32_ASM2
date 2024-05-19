@@ -1,8 +1,13 @@
 package all.controller.policyOwner;
 
+import all.controller.ClaimIDGenerator;
 import all.controller.UserSession;
+import all.db.ConnectionPool;
 import all.model.customer.ClaimManagement;
 import all.service.ClaimService;
+import all.service.ImageUtils;
+import all.util.ValidationUtils;
+import all.util.ViewUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -10,10 +15,20 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.controlsfx.control.tableview2.FilteredTableColumn;
 import org.controlsfx.control.tableview2.FilteredTableView;
+import org.controlsfx.control.tableview2.filter.popupfilter.PopupFilter;
+import org.controlsfx.control.tableview2.filter.popupfilter.PopupStringFilter;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ClaimsViewController {
 
@@ -23,19 +38,19 @@ public class ClaimsViewController {
     @FXML
     private FilteredTableView<ClaimManagement> claimsTable;
     @FXML
-    private TableColumn<ClaimManagement, String> claimIdColumn;
+    private FilteredTableColumn<ClaimManagement, String> claimIdColumn;
     @FXML
-    private TableColumn<ClaimManagement, String> customerIdColumn;
+    private FilteredTableColumn<ClaimManagement, String> customerIdColumn;
     @FXML
-    private TableColumn<ClaimManagement, String> insuredPersonColumn;
+    private FilteredTableColumn<ClaimManagement, String> insuredPersonColumn;
     @FXML
-    private TableColumn<ClaimManagement, Double> claimAmountColumn;
+    private FilteredTableColumn<ClaimManagement, Double> claimAmountColumn;
     @FXML
-    private TableColumn<ClaimManagement, String> statusColumn;
+    private FilteredTableColumn<ClaimManagement, String> statusColumn;
     @FXML
-    private TableColumn<ClaimManagement, Date> claimDateColumn;
+    private FilteredTableColumn<ClaimManagement, Date> claimDateColumn;
     @FXML
-    private TableColumn<ClaimManagement, Date> examDateColumn;
+    private FilteredTableColumn<ClaimManagement, Date> examDateColumn;
     @FXML
     private Pagination pagination;
     @FXML
@@ -64,10 +79,20 @@ public class ClaimsViewController {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         claimDateColumn.setCellValueFactory(new PropertyValueFactory<>("claimDate"));
         examDateColumn.setCellValueFactory(new PropertyValueFactory<>("examDate"));
+
+        popupFilters(claimIdColumn, customerIdColumn, insuredPersonColumn, statusColumn);
+    }
+
+    @SafeVarargs
+    private void popupFilters(FilteredTableColumn<ClaimManagement, String>... columns) {
+        for (FilteredTableColumn<ClaimManagement, String> column : columns) {
+            PopupFilter<ClaimManagement, String> popupFilter = new PopupStringFilter<>(column);
+            column.setOnFilterAction(e -> popupFilter.showPopup());
+        }
     }
 
     private void initializeClaimList() {
-        String id = UserSession.getCurrentUser().getUsername();
+        String id = UserSession.getCurrentUser().getId();
         claimList.setAll(claimService.findAllBeneficiaryClaims(id));
         filteredData = new FilteredList<>(claimList, p -> true);
     }
@@ -116,35 +141,30 @@ public class ClaimsViewController {
     }
 
     @FXML
-    public void addClaim() {
-        // Logic to add a new claim (e.g., show dialog to enter claim details and call claimService.addClaim)
-        ClaimManagement newClaim = new ClaimManagement(
-                "new_id", "customer_id", new Date(), "insured_person",
-                new Date(), new String[]{"document1", "document2"},
-                1000.0, "receiver_banking_info", "New"
-        );
-        claimService.addClaim(newClaim);
-        claimList.add(newClaim);
-        filteredData.setPredicate(null); // Reset filter
-        updateTableView(pagination.getCurrentPageIndex());
+    public void addClaim() throws SQLException {
+        ClaimManagement newClaim = showClaimDialog(null);
+        if (newClaim != null) {
+            claimService.addClaim(newClaim);
+            claimList.add(newClaim);
+            filteredData.setPredicate(null); // Reset filter
+            updateTableView(pagination.getCurrentPageIndex());
+        }
     }
 
     @FXML
-    public void updateClaim() {
-        // Logic to update an existing claim (e.g., show dialog to edit claim details and call claimService.updateClaim)
+    public void updateClaim() throws SQLException {
         ClaimManagement selectedClaim = claimsTable.getSelectionModel().getSelectedItem();
         if (selectedClaim != null) {
-            selectedClaim.setInsuredPerson("Updated Person");
-            selectedClaim.setClaimAmount(2000.0);
-            selectedClaim.setStatus("Processing");
-            claimService.updateClaim(selectedClaim);
-            claimsTable.refresh();
+            ClaimManagement updatedClaim = showClaimDialog(selectedClaim);
+            if (updatedClaim != null) {
+                claimService.updateClaim(updatedClaim);
+                claimsTable.refresh();
+            }
         }
     }
 
     @FXML
     public void removeClaim() {
-        // Logic to delete a claim
         ClaimManagement selectedClaim = claimsTable.getSelectionModel().getSelectedItem();
         if (selectedClaim != null) {
             claimService.deleteClaim(selectedClaim.getId());
@@ -152,6 +172,80 @@ public class ClaimsViewController {
             filteredData.setPredicate(null); // Reset filter
             updateTableView(pagination.getCurrentPageIndex());
         }
+    }
+
+    private ClaimManagement showClaimDialog(ClaimManagement claim) throws SQLException {
+        Dialog<ClaimManagement> dialog = new Dialog<>();
+        dialog.setTitle(claim == null ? "Add Claim" : "Update Claim");
+
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
+
+        TextField idField = new TextField();
+        idField.setPromptText("ID");
+        idField.setText(claim != null ? claim.getId() : ClaimIDGenerator.generateUniqueClaimID(ConnectionPool.getInstance().getConnection()));
+        idField.setDisable(true);
+
+        TextField customerIdField = new TextField();
+        customerIdField.setPromptText("Customer ID");
+        customerIdField.setText(claim != null ? claim.getCustomerId() : "");
+
+        TextField insuredPersonField = new TextField();
+        insuredPersonField.setPromptText("Insured Person");
+        insuredPersonField.setText(claim != null ? claim.getInsuredPerson() : "");
+
+        TextField bankField = new TextField();
+        bankField.setPromptText("Receiver Banking Info");
+        bankField.setText(claim != null ? claim.getReceiverBankingInfo() : "");
+
+        TextField claimAmountField = new TextField();
+        claimAmountField.setPromptText("Claim Amount");
+        claimAmountField.setText(claim != null ? String.valueOf(claim.getClaimAmount()) : "");
+
+        TextField statusField = new TextField();
+        statusField.setPromptText("Status");
+        statusField.setText(claim != null ? claim.getStatus() : "New");
+        statusField.setDisable(true);
+
+        DatePicker claimDatePicker = new DatePicker();
+        claimDatePicker.setPromptText("Claim Date");
+        claimDatePicker.setValue(claim != null ? new java.sql.Date(claim.getClaimDate().getTime()).toLocalDate() : null);
+
+        DatePicker examDatePicker = new DatePicker();
+        examDatePicker.setPromptText("Exam Date");
+        examDatePicker.setValue(claim != null ? new java.sql.Date(claim.getExamDate().getTime()).toLocalDate() : null);
+
+        VBox imagesBox = new VBox();
+        if (claim != null) {
+            List<ImageView> images = ImageUtils.renderUploadViews(claim.getId());
+            imagesBox.getChildren().addAll(images);
+        }
+
+        Button uploadButton = new Button("Upload Images");
+        uploadButton.setOnAction(e -> ImageUtils.uploadImages((Stage) dialog.getDialogPane().getScene().getWindow(), idField.getText()));
+
+        dialog.getDialogPane().setContent(new VBox(10, idField, customerIdField, insuredPersonField, bankField, claimAmountField, statusField, claimDatePicker, examDatePicker, imagesBox, uploadButton));
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButtonType) {
+                String id = idField.getText();
+                String customerId = customerIdField.getText();
+                String insuredPerson = insuredPersonField.getText();
+                String bank = bankField.getText();
+                double claimAmount = Double.parseDouble(claimAmountField.getText());
+                String status = statusField.getText();
+                Date claimDate = java.sql.Date.valueOf(claimDatePicker.getValue());
+                Date examDate = java.sql.Date.valueOf(examDatePicker.getValue());
+
+                // Assuming documents are the names of files in the upload directory for this claim
+                List<String> documents = ImageUtils.fetchImages(id);
+
+                return new ClaimManagement(id, customerId, claimDate, insuredPerson, examDate, documents.toArray(new String[0]), claimAmount, bank, status);
+            }
+            return null;
+        });
+
+        return dialog.showAndWait().orElse(null);
     }
 
     private void addTableRowDoubleClickHandler() {
