@@ -1,11 +1,14 @@
 package all.controller.insurance;
 
 import all.controller.UserSession;
+import all.controller.customer.UpdateUserInfoController;
 import all.model.customer.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,7 +22,8 @@ public class InsuranceSurveyor {
     @FXML private TextField surveyorIdField;
     @FXML private Button manageInsuranceButton;
     @FXML private Button logoutButton;
-
+    @FXML private Button updateUserInfoButton;
+    @FXML private Button changePasswordButton;
     @FXML
     public void initialize() {
     }
@@ -63,5 +67,43 @@ public class InsuranceSurveyor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void handleUpdateUserInfo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUserInfo.fxml"));
+            Parent root = loader.load();
+
+            UpdateUserInfoController controller = loader.getController();
+            controller.loadUserData(UserSession.getCurrentUser());
+
+            Stage stage = (Stage) updateUserInfoButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load update user information screen.", Alert.AlertType.ERROR);
+        }
+    }
+    @FXML
+    private void handleChangePassword(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangePassword.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) changePasswordButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load change password screen.", Alert.AlertType.ERROR);
+        }
+    }
+    private void showAlert(String title, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
