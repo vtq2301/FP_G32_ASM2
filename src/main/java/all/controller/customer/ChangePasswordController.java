@@ -66,15 +66,17 @@ public class ChangePasswordController {
                     fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
                     break;
                 default:
-
                     break;
             }
             Parent parent = fxmlLoader.load();
-            if (role.equals("PolicyOwner") || role.equals("PolicyHolder")) {
+            if (role.equals("PolicyOwner")) {
                 PolicyOwner controller = fxmlLoader.getController();
                 controller.loadData(currentUser);
             } else if (role.equals("Dependent")) {
                 Dependent controller = fxmlLoader.getController();
+                controller.loadData(currentUser);
+            } else if (role.equals("PolicyHolder")) {
+                PolicyHolder controller = fxmlLoader.getController();
                 controller.loadData(currentUser);
             }
 
@@ -85,9 +87,11 @@ public class ChangePasswordController {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "Failed to load the previous screen.", Alert.AlertType.ERROR);
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to cast the controller.", Alert.AlertType.ERROR);
         }
     }
-
 
     private void showAlert(String title, String content, Alert.AlertType type) {
         Alert alert = new Alert(type);
