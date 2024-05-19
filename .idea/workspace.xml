@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="PO">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/AdminDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/DependentDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceManagerDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceSurveyorDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyHolderDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyOwnerDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/ClaimScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/insurance/InsuranceManagementSurveyor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/model/MyLogRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/AdminAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/SystemAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminInfoScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ClaimScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DependentAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/InsuranceManagementSurveyor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/InsuranceManagerAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/PolicyHolderAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/PolicyOwnerAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/beneficiaries-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/claims-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/logs-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/controller/customer/PolicyOwnerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/ClaimServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/PolicyOwnerServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ClaimScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/LoginScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/SignUpScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/all/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/all/controller/LoginScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/all/controller/SignUpScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/all/db/dbConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/ActionHistoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/ActionLogger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/ClaimDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/DependencyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/ClaimIDGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/LoginScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/SignUpScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/UniqueIDGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/UserActionHistoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/UserSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/ChangePasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/ClaimManagementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/Dependent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/DependentInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyOwner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/UpdateUserInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/ViewDependentInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/insurance/InsuranceManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/insurance/InsuranceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/insurance/InsuranceSurveyor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/dbConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/ClaimManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/Dependent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyOwner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/database/connect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/log/logging.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/admin/SystemAdmin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/customer/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/customer/Dependent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/customer/PolicyHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/provider/InsuranceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/provider/InsuranceSurveyor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/model/provider/Provider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rmit/fp/g32_asm2/view/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ChangePassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClaimManagement.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DependentInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DependentScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceManagement.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceManagerScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LoginScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyHolderScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyOwnerScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SignUpScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateUserInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ViewDependentInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rmit/fp/g32_asm2/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/Testing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/admin/SystemAdmin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/customer/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/customer/Dependent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/customer/PolicyHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/provider/InsuranceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/provider/InsuranceSurveyor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/model/provider/Provider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rmit/fp/g32_asm2/view/HelloApplication.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="OpenRewrite Recipe" />
+        <option value="JavaFXApplication" />
+        <option value="Enum" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TVNT99&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6b8ca4f4-2a04-4c24-b3c6-d0f136a9091d" />
+        <option name="url" value="https://github.com/vtq2301/FP_G32_ASM2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2gduClKE6mBmWzocUffqWkJVH0P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.Application.executor": "Debug",
+    "Application.HelloApplication.executor": "Debug",
+    "Application.Main.executor": "Debug",
+    "Application.MyApplication.executor": "Debug",
+    "JUnit.ClaimServiceTest.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.testClose.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.testDatabaseConnection.executor": "Debug",
+    "JUnit.PolicyOwnerServiceTest.executor": "Run",
+    "JUnit.PolicyOwnerTest.executor": "Run",
+    "JUnit.PolicyOwnerTest.testLoadData.executor": "Run",
+    "JUnit.PolicyOwnerTest.testLogout.executor": "Run",
+    "JUnit.PolicyOwnerTest.testShowClaims.executor": "Run",
+    "JUnit.databaseConnectionTest (1).executor": "Debug",
+    "JUnit.databaseConnectionTest.executor": "Debug",
+    "JUnit.databaseConnectionTest.testDatabaseConnection.executor": "Debug",
+    "JUnit.databaseConnectionTest.testSessionInstanceConnectionOpen.executor": "Debug",
+    "JUnit.java in demo.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "Merging master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Schooling/RMIT/Sem_1_2024/Further Programming/FP_G32_ASM2/src/test",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources" />
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\policy-owner-view" />
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\customer\policy-owner" />
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view" />
+      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\components" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.PolicyOwnerTest">
+    <configuration name="PolicyOwnerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="all.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="all.service" />
+      <option name="MAIN_CLASS_NAME" value="all.service.PolicyOwnerServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolicyOwnerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="all.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolicyOwnerTest.testLoadData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="all.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
+      <option name="METHOD_NAME" value="testLoadData(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolicyOwnerTest.testLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="all.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
+      <option name="METHOD_NAME" value="testLogout(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolicyOwnerTest.testShowClaims" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="all.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
+      <option name="METHOD_NAME" value="testShowClaims(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.PolicyOwnerServiceTest" />
+      <item itemvalue="JUnit.PolicyOwnerTest" />
+      <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
+      <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
+      <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PolicyOwnerTest" />
+        <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
+        <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
+        <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
+        <item itemvalue="JUnit.PolicyOwnerServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="" />
+      <created>1714493636598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714493636598</updated>
+      <workItem from="1714493637808" duration="4866000" />
+      <workItem from="1714570619503" duration="7724000" />
+      <workItem from="1714891945325" duration="3319000" />
+      <workItem from="1714896978979" duration="6292000" />
+      <workItem from="1714956278506" duration="4612000" />
+      <workItem from="1714995536842" duration="604000" />
+      <workItem from="1715092849952" duration="34869000" />
+      <workItem from="1715302304209" duration="10933000" />
+      <workItem from="1715411616063" duration="26556000" />
+      <workItem from="1715519190848" duration="8885000" />
+      <workItem from="1715565172244" duration="7128000" />
+      <workItem from="1715574339195" duration="14041000" />
+      <workItem from="1715613855848" duration="23014000" />
+      <workItem from="1715733761588" duration="64212000" />
+      <workItem from="1715858892632" duration="60841000" />
+      <workItem from="1715978249826" duration="15842000" />
+      <workItem from="1716032060206" duration="4231000" />
+      <workItem from="1716041936031" duration="2178000" />
+      <workItem from="1716045888184" duration="953000" />
+      <workItem from="1716046859341" duration="23970000" />
+    </task>
+    <task id="LOCAL-00001" summary="DB connection">
+      <option name="closed" value="true" />
+      <created>1714495838333</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714495838333</updated>
+    </task>
+    <task id="LOCAL-00002" summary="DB connection">
+      <option name="closed" value="true" />
+      <created>1715864031857</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715864031857</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Claims view">
+      <option name="closed" value="true" />
+      <created>1715874620651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715874620651</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix UI and add SQL Script">
+      <option name="closed" value="true" />
+      <created>1715933229020</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715933229020</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix Claim Views">
+      <option name="closed" value="true" />
+      <created>1715933603302</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715933603302</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix Claim Views">
+      <option name="closed" value="true" />
+      <created>1715979396244</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715979396244</updated>
+    </task>
+    <task id="LOCAL-00007" summary="PO">
+      <option name="closed" value="true" />
+      <created>1716063355361</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716063355361</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="DB connection" />
+    <MESSAGE value="Claims view" />
+    <MESSAGE value="Fix UI and add SQL Script" />
+    <MESSAGE value="Fix Claim Views" />
+    <MESSAGE value="PO" />
+    <option name="LAST_COMMIT_MESSAGE" value="PO" />
+  </component>
+</project>

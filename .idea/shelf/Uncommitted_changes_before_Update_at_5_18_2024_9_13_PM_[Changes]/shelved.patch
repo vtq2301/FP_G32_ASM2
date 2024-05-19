@@ -1,0 +1,156 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2da95fb9-8538-4dcd-a3f6-3e8310028b26\" name=\"Changes\" comment=\"Admin screen update\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"TVNT99\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"6b8ca4f4-2a04-4c24-b3c6-d0f136a9091d\" />\r\n        <option name=\"url\" value=\"https://github.com/vtq2301/FP_G32_ASM2.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 2\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2gduClKE6mBmWzocUffqWkJVH0P\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenModules\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"test3\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\tvnti\\Downloads\\FP_G32_ASM2-test3 (3)\\FP_G32_ASM2\\src\\main\\java\\all\\controller\" />\r\n      <recent name=\"C:\\Users\\tvnti\\Downloads\\FP_G32_ASM2-test3 (3)\\FP_G32_ASM2\\src\\main\\java\\all\\controller\\insurance\" />\r\n      <recent name=\"C:\\Users\\tvnti\\Downloads\\FP_G32_ASM2-test3 (3)\\FP_G32_ASM2\\src\\main\\java\\all\\controller\\customer\" />\r\n      <recent name=\"C:\\Users\\tvnti\\Downloads\\FP_G32_ASM2-test3 (3)\\FP_G32_ASM2\\src\\main\\resources\" />\r\n      <recent name=\"C:\\Users\\tvnti\\Downloads\\FP_G32_ASM2-test3 (3)\\FP_G32_ASM2\\src\\main\\java\\all\\auth\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-temurin-21.0.1-4caba194b151-b7b86d5d\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2da95fb9-8538-4dcd-a3f6-3e8310028b26\" name=\"Changes\" comment=\"\" />\r\n      <created>1716039650865</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1716039650865</updated>\r\n      <workItem from=\"1716039651936\" duration=\"1706000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Admin screen update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716040463567</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716040463567</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Admin screen update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1716041311967</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1716041311967</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Admin screen update\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Admin screen update\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 76b37893819afb9349bd009c0830df2962ff4ddf)
++++ b/.idea/workspace.xml	(date 1716041505553)
+@@ -4,7 +4,87 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="Admin screen update" />
++    <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ActionHistoryService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ActionLogger.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AdminDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AdminInfoScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AdminInfoScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AdminScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AdminScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/AuthService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ChangePassword.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ChangePasswordController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimIDGenerator.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimManagement.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimManagementController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ClaimScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependencyService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dependent.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentAdmin.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentInfo.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentInfoController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/DependentScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagement.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagementSurveyor.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagerAdmin.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagerDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagerScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceManagerScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorAdmin.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/InsuranceSurveyorScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/LoginScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/LoginScreen.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyHolder.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyHolderAdmin.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyHolderDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyHolderScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyHolderScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyOwner.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyOwnerAdmin.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyOwnerDatabase.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyOwnerScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PolicyOwnerScreenController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/SignUpScreen.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/SignUpScreen.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/UniqueIDGenerator.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/UpdateUserInfo.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/UpdateUserInfoController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/UserActionHistoryController.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/UserSession.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ViewDependentInfo.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ViewDependentInfo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/AdminDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/AdminDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/DependentDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/DependentDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceManagerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceManagerDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceSurveyorDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/InsuranceSurveyorDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/PolicyHolderDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyHolderDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/PolicyOwnerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/PolicyOwnerDatabase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminInfoScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/AdminScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/AdminScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/ClaimScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/ClaimScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/DependentScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceManagerScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/InsuranceSurveyorScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyHolderScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/PolicyOwnerScreenController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyHolder.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminInfoScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminInfoScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/ClaimScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClaimScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/DependentAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DependentAdmin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceManagerAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InsuranceManagerAdmin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InsuranceSurveyorAdmin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyHolderAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyHolderAdmin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyOwnerAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyOwnerAdmin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/ViewDependentInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ViewDependentInfo.fxml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -18,20 +98,6 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "TVNT99"
+-  }
+-}]]></component>
+-  <component name="GithubPullRequestsUISettings">
+-    <option name="selectedUrlAndAccountId">
+-      <UrlAndAccount>
+-        <option name="accountId" value="6b8ca4f4-2a04-4c24-b3c6-d0f136a9091d" />
+-        <option name="url" value="https://github.com/vtq2301/FP_G32_ASM2.git" />
+-      </UrlAndAccount>
+-    </option>
+-  </component>
+   <component name="ProjectColorInfo"><![CDATA[{
+   "associatedIndex": 2
+ }]]></component>
+@@ -85,25 +151,8 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1716039650865</updated>
+-      <workItem from="1716039651936" duration="1706000" />
++      <workItem from="1716039651936" duration="659000" />
+     </task>
+-    <task id="LOCAL-00001" summary="Admin screen update">
+-      <option name="closed" value="true" />
+-      <created>1716040463567</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1716040463567</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="Admin screen update">
+-      <option name="closed" value="true" />
+-      <created>1716041311967</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1716041311967</updated>
+-    </task>
+-    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -111,7 +160,5 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="Admin screen update" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Admin screen update" />
+   </component>
+ </project>
+\ No newline at end of file
