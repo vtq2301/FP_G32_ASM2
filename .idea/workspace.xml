@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="BeneficiariesViewController.java">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/dbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/dbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/MyLogRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/MyLogRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/admin/AdminAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/AdminAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/admin/SystemAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/admin/SystemAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/ClaimManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/ClaimManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/Dependent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/Dependent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/PolicyOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ImageUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ValidationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/util/ViewUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/util/ViewUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="test3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,14 +60,12 @@
     &quot;assignee&quot;: &quot;TVNT99&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="6b8ca4f4-2a04-4c24-b3c6-d0f136a9091d" />
-        <option name="url" value="https://github.com/vtq2301/FP_G32_ASM2.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/vtq2301/FP_G32_ASM2.git",
+    "accountId": "e9ecf392-8c29-4b48-8c0e-d1ac0603bbcf"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -71,52 +82,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Application.Application.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.MyApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.All in demo.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.ClaimServiceTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.DatabaseConnectionTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.DatabaseConnectionTest.testClose.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.DatabaseConnectionTest.testDatabaseConnection.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.PolicyOwnerServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolicyOwnerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolicyOwnerTest.testLoadData.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolicyOwnerTest.testLogout.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PolicyOwnerTest.testShowClaims.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.databaseConnectionTest (1).executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.databaseConnectionTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.databaseConnectionTest.testDatabaseConnection.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.databaseConnectionTest.testSessionInstanceConnectionOpen.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.java in demo.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test3&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mushz/Desktop/FP_G32_ASM2&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.Application.executor": "Debug",
+    "Application.HelloApplication.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.MyApplication.executor": "Debug",
+    "JUnit.All in demo.executor": "Debug",
+    "JUnit.ClaimServiceTest.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.testClose.executor": "Debug",
+    "JUnit.DatabaseConnectionTest.testDatabaseConnection.executor": "Debug",
+    "JUnit.PolicyOwnerServiceTest.executor": "Run",
+    "JUnit.PolicyOwnerTest.executor": "Run",
+    "JUnit.PolicyOwnerTest.testLoadData.executor": "Run",
+    "JUnit.PolicyOwnerTest.testLogout.executor": "Run",
+    "JUnit.PolicyOwnerTest.testShowClaims.executor": "Run",
+    "JUnit.databaseConnectionTest (1).executor": "Debug",
+    "JUnit.databaseConnectionTest.executor": "Debug",
+    "JUnit.databaseConnectionTest.testDatabaseConnection.executor": "Debug",
+    "JUnit.databaseConnectionTest.testSessionInstanceConnectionOpen.executor": "Debug",
+    "JUnit.java in demo.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mushz/Desktop/FP_G32_ASM2",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\test" />
@@ -214,14 +225,6 @@
         <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
