@@ -5,6 +5,7 @@
 <?import org.controlsfx.control.tableview2.FilteredTableView?>
 <?import javafx.scene.text.Text?>
 
+<?import org.controlsfx.control.tableview2.FilteredTableColumn?>
 <AnchorPane fx:id="beneficiariesView" xmlns:fx="http://javafx.com/fxml" fx:controller="all.controller.policyOwner.BeneficiariesViewController" style="-fx-background-color: white;">
     <VBox alignment="CENTER" spacing="10">
         <Text text="BENEFICIARIES" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: black;"/>
@@ -18,13 +19,13 @@
 
         <FilteredTableView fx:id="beneficiariesTable" style="-fx-background-color: white;">
             <columns>
-                <TableColumn fx:id="idColumn" text="ID"/>
-                <TableColumn fx:id="nameColumn" text="Name"/>
-                <TableColumn fx:id="roleColumn" text="Role"/>
-                <TableColumn fx:id="phoneColumn" text="Phone"/>
-                <TableColumn fx:id="addressColumn" text="Address"/>
-                <TableColumn fx:id="emailColumn" text="Email"/>
-                <TableColumn fx:id="isActiveSwitchColumn" text="Active?"/>
+                <FilteredTableColumn fx:id="idColumn" text="ID"/>
+                <FilteredTableColumn fx:id="nameColumn" text="Name"/>
+                <FilteredTableColumn fx:id="roleColumn" text="Role"/>
+                <FilteredTableColumn fx:id="phoneColumn" text="Phone"/>
+                <FilteredTableColumn fx:id="addressColumn" text="Address"/>
+                <FilteredTableColumn fx:id="emailColumn" text="Email"/>
+                <FilteredTableColumn fx:id="isActiveColumn" text="Active?"/>
             </columns>
         </FilteredTableView>
 

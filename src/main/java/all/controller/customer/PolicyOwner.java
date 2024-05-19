@@ -1,6 +1,8 @@
 package all.controller.customer;
 
+import all.auth.ActionLogger;
 import all.auth.AuthService;
+import all.auth.DependencyService;
 import all.controller.UserSession;
 import all.model.customer.Customer;
 import all.model.customer.User;
@@ -9,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -18,6 +21,7 @@ import java.io.IOException;
 
 public class PolicyOwner {
 
+    @FXML private Button changePasswordButton;
     @FXML private Button logout;
     @FXML
     private TextField fullNameField;
@@ -29,6 +33,7 @@ public class PolicyOwner {
     private TextField policyNumberField;
     @FXML
     private VBox mainContent;
+    @FXML private Button updateUserInfoButton;
 
     @FXML
     private Button claimsButton;
@@ -94,6 +99,47 @@ public class PolicyOwner {
             stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleUpdateUserInfo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUserInfo.fxml"));
+            Parent root = loader.load();
+
+            UpdateUserInfoController controller = loader.getController();
+            controller.loadUserData(UserSession.getCurrentUser());
+
+            Stage stage = (Stage) updateUserInfoButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load update user information screen.", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void showAlert(String title, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleChangePassword(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangePassword.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) changePasswordButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load change password screen.", Alert.AlertType.ERROR);
         }
     }
 

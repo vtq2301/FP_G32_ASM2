@@ -52,32 +52,42 @@ public class ChangePasswordController {
     @FXML
     private void handleBackButton(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader;
+            FXMLLoader fxmlLoader = new FXMLLoader();
             User currentUser = UserSession.getCurrentUser();
-            if ("dependent".equalsIgnoreCase(currentUser.getRole())) {
-                fxmlLoader = new FXMLLoader(getClass().getResource("/DependentScreen.fxml"));
-                Parent parent = fxmlLoader.load();
+            String role = currentUser.getRole();
+            switch (role) {
+                case "PolicyOwner":
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyOwnerScreen.fxml"));
+                    break;
+                case "Dependent":
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/DependentScreen.fxml"));
+                    break;
+                case "PolicyHolder":
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
+                    break;
+                default:
+
+                    break;
+            }
+            Parent parent = fxmlLoader.load();
+            if (role.equals("PolicyOwner") || role.equals("PolicyHolder")) {
+                PolicyOwner controller = fxmlLoader.getController();
+                controller.loadData(currentUser);
+            } else if (role.equals("Dependent")) {
                 Dependent controller = fxmlLoader.getController();
                 controller.loadData(currentUser);
-                Scene scene = new Scene(parent);
-                Stage stage = (Stage) backButton.getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } else {
-                fxmlLoader = new FXMLLoader(getClass().getResource("/PolicyHolderScreen.fxml"));
-                Parent parent = fxmlLoader.load();
-                PolicyHolder controller = fxmlLoader.getController();
-                controller.loadData(currentUser);
-                Scene scene = new Scene(parent);
-                Stage stage = (Stage) backButton.getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
             }
+
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "Failed to load the previous screen.", Alert.AlertType.ERROR);
         }
     }
+
 
     private void showAlert(String title, String content, Alert.AlertType type) {
         Alert alert = new Alert(type);

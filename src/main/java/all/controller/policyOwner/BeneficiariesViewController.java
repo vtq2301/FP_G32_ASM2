@@ -1,8 +1,12 @@
 package all.controller.policyOwner;
 
+import all.controller.UniqueIDGenerator;
 import all.controller.UserSession;
+import all.db.ConnectionPool;
 import all.model.customer.User;
 import all.service.PolicyOwnerService;
+import all.util.ValidationUtils;
+import all.util.ViewUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,7 +17,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.ToggleSwitch;
+import org.controlsfx.control.tableview2.FilteredTableColumn;
+import org.controlsfx.control.tableview2.FilteredTableView;
+import org.controlsfx.control.tableview2.filter.popupfilter.PopupFilter;
+import org.controlsfx.control.tableview2.filter.popupfilter.PopupStringFilter;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class BeneficiariesViewController {
@@ -22,21 +32,21 @@ public class BeneficiariesViewController {
     @FXML
     private TextField searchField;
     @FXML
-    private TableView<User> beneficiariesTable;
+    private FilteredTableView<User> beneficiariesTable;
     @FXML
-    private TableColumn<User, String> idColumn;
+    private FilteredTableColumn<User, String> idColumn;
     @FXML
-    private TableColumn<User, String> nameColumn;
+    private FilteredTableColumn<User, String> nameColumn;
     @FXML
-    private TableColumn<User, String> roleColumn;
+    private FilteredTableColumn<User, String> roleColumn;
     @FXML
-    private TableColumn<User, String> phoneColumn;
+    private FilteredTableColumn<User, String> phoneColumn;
     @FXML
-    private TableColumn<User, String> addressColumn;
+    private FilteredTableColumn<User, String> emailColumn;
     @FXML
-    private TableColumn<User, String> emailColumn;
+    private FilteredTableColumn<User, String> addressColumn;
     @FXML
-    private TableColumn<User, Boolean> isActiveSwitchColumn;
+    private FilteredTableColumn<User, Boolean> isActiveColumn;
     @FXML
     private Pagination pagination;
     @FXML
@@ -48,6 +58,7 @@ public class BeneficiariesViewController {
     private ObservableList<User> beneficiaryList = FXCollections.observableArrayList();
     private FilteredList<User> filteredData;
     private final int ROWS_PER_PAGE = 10;
+    private User currentUser = UserSession.getCurrentUser();
 
     @FXML
     public void initialize() {
@@ -66,13 +77,50 @@ public class BeneficiariesViewController {
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        isActiveSwitchColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+        isActiveColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+
+        isActiveColumn.setCellFactory(column -> new TableCell<>() {
+            private final ToggleSwitch toggleSwitch = new ToggleSwitch();
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                } else {
+                    toggleSwitch.setSelected(item);
+                    toggleSwitch.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                        User user = getTableView().getItems().get(getIndex());
+                        boolean confirmed = ViewUtils.showDeleteConfirmationDialog();
+                        if (confirmed) {
+                            user.setActive(newValue);
+                            service.updateUser(user);
+                            refreshTable();
+                        } else {
+                            toggleSwitch.setSelected(oldValue);
+                        }
+                    });
+                    setGraphic(toggleSwitch);
+                }
+            }
+        });
+
+        popupFilters(idColumn, nameColumn, roleColumn, phoneColumn, emailColumn, addressColumn);
+    }
+
+    @SafeVarargs
+    private void popupFilters(FilteredTableColumn<User, String>... columns) {
+        for (FilteredTableColumn<User, String> column : columns) {
+            PopupFilter<User, String> popupFilter = new PopupStringFilter<>(column);
+            column.setOnFilterAction(e -> popupFilter.showPopup());
+        }
     }
 
     private void initializeBeneficiaryList() {
         User currentUser = UserSession.getCurrentUser();
         beneficiaryList.setAll(service.findAllBeneficiaries(currentUser));
         filteredData = new FilteredList<>(beneficiaryList, b -> true);
+        filteredData.predicateProperty().bind(beneficiariesTable.predicateProperty());
     }
 
     private void initializeSearchField() {
@@ -86,8 +134,8 @@ public class BeneficiariesViewController {
                         beneficiary.getFullName().toLowerCase().contains(lowerCaseFilter) ||
                         beneficiary.getRole().toLowerCase().contains(lowerCaseFilter) ||
                         beneficiary.getPhoneNumber().toLowerCase().contains(lowerCaseFilter) ||
-                        beneficiary.getAddress().toLowerCase().contains(lowerCaseFilter);
-//                        beneficiary.getEmail().toLowerCase().contains(lowerCaseFilter);
+                        beneficiary.getAddress().toLowerCase().contains(lowerCaseFilter) ||
+                        beneficiary.getEmail().toLowerCase().contains(lowerCaseFilter);
             });
             updateTableView(0);
         });
@@ -127,7 +175,6 @@ public class BeneficiariesViewController {
             row.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !row.isEmpty()) {
                     User rowData = row.getItem();
-                    System.out.println(rowData);
                     showUserInfo(rowData);
                 }
             });
@@ -151,49 +198,141 @@ public class BeneficiariesViewController {
     }
 
     @FXML
-    private void addUser() {
-        // Logic to add a new user (e.g., show dialog to enter user details and call service.addBeneficiary)
-        User newUser = new User.Builder()
-                .setId("new_id")
-                .setPassword("password")
-                .setRole("Dependent")
-                .setFullName("New User")
-                .setAddress("New Address")
-                .setPhoneNumber("1234567890")
-                .setUsername("newuser")
-                .setPolicyHolderId("policyHolderId")
-                .setEmail("newuser@example.com")
-                .setIsActive(true)
-                .build();
-        service.addBeneficiary(newUser, UserSession.getCurrentUser().getId());
-        beneficiaryList.add(newUser);
-        filteredData.setPredicate(null); // Reset filter
-        updateTableView(pagination.getCurrentPageIndex());
+    private void addUser() throws SQLException {
+        User newUser = showUserDialog(null);
+        if (newUser != null) {
+            service.addBeneficiary(newUser, UserSession.getCurrentUser().getId());
+            beneficiaryList.add(newUser);
+            filteredData.setPredicate(null); // Reset filter
+            updateTableView(pagination.getCurrentPageIndex());
+        }
     }
 
     @FXML
-    private void updateUser() {
-        // Logic to update an existing user (e.g., show dialog to edit user details and call service.updateBeneficiary)
+    private void updateUser() throws SQLException {
         User selectedUser = beneficiariesTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            selectedUser.setFullName("Updated Name");
-            selectedUser.setAddress("Updated Address");
-            selectedUser.setPhoneNumber("0987654321");
-            selectedUser.setEmail("updateduser@example.com");
-            service.updateBeneficiary(selectedUser);
-            beneficiariesTable.refresh();
+            User updatedUser = showUserDialog(selectedUser);
+            if (updatedUser != null) {
+                service.updateUser(updatedUser);
+                beneficiariesTable.refresh();
+            }
         }
+    }
+
+    private User showUserDialog(User user) throws SQLException {
+        Dialog<User> dialog = new Dialog<>();
+        dialog.setTitle(user == null ? "Add User" : "Update User");
+
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
+
+        TextField idField = new TextField();
+        idField.setPromptText("ID");
+        idField.setText(user != null ? user.getId() : UniqueIDGenerator.generateUniqueID(ConnectionPool.getInstance().getConnection()));
+        idField.setDisable(true);
+
+        TextField fullNameField = new TextField();
+        fullNameField.setPromptText("Full Name");
+        fullNameField.setText(user != null ? user.getFullName() : "");
+
+        TextField roleField = new TextField();
+        roleField.setPromptText("Role");
+        roleField.setText(user != null ? user.getRole() : "");
+
+        TextField phoneNumberField = new TextField();
+        phoneNumberField.setPromptText("Phone Number");
+        phoneNumberField.setText(user != null ? user.getPhoneNumber() : "");
+
+        TextField addressField = new TextField();
+        addressField.setPromptText("Address");
+        addressField.setText(user != null ? user.getAddress() : "");
+
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Username");
+        usernameField.setText(user != null ? user.getUsername() : "");
+
+        TextField emailField = new TextField();
+        emailField.setPromptText("Email");
+        emailField.setText(user != null ? user.getEmail() : "");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
+
+        ToggleSwitch isActiveSwitch = new ToggleSwitch("Active");
+        isActiveSwitch.setSelected(user != null && user.isActive());
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(idField, fullNameField, roleField, phoneNumberField, addressField, emailField, passwordField, isActiveSwitch);
+        dialog.getDialogPane().setContent(vBox);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButtonType) {
+                String id = idField.getText();
+                String fullName = fullNameField.getText();
+                String role = roleField.getText();
+                String phoneNumber = phoneNumberField.getText();
+                String address = addressField.getText();
+                String username = usernameField.getText();
+                String email = emailField.getText();
+                String password = passwordField.getText();
+
+                if (!ValidationUtils.isValidEmail(email)) {
+                    ViewUtils.showErrorMessage("Invalid email format.");
+                    return null;
+                }
+
+                if (!ValidationUtils.isValidPhone(phoneNumber)) {
+                    ViewUtils.showErrorMessage("Invalid phone number format.");
+                    return null;
+                }
+
+                if (password.isEmpty() && user == null) {
+                    ViewUtils.showErrorMessage("Password is required for a new user.");
+                    return null;
+                }
+
+                if (!ValidationUtils.isValidPassword(password)) {
+                    ViewUtils.showErrorMessage("Password must contain at least 8 characters, including a number and a special character.");
+                    return null;
+                }
+
+                if (ValidationUtils.userExists(id)) {
+                    ViewUtils.showErrorMessage("User with this ID already exists.");
+                    return null;
+                }
+
+                return new User.Builder()
+                        .setId(id)
+                        .setFullName(fullName)
+                        .setRole(role)
+                        .setPhoneNumber(phoneNumber)
+                        .setAddress(address)
+                        .setEmail(email)
+                        .setPassword(password)
+                        .setIsActive(isActiveSwitch.isSelected())
+                        .setUsername(username)
+                        .build();            }
+            return null;
+        });
+
+        return dialog.showAndWait().orElse(null);
     }
 
     @FXML
     private void removeUser() {
-        // Logic to remove a user
         User selectedUser = beneficiariesTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            service.removeBeneficiary(selectedUser.getId());
-            beneficiaryList.remove(selectedUser);
-            filteredData.setPredicate(null); // Reset filter
-            updateTableView(pagination.getCurrentPageIndex());
+            boolean confirmed = ViewUtils.showDeleteConfirmationDialog();
+            if (confirmed) {
+                service.removeBeneficiary(selectedUser.getId());
+                beneficiaryList.remove(selectedUser);
+                updateTableView(pagination.getCurrentPageIndex());
+            }
         }
+    }
+
+    private void refreshTable() {
+        beneficiariesTable.refresh();
     }
 }

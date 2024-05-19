@@ -5,26 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="PO">
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/controller/customer/PolicyOwnerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/ClaimServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/PolicyOwnerServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/util/ValidationUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/all/util/ViewUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/auth/PolicyOwnerDatabaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/clear.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/customer/ChangePasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/customer/PolicyOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/customer/UpdateUserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/customer/UpdateUserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyOwnerScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyOwnerScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/beneficiaries-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/beneficiaries-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/claims-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/claims-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/logs-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/logs-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +86,7 @@
     "Application.HelloApplication.executor": "Debug",
     "Application.Main.executor": "Debug",
     "Application.MyApplication.executor": "Debug",
+    "JUnit.All in demo.executor": "Debug",
     "JUnit.ClaimServiceTest.executor": "Debug",
     "JUnit.DatabaseConnectionTest.executor": "Debug",
     "JUnit.DatabaseConnectionTest.testClose.executor": "Debug",
@@ -109,7 +106,7 @@
     "git-widget-placeholder": "test3",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Schooling/RMIT/Sem_1_2024/Further Programming/FP_G32_ASM2/src/test",
+    "last_opened_file_path": "C:/Users/mushz/Desktop/FP_G32_ASM2",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -140,18 +137,24 @@
       <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\components" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PolicyOwnerTest">
-    <configuration name="PolicyOwnerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="all.Main" />
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="all.service.*" />
+          <option name="PATTERN" value="all.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="all.service" />
-      <option name="MAIN_CLASS_NAME" value="all.service.PolicyOwnerServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,22 +190,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolicyOwnerTest.testLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="METHOD_NAME" value="testLogout(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PolicyOwnerTest.testShowClaims" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -220,19 +207,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.PolicyOwnerServiceTest" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.All in demo" />
       <item itemvalue="JUnit.PolicyOwnerTest" />
       <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
-      <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
       <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in demo" />
         <item itemvalue="JUnit.PolicyOwnerTest" />
         <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
         <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
-        <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
-        <item itemvalue="JUnit.PolicyOwnerServiceTest" />
       </list>
     </recent_temporary>
   </component>
