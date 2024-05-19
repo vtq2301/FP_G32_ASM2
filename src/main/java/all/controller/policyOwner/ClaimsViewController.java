@@ -1,9 +1,11 @@
 package all.controller.policyOwner;
 
+import all.auth.ActionLogger;
 import all.controller.ClaimIDGenerator;
 import all.controller.UserSession;
 import all.db.ConnectionPool;
 import all.model.customer.ClaimManagement;
+import all.model.customer.User;
 import all.service.ClaimService;
 import all.service.ImageUtils;
 import all.util.ValidationUtils;
@@ -56,6 +58,7 @@ public class ClaimsViewController {
     @FXML
     private Label claimedAmount;
 
+    private User currentUser = UserSession.getCurrentUser();
     private final ClaimService claimService = new ClaimService();
     private ObservableList<ClaimManagement> claimList = FXCollections.observableArrayList();
     private FilteredList<ClaimManagement> filteredData;
@@ -145,6 +148,8 @@ public class ClaimsViewController {
         ClaimManagement newClaim = showClaimDialog(null);
         if (newClaim != null) {
             claimService.addClaim(newClaim);
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(currentUser.getId(), "Add Claim", "Add Claim", newClaim.getId());
             claimList.add(newClaim);
             filteredData.setPredicate(null); // Reset filter
             updateTableView(pagination.getCurrentPageIndex());
@@ -158,6 +163,8 @@ public class ClaimsViewController {
             ClaimManagement updatedClaim = showClaimDialog(selectedClaim);
             if (updatedClaim != null) {
                 claimService.updateClaim(updatedClaim);
+                ActionLogger actionLogger = new ActionLogger();
+                actionLogger.logAction(currentUser.getId(), "Update Claim", "Update Claim", selectedClaim.getId());
                 claimsTable.refresh();
             }
         }
@@ -171,6 +178,8 @@ public class ClaimsViewController {
             claimList.remove(selectedClaim);
             filteredData.setPredicate(null); // Reset filter
             updateTableView(pagination.getCurrentPageIndex());
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(currentUser.getId(), "Remove Claim", "Remove Claim", selectedClaim.getId());
         }
     }
 

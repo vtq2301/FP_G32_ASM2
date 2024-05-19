@@ -1,5 +1,6 @@
 package all.controller.policyOwner;
 
+import all.auth.ActionLogger;
 import all.controller.UniqueIDGenerator;
 import all.controller.UserSession;
 import all.db.ConnectionPool;
@@ -205,6 +206,8 @@ public class BeneficiariesViewController {
             beneficiaryList.add(newUser);
             filteredData.setPredicate(null); // Reset filter
             updateTableView(pagination.getCurrentPageIndex());
+            ActionLogger actionLogger = new ActionLogger();
+            actionLogger.logAction(currentUser.getId(), "Add User", "Add User", null);
         }
     }
 
@@ -216,6 +219,8 @@ public class BeneficiariesViewController {
             if (updatedUser != null) {
                 service.updateUser(updatedUser);
                 beneficiariesTable.refresh();
+                ActionLogger actionLogger = new ActionLogger();
+                actionLogger.logAction(currentUser.getId(), "Update User", "Update User", null);
             }
         }
     }
@@ -312,7 +317,8 @@ public class BeneficiariesViewController {
                         .setPassword(password)
                         .setIsActive(isActiveSwitch.isSelected())
                         .setUsername(username)
-                        .build();            }
+                        .build();
+            }
             return null;
         });
 
@@ -328,6 +334,8 @@ public class BeneficiariesViewController {
                 service.removeBeneficiary(selectedUser.getId());
                 beneficiaryList.remove(selectedUser);
                 updateTableView(pagination.getCurrentPageIndex());
+                ActionLogger actionLogger = new ActionLogger();
+                actionLogger.logAction(currentUser.getId(), "Remove User", "Remove A Beneficiary", null);
             }
         }
     }
