@@ -4,27 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="PO">
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/controller/customer/PolicyOwnerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/ClaimServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/all/service/PolicyOwnerServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_18_2024_9_13_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="Admin screen update">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/auth/ActionHistoryServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/auth/ActionLoggerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/auth/AuthServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/all/controller/admin/AdminTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/BeneficiariesViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/ClaimsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/policyOwner/LogsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/db/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/ClaimService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/service/PolicyOwnerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/PolicyOwnerScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PolicyOwnerScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/beneficiaries-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/beneficiaries-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/claims-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/claims-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/policy-owner-view/logs-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/policy-owner-view/logs-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/ActionHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/ActionHistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/ActionLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/ActionLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/auth/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/auth/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/controller/UserActionHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/controller/UserActionHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/UserAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/customer/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/all/controller/customer/PolicyOwnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/all/controller/customer/PolicyOwnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/all/service/PolicyOwnerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/all/service/PolicyOwnerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/all/auth/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +31,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="OpenRewrite Recipe" />
-        <option value="JavaFXApplication" />
-        <option value="Enum" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -67,50 +58,36 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2gduClKE6mBmWzocUffqWkJVH0P" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Application.Application.executor": "Debug",
-    "Application.HelloApplication.executor": "Debug",
-    "Application.Main.executor": "Debug",
-    "Application.MyApplication.executor": "Debug",
-    "JUnit.ClaimServiceTest.executor": "Debug",
-    "JUnit.DatabaseConnectionTest.executor": "Debug",
-    "JUnit.DatabaseConnectionTest.testClose.executor": "Debug",
-    "JUnit.DatabaseConnectionTest.testDatabaseConnection.executor": "Debug",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "JUnit.ActionHistoryServiceTest.executor": "Run",
+    "JUnit.ActionLoggerTest.executor": "Run",
+    "JUnit.AuthServiceTest.executor": "Debug",
+    "JUnit.AuthServiceTest.testAuthenticateUser_ValidCredentials_ReturnsUser.executor": "Run",
+    "JUnit.AuthServiceTest.testRegisterUser_ValidUser_ReturnsTrue.executor": "Run",
+    "JUnit.ClaimServiceTest.executor": "Run",
     "JUnit.PolicyOwnerServiceTest.executor": "Run",
     "JUnit.PolicyOwnerTest.executor": "Run",
-    "JUnit.PolicyOwnerTest.testLoadData.executor": "Run",
-    "JUnit.PolicyOwnerTest.testLogout.executor": "Run",
-    "JUnit.PolicyOwnerTest.testShowClaims.executor": "Run",
-    "JUnit.databaseConnectionTest (1).executor": "Debug",
-    "JUnit.databaseConnectionTest.executor": "Debug",
-    "JUnit.databaseConnectionTest.testDatabaseConnection.executor": "Debug",
-    "JUnit.databaseConnectionTest.testSessionInstanceConnectionOpen.executor": "Debug",
-    "JUnit.java in demo.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "test3",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Schooling/RMIT/Sem_1_2024/Further Programming/FP_G32_ASM2/src/test",
-    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -119,217 +96,139 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\test" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources" />
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\policy-owner-view" />
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\customer\policy-owner" />
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view" />
-      <recent name="C:\Schooling\RMIT\Sem_1_2024\Further Programming\FP_G32_ASM2\src\main\resources\view\components" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\insurance" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\controller\customer" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\resources" />
+      <recent name="C:\Users\tvnti\Downloads\FP_G32_ASM2-test3 (3)\FP_G32_ASM2\src\main\java\all\auth" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PolicyOwnerTest">
-    <configuration name="PolicyOwnerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="AuthServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="all.service.*" />
+          <option name="PATTERN" value="all.auth.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="all.service" />
-      <option name="MAIN_CLASS_NAME" value="all.service.PolicyOwnerServiceTest" />
+      <option name="PACKAGE_NAME" value="all.auth" />
+      <option name="MAIN_CLASS_NAME" value="all.auth.AuthServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolicyOwnerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServiceTest.testAuthenticateUser_ValidCredentials_ReturnsUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="PATTERN" value="all.auth.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PolicyOwnerTest.testLoadData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="METHOD_NAME" value="testLoadData(org.testfx.api.FxRobot)" />
+      <option name="PACKAGE_NAME" value="all.auth" />
+      <option name="MAIN_CLASS_NAME" value="all.auth.AuthServiceTest" />
+      <option name="METHOD_NAME" value="testAuthenticateUser_ValidCredentials_ReturnsUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolicyOwnerTest.testLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServiceTest.testRegisterUser_ValidUser_ReturnsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
+          <option name="PATTERN" value="all.auth.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="METHOD_NAME" value="testLogout(org.testfx.api.FxRobot)" />
+      <option name="PACKAGE_NAME" value="all.auth" />
+      <option name="MAIN_CLASS_NAME" value="all.auth.AuthServiceTest" />
+      <option name="METHOD_NAME" value="testRegisterUser_ValidUser_ReturnsTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolicyOwnerTest.testShowClaims" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="all.controller.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="all.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="all.controller.customer.PolicyOwnerTest" />
-      <option name="METHOD_NAME" value="testShowClaims(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="G32_ASM2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.PolicyOwnerServiceTest" />
-      <item itemvalue="JUnit.PolicyOwnerTest" />
-      <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
-      <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
-      <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
-    </list>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="G32_ASM2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PolicyOwnerTest" />
-        <item itemvalue="JUnit.PolicyOwnerTest.testShowClaims" />
-        <item itemvalue="JUnit.PolicyOwnerTest.testLoadData" />
-        <item itemvalue="JUnit.PolicyOwnerTest.testLogout" />
-        <item itemvalue="JUnit.PolicyOwnerServiceTest" />
+        <item itemvalue="JUnit.AuthServiceTest.testAuthenticateUser_ValidCredentials_ReturnsUser" />
+        <item itemvalue="JUnit.AuthServiceTest.testRegisterUser_ValidUser_ReturnsTrue" />
+        <item itemvalue="JUnit.AuthServiceTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.1-temurin-21.0.1-4caba194b151-b7b86d5d" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f57a0fdf-e38c-485d-b2ea-054abb688b99" name="Changes" comment="" />
-      <created>1714493636598</created>
+      <changelist id="2da95fb9-8538-4dcd-a3f6-3e8310028b26" name="Changes" comment="" />
+      <created>1716039650865</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1714493636598</updated>
-      <workItem from="1714493637808" duration="4866000" />
-      <workItem from="1714570619503" duration="7724000" />
-      <workItem from="1714891945325" duration="3319000" />
-      <workItem from="1714896978979" duration="6292000" />
-      <workItem from="1714956278506" duration="4612000" />
-      <workItem from="1714995536842" duration="604000" />
-      <workItem from="1715092849952" duration="34869000" />
-      <workItem from="1715302304209" duration="10933000" />
-      <workItem from="1715411616063" duration="26556000" />
-      <workItem from="1715519190848" duration="8885000" />
-      <workItem from="1715565172244" duration="7128000" />
-      <workItem from="1715574339195" duration="14041000" />
-      <workItem from="1715613855848" duration="23014000" />
-      <workItem from="1715733761588" duration="64212000" />
-      <workItem from="1715858892632" duration="60841000" />
-      <workItem from="1715978249826" duration="15842000" />
-      <workItem from="1716032060206" duration="4231000" />
-      <workItem from="1716041936031" duration="2178000" />
-      <workItem from="1716045888184" duration="953000" />
-      <workItem from="1716046859341" duration="23970000" />
+      <updated>1716039650865</updated>
+      <workItem from="1716039651936" duration="1706000" />
+      <workItem from="1716042107342" duration="1177000" />
+      <workItem from="1716043876530" duration="528000" />
     </task>
-    <task id="LOCAL-00001" summary="DB connection">
+    <task id="LOCAL-00001" summary="Admin screen update">
       <option name="closed" value="true" />
-      <created>1714495838333</created>
+      <created>1716040463567</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1714495838333</updated>
+      <updated>1716040463567</updated>
     </task>
-    <task id="LOCAL-00002" summary="DB connection">
+    <task id="LOCAL-00002" summary="Admin screen update">
       <option name="closed" value="true" />
-      <created>1715864031857</created>
+      <created>1716041311967</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1715864031857</updated>
+      <updated>1716041311967</updated>
     </task>
-    <task id="LOCAL-00003" summary="Claims view">
+    <task id="LOCAL-00003" summary="Admin screen update">
       <option name="closed" value="true" />
-      <created>1715874620651</created>
+      <created>1716042936880</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1715874620651</updated>
+      <updated>1716042936880</updated>
     </task>
-    <task id="LOCAL-00004" summary="Fix UI and add SQL Script">
+    <task id="LOCAL-00004" summary="Admin screen update">
       <option name="closed" value="true" />
-      <created>1715933229020</created>
+      <created>1716043092945</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1715933229020</updated>
+      <updated>1716043092945</updated>
     </task>
-    <task id="LOCAL-00005" summary="Fix Claim Views">
-      <option name="closed" value="true" />
-      <created>1715933603302</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1715933603302</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Fix Claim Views">
-      <option name="closed" value="true" />
-      <created>1715979396244</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1715979396244</updated>
-    </task>
-    <task id="LOCAL-00007" summary="PO">
-      <option name="closed" value="true" />
-      <created>1716063355361</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716063355361</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,18 +239,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="test3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="DB connection" />
-    <MESSAGE value="Claims view" />
-    <MESSAGE value="Fix UI and add SQL Script" />
-    <MESSAGE value="Fix Claim Views" />
-    <MESSAGE value="PO" />
-    <option name="LAST_COMMIT_MESSAGE" value="PO" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Admin screen update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin screen update" />
   </component>
 </project>

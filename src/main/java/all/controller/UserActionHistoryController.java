@@ -25,7 +25,7 @@ public class UserActionHistoryController {
         timestampColumn.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
     }
 
-    public void loadActionHistory(int userId) {
+    public void loadActionHistory(String userId) {
         ActionHistoryService actionHistoryService = new ActionHistoryService();
         List<UserAction> actions = actionHistoryService.getUserActions(userId);
         ObservableList<UserAction> actionData = FXCollections.observableArrayList(actions);

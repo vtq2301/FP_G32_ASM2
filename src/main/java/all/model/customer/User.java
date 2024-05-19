@@ -126,13 +126,13 @@ public class User {
 
     // Builder class
     public static class Builder {
-        private String id;
+        private String username;
         private String password;
         private String role;
         private String fullName;
         private String address;
         private String phoneNumber;
-        private String username;
+        private String id;
         private String policyHolderId;
         private String email;
         private boolean isActive;
