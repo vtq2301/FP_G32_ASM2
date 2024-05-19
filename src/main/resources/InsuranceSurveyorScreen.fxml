@@ -23,6 +23,9 @@
         <Label text="Surveyor ID:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 14px;"/>
         <TextField fx:id="surveyorIdField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-background-color: #ECF0F1; -fx-font-size: 14px;"/>
 
-        <Button fx:id="manageInsuranceButton" text="Manage Insurance Claim" onAction="#handleManageInsurance" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
     </GridPane>
+    <Button text="Change Password" fx:id="changePasswordButton" onAction="#handleChangePassword" style="-fx-background-color: darkred; -fx-text-fill: white;"/>
+    <Button text="Update User Info" fx:id="updateUserInfoButton" onAction="#handleUpdateUserInfo" style="-fx-background-color: darkorange; -fx-text-fill: white;"/>
+    <Button fx:id="manageInsuranceButton" text="Manage Insurance Claim" onAction="#handleManageInsurance" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.columnIndex="1"/>
 </VBox>
