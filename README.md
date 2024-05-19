@@ -30,6 +30,14 @@ Caused by: java.lang.NoClassDefFoundError: javafx/application/Application
 ```
 Hence, running from the command line is not recommended. It is preferable to use an IDE.
 
+## Accounts used for demonstration
+- **Policy Holder**:
+- **Dependent**
+- **Policy Owner**: policy_owner_2 / pw: abc123
+- **Manager**
+- **Surveyor**
+- **Admin**: Admin / 1234
+
 ## Technologies Used
 
 - **Java**: JDK 21
